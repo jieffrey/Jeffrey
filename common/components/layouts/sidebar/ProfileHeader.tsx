@@ -6,6 +6,7 @@ import IntlToggle from "./IntToogle";
 import Tooltip from "../../elements/Tooltip";
 import Image from "../../elements/Image";
 import { cn } from "@/lib/utils";
+import LayoutToggleButton from "../LayoutToogleButton";
 
 interface ProfileHeaderProps {
   expandMenu: boolean;
@@ -47,6 +48,7 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
       <div className="hidden justify-between gap-6 lg:mt-4 lg:flex">
         <IntlToggle />
         <ThemeToggle />
+        <LayoutToggleButton/>
       </div>
     </div>
   );

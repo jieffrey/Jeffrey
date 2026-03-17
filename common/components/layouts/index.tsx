@@ -1,14 +1,11 @@
 "use client";
-
 import dynamic from "next/dynamic";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import { usePathname } from "next/navigation";
-
-// import ChatButton from "../../../modules/chat/components/ChatButton";
-
+import { useLayout } from "@/common/stores/layout";
 import Sidebar from "./sidebar";
+import Topbar from "./topbar";
 
 const Notif = dynamic(() => import("../elements/Notif"), { ssr: false });
 
@@ -17,16 +14,24 @@ interface LayoutsProps {
 }
 
 const Layouts = ({ children }: LayoutsProps) => {
-  const pathname = usePathname();
-
-  const isShowChatButton = pathname !== "/chat";
+  const { mode } = useLayout();
 
   useEffect(() => {
-    AOS.init({
-      duration: 800,
-      delay: 50,
-    });
+    AOS.init({ duration: 800, delay: 50 });
   }, []);
+
+  if (mode === "topbar") {
+    return (
+      <div className="min-h-screen">
+        <Topbar />
+        <main className="mx-auto max-w-7xl px-6 py-6">
+          {children}
+        </main>
+        <Notif />
+      </div>
+    );
+  }
+
   return (
     <div className="mx-auto max-w-7xl lg:px-12">
       <div className="mx-auto flex flex-col lg:flex-row lg:gap-5 lg:py-4">
@@ -36,7 +41,6 @@ const Layouts = ({ children }: LayoutsProps) => {
         </main>
       </div>
       <Notif />
-      {/* {isShowChatButton && <ChatButton />} */}
     </div>
   );
 };
