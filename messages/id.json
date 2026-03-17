@@ -1,0 +1,18 @@
+{
+  "Navigation": {
+    "Home": "Beranda",
+    "About": "Tentang",
+    "Projects": "Proyek",
+    "Achievements": "Pencapaian",
+    "Dashboard": "Dasbor",
+    "Contact": "Kontak",
+    "Contents": "Konten",
+    "Chat Room": "Ruang Obrolan",
+    "Smart Talk": "Smart Talk"
+  },
+  "Footer": {
+    "copyright": "HAK CIPTA © 2026",
+    "name": "Jeffrey Studios",
+    "rights": "Semua hak dilindungi."
+  }
+}
