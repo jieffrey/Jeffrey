@@ -38,8 +38,12 @@ const ThemeToggle = () => {
           whileTap={{ scale: 0.9 }}
         >
           <motion.div
-            animate={{ color: isLightMode ? "#171717" : "#FFFFFF" }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className={`
+    transition-colors duration-200
+    ${isLightMode
+                ? "text-white"
+                : "text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300"}
+  `}
           >
             <LightModeIcon size={17} />
           </motion.div>
@@ -51,8 +55,12 @@ const ThemeToggle = () => {
           whileTap={{ scale: 0.9 }}
         >
           <motion.div
-            animate={{ color: !isLightMode ? "#FFFFFF" : "#737373" }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className={`
+    transition-colors duration-200
+    ${!isLightMode
+                ? "text-white"
+                : "text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300"}
+  `}
           >
             <DarkModeIcon size={17} />
           </motion.div>

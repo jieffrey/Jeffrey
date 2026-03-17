@@ -35,9 +35,8 @@ const IntlToggle = () => {
   return (
     <div className="flex items-center justify-center">
       <div
-        className={`relative hidden items-center gap-1 rounded-full border-[1.5px] border-neutral-300 bg-neutral-100 p-1 dark:border-neutral-700 dark:bg-neutral-800 lg:flex ${
-          isPending ? "pointer-events-none opacity-70" : ""
-        }`}
+        className={`relative hidden items-center gap-1 rounded-full border-[1.5px] border-neutral-300 bg-neutral-100 p-1 dark:border-neutral-700 dark:bg-neutral-800 lg:flex ${isPending ? "pointer-events-none opacity-70" : ""
+          }`}
         style={{ width: `${totalWidth + (locales.length - 1) * 4 + 10}px` }}
       >
         <motion.div
@@ -62,10 +61,12 @@ const IntlToggle = () => {
             disabled={isPending}
           >
             <motion.div
-              className="flex flex-col items-center justify-center text-xs font-medium"
-              animate={{
-                color: currentIndex === index ? "#121212" : "#737373",
-              }}
+              className={`
+  flex flex-col items-center justify-center text-xs font-medium transition-colors duration-200
+  ${currentIndex === index
+                  ? "text-white"
+                  : "text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300"}
+`}
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
               {locale.flag}
