@@ -14,5 +14,108 @@
     "copyright": "HAK CIPTA © 2026",
     "name": "Jeffrey Studios",
     "rights": "Semua hak dilindungi."
+  },
+  "HomePage": {
+    "intro": "Halo, saya Jeffrey Kalsah Al Kautsar 👋",
+    "location": "Berdomisili Jawa Barat, Indonesia 🇮🇩",
+    "location_type": "On-site / Remote",
+    "status": "Terbuka untuk Pekerjaan",
+    "resume_1": "Seorang Fullstack Developer yang berfokus pada pengembangan aplikasi web dan mobile dengan pendekatan modern dan scalable. Saya berpengalaman menggunakan React, Next.js, React Native, dan Flutter untuk membangun produk digital yang responsif dan user-friendly, serta mengembangkan backend menggunakan Node.js, Express, dan Supabase.",
+    "resume_2": "Saya memiliki perhatian besar terhadap struktur arsitektur aplikasi, performa, dan maintainability. Saya juga memahami proses desain menggunakan Figma untuk memastikan keseimbangan antara fungsionalitas dan pengalaman pengguna. Berkomitmen untuk menghasilkan solusi digital yang tidak hanya berjalan dengan baik, tetapi juga memiliki nilai nyata bagi pengguna.",
+    "skills": {
+      "title": "Keahlian",
+      "sub_title": "Teknologi yang saya gunakan sehari-hari untuk membangun produk digital.",
+      "filter": {
+        "all": "Semua",
+        "main": "Utama",
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "mobile": "Mobile",
+        "database": "Database",
+        "tools": "Tools"
+      }
+    }
+  },
+  "AboutPage": {
+    "title": "Tentang",
+    "subtitle": "Pengenalan singkat tentang siapa saya.",
+    "tabs": {
+      "story": "Pengenalan",
+      "career": "Karir",
+      "education": "Pendidikan"
+    },
+    "story": {
+      "title": "Pengenalan",
+      "subtitle": "Siapa saya dan apa yang saya lakukan.",
+      "paragraphs": [
+        "Halo, saya Jeffrey Kalsah Al Kautsar, seorang Fullstack Developer yang berdomisili di Indonesia 🇮🇩 dan berfokus pada pengembangan aplikasi web dan mobile yang modern dan scalable.",
+        "Saya berpengalaman menggunakan React, Next.js, React Native, dan Flutter untuk membangun produk digital yang responsif dan user-friendly, serta mengembangkan backend menggunakan Node.js, Express, dan Supabase.",
+        "Saya memiliki perhatian besar terhadap arsitektur aplikasi, performa, dan maintainability, serta terbiasa bekerja dengan database seperti PostgreSQL dan MySQL. Saya juga memahami proses desain menggunakan Figma untuk memastikan keseimbangan antara fungsionalitas dan pengalaman pengguna.",
+        "Saya berkomitmen untuk menghasilkan solusi digital yang tidak hanya berjalan dengan baik, tetapi juga memiliki nilai nyata bagi pengguna."
+      ]
+    },
+    "career": {
+      "title": "Karir",
+      "subtitle": "Pengalaman dan peran yang pernah saya jalani.",
+      "items": [
+        {
+          "role": "Instruktur Afterclass",
+          "company": "SMK Taruna Bhakti",
+          "type": "Mengajar",
+          "period": "2025",
+          "description": "Mengajarkan materi pemrograman kepada siswa kelas 10 dalam sesi afterclass. Materi yang diajarkan mencakup penggunaan GitHub untuk version control, konsep asynchronous & synchronous programming, callback function, serta setup dan penggunaan TypeScript dalam proyek JavaScript.",
+          "tags": [
+            "GitHub",
+            "TypeScript",
+            "Async/Await",
+            "Callback",
+            "Mengajar"
+          ]
+        },
+        {
+          "role": "Instruktur Afterclass",
+          "company": "SMK Taruna Bhakti",
+          "type": "Mengajar",
+          "period": "2025",
+          "description": "Sesi pertama mengajar afterclass untuk siswa kelas 10. Fokus pada pengenalan dasar GitHub, alur kerja version control, dan konsep-konsep fundamental JavaScript modern.",
+          "tags": [
+            "GitHub",
+            "JavaScript",
+            "Version Control",
+            "Mengajar"
+          ]
+        }
+      ]
+    },
+    "education": {
+      "title": "Pendidikan",
+      "subtitle": "Latar belakang pendidikan saya dari awal hingga sekarang.",
+      "items": [
+        {
+          "school": "SMK Taruna Bhakti",
+          "level": "Sekolah Menengah Kejuruan",
+          "location": "Depok, Jawa Barat",
+          "period": "2024 - Sekarang"
+        },
+        {
+          "school": "SMPIT Raflesia",
+          "level": "Sekolah Menengah Pertama",
+          "location": "Depok, Jawa Barat",
+          "period": "2021 - 2024"
+        },
+        {
+          "school": "SDN Tugu 10",
+          "level": "Sekolah Dasar",
+          "location": "Depok, Jawa Barat",
+          "period": "2015 - 2021"
+        },
+        {
+          "school": "RA Assunbulah",
+          "level": "Taman Kanak-Kanak Islam",
+          "location": "Cimanggis, Depok, Jawa Barat",
+          "period": "2014 - 2015"
+        }
+      ]
+    }
   }
 }

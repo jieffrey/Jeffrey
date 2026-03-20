@@ -14,5 +14,108 @@
     "copyright": "COPYRIGHT © 2026",
     "name": "Jeffrey Studios",
     "rights": "All rights reserved."
+  },
+  "HomePage": {
+    "intro": "Hi, I'm Jeffrey Kalsah Al Kautsar 👋",
+    "location": "Based in West Java, Indonesia 🇮🇩",
+    "location_type": "On-site / Remote",
+    "status": "Open to Work",
+    "resume_1": "A Fullstack Developer focused on building modern and scalable web and mobile applications. I have experience using React, Next.js, React Native, and Flutter to create responsive and user-friendly digital products, as well as developing backend systems using Node.js, Express, and Supabase.",
+    "resume_2": "I have a strong focus on software architecture, performance, and maintainability. I also have experience with UI/UX design using Figma to ensure a balance between functionality and user experience. I am committed to delivering digital solutions that are not only functional but also provide real value to users.",
+    "skills": {
+      "title": "Skills",
+      "sub_title": "Technologies I use daily to build digital products.",
+      "filter": {
+        "all": "All",
+        "main": "Main",
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "mobile": "Mobile",
+        "database": "Database",
+        "tools": "Tools"
+      }
+    }
+  },
+    "AboutPage": {
+    "title": "About",
+    "subtitle": "A brief introduction about who I am.",
+    "tabs": {
+      "story": "Introduction",
+      "career": "Career",
+      "education": "Education"
+    },
+    "story": {
+      "title": "Introduction",
+      "subtitle": "Who I am and what I do.",
+      "paragraphs": [
+        "Hi, I'm Jeffrey Kalsah Al Kautsar, a Fullstack Developer based in Indonesia 🇮🇩 focused on building modern and scalable web and mobile applications.",
+        "I'm experienced with React, Next.js, React Native, and Flutter to build responsive and user-friendly digital products, and develop backends using Node.js, Express, and Supabase.",
+        "I have a strong attention to application architecture, performance, and maintainability, and I'm familiar with working with databases like PostgreSQL and MySQL. I also understand the design process using Figma to ensure the right balance between functionality and user experience.",
+        "I'm committed to delivering digital solutions that don't just work well, but also have real value for users."
+      ]
+    },
+    "career": {
+      "title": "Career",
+      "subtitle": "Experiences and roles I've been involved in.",
+      "items": [
+        {
+          "role": "Afterclass Instructor",
+          "company": "SMK Taruna Bhakti",
+          "type": "Teaching",
+          "period": "2025",
+          "description": "Taught programming material to grade 10 students in afterclass sessions. Topics covered include using GitHub for version control, asynchronous & synchronous programming concepts, callback functions, and setting up TypeScript in JavaScript projects.",
+          "tags": [
+            "GitHub",
+            "TypeScript",
+            "Async/Await",
+            "Callback",
+            "Teaching"
+          ]
+        },
+        {
+          "role": "Afterclass Instructor",
+          "company": "SMK Taruna Bhakti",
+          "type": "Teaching",
+          "period": "2025",
+          "description": "First afterclass teaching session for grade 10 students. Focused on introducing GitHub basics, version control workflow, and fundamental modern JavaScript concepts.",
+          "tags": [
+            "GitHub",
+            "JavaScript",
+            "Version Control",
+            "Teaching"
+          ]
+        }
+      ]
+    },
+    "education": {
+      "title": "Education",
+      "subtitle": "My educational background from early to present.",
+      "items": [
+        {
+          "school": "SMK Taruna Bhakti",
+          "level": "Vocational High School",
+          "location": "Depok, West Java",
+          "period": "2024 - Present"
+        },
+        {
+          "school": "SMPIT Raflesia",
+          "level": "Junior High School",
+          "location": "Depok, West Java",
+          "period": "2021 - 2024"
+        },
+        {
+          "school": "SDN Tugu 10",
+          "level": "Elementary School",
+          "location": "Depok, West Java",
+          "period": "2015 - 2021"
+        },
+        {
+          "school": "RA Assunbulah",
+          "level": "Islamic Kindergarten",
+          "location": "Cimanggis, Depok, West Java",
+          "period": "2014 - 2015"
+        }
+      ]
+    }
   }
 }

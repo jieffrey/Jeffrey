@@ -32,14 +32,6 @@ export const MENU_ITEMS: MenuItemProps[] = [
     eventName: "Pages: About",
   },
   {
-    title: "Contents",
-    href: "/contents",
-    icon: <ContentIcon size={iconSize} />,
-    isShow: true,
-    isExternal: false,
-    eventName: "Pages: Contents",
-  },
-  {
     title: "Achievements",
     href: "/achievements",
     icon: <AchievementIcon size={iconSize} />,
@@ -64,28 +56,11 @@ export const MENU_ITEMS: MenuItemProps[] = [
     eventName: "Pages: Dashboard",
   },
   {
-    title: "Chat Room",
-    href: "/chat",
-    icon: <ChatRoomIcon size={iconSize} />,
-    isShow: true,
-    isExternal: false,
-    eventName: "Pages: Chat Room",
-  },
-  {
     title: "Contact",
     href: "/contact",
     icon: <ContactIcon size={iconSize} />,
     isShow: true,
     isExternal: false,
     eventName: "Pages: Contact",
-  },
-  {
-    title: "Smart Talk",
-    href: "/smart-talk",
-    icon: <SmartChatIcon size={iconSize} />,
-    isShow: false,
-    isExternal: false,
-    eventName: "Pages: Dashboard",
-    isExclusive: true,
   },
 ];

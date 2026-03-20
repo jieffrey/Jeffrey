@@ -1,9 +1,21 @@
-import Image from "next/image";
+import { Metadata } from "next";
+import Container from "@/common/components/elements/Container";
+import Home from "@/modules/home/components/Home";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Jeffrey Studios | Personal Website",
+  description: "Fullstack Developer — React, Next.js, React Native, Flutter",
+  alternates: {
+    canonical: `${process.env.DOMAIN}`,
+  },
+};
+
+const HomePage = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      
-    </div>
+    <Container data-aos="fade-up">
+      <Home />
+    </Container>
   );
-}
+};
+
+export default HomePage;

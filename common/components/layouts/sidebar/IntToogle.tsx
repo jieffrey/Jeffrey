@@ -25,22 +25,27 @@ const IntlToggle = () => {
   const slidePosition = currentIndex * buttonWidth;
 
   const handleLocaleChange = (nextLocale: string) => {
-    if (nextLocale === currentLocale || isPending) return;
+    if (nextLocale === currentLocale) return;
 
     startTransition(() => {
-      router.replace(pathname, { locale: nextLocale });
+      setTimeout(() => {
+        router.replace(pathname, { locale: nextLocale, scroll: false });
+      }, 50);
     });
   };
 
   return (
     <div className="flex items-center justify-center">
       <div
-        className={`relative hidden items-center gap-1 rounded-full border-[1.5px] border-neutral-300 bg-neutral-100 p-1 dark:border-neutral-700 dark:bg-neutral-800 lg:flex ${isPending ? "pointer-events-none opacity-70" : ""
+        className={`relative hidden items-center gap-1 rounded-full border-[1.5px] 
+          border-neutral-300 bg-neutral-100 p-1 dark:border-neutral-700 dark:bg-neutral-800 lg:flex 
+          
           }`}
         style={{ width: `${totalWidth + (locales.length - 1) * 4 + 10}px` }}
       >
         <motion.div
           className="absolute bottom-1 top-1 w-10 rounded-full bg-primary"
+          initial={false}
           animate={{
             x: slidePosition + currentIndex * 4,
           }}
