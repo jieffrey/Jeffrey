@@ -1,40 +1,66 @@
 import {
-  Home,
-  User,
-  Folder,
-  Trophy,
-  Mail
-} from "lucide-react"
+  BiHomeCircle as HomeIcon,
+  BiUser as AboutIcon,
+  BiCollection as ProjectIcon,
+  BiCategory as DashboardIcon,
+  BiBook as ContactIcon,
+} from "react-icons/bi";
+import { IoPhonePortraitOutline as ContentIcon } from "react-icons/io5";
+import { PiChatTeardropDotsBold as ChatRoomIcon } from "react-icons/pi";
+import { PiCertificate as AchievementIcon } from "react-icons/pi";
+import { VscHubot as SmartChatIcon } from "react-icons/vsc";
 
-export const MENU_ITEMS = [
+import { MenuItemProps } from "../types/menu";
+
+const iconSize = 20;
+
+export const MENU_ITEMS: MenuItemProps[] = [
   {
     title: "Home",
     href: "/",
-    icon: <Home size={18} />,
-    isShow: true
+    icon: <HomeIcon size={iconSize} />,
+    isShow: true,
+    isExternal: false,
+    eventName: "Pages: Home",
   },
   {
     title: "About",
     href: "/about",
-    icon: <User size={18} />,
-    isShow: true
-  },
-  {
-    title: "Projects",
-    href: "/projects",
-    icon: <Folder size={18} />,
-    isShow: true
+    icon: <AboutIcon size={iconSize} />,
+    isShow: true,
+    isExternal: false,
+    eventName: "Pages: About",
   },
   {
     title: "Achievements",
     href: "/achievements",
-    icon: <Trophy size={18} />,
-    isShow: true
+    icon: <AchievementIcon size={iconSize} />,
+    isShow: true,
+    isExternal: false,
+    eventName: "Pages: Achievements",
+  },
+  {
+    title: "Projects",
+    href: "/projects",
+    icon: <ProjectIcon size={iconSize} />,
+    isShow: true,
+    isExternal: false,
+    eventName: "Pages: Projects",
+  },
+  {
+    title: "Dashboard",
+    href: "/dashboard",
+    icon: <DashboardIcon size={iconSize} />,
+    isShow: true,
+    isExternal: false,
+    eventName: "Pages: Dashboard",
   },
   {
     title: "Contact",
     href: "/contact",
-    icon: <Mail size={18} />,
-    isShow: true
-  }
-]
+    icon: <ContactIcon size={iconSize} />,
+    isShow: true,
+    isExternal: false,
+    eventName: "Pages: Contact",
+  },
+];

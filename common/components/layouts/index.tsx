@@ -1,29 +1,48 @@
-"use client"
+"use client";
+import dynamic from "next/dynamic";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+import { useLayout } from "@/common/stores/layout";
+import Sidebar from "./sidebar";
+import Topbar from "./topbar";
 
-import { ReactNode } from "react"
-import Sidebar from "./sidebar"
-import useAOS from "@/hooks/use-aos"
+const Notif = dynamic(() => import("../elements/Notif"), { ssr: false });
 
-interface LayoutProps {
-  children: ReactNode
+interface LayoutsProps {
+  children: React.ReactNode;
 }
 
-export default function Layout({ children }: LayoutProps) {
-  
-  useAOS()
-  return (
-<div className="flex justify-center">
+const Layouts = ({ children }: LayoutsProps) => {
+  const { mode } = useLayout();
 
-      <div className="flex w-full max-w-350">
+  useEffect(() => {
+    AOS.init({ duration: 800, delay: 50 });
+  }, []);
 
-        <Sidebar />
-
-        <main className="flex-1 px-10 py-10">
+  if (mode === "topbar") {
+    return (
+      <div className="min-h-screen">
+        <Topbar />
+        <main className="mx-auto max-w-7xl px-6 py-6">
           {children}
         </main>
-
+        <Notif />
       </div>
+    );
+  }
 
+  return (
+    <div className="mx-auto max-w-7xl lg:px-12">
+      <div className="mx-auto flex flex-col lg:flex-row lg:gap-5 lg:py-4">
+        <Sidebar />
+        <main className="max-w-213.5 transition-all duration-300 lg:w-4/5">
+          {children}
+        </main>
+      </div>
+      <Notif />
     </div>
-  )
-}
+  );
+};
+
+export default Layouts;

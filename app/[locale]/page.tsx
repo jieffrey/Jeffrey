@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Container from "@/common/components/elements/Container";
-import Home from "@/modules/home/components/home";
+import Home from "@/modules/home/components/Home";
 
 export const metadata: Metadata = {
   title: "Jeffrey Studios | Personal Website",
