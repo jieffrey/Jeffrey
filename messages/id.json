@@ -116,6 +116,14 @@
           "period": "2014 - 2015"
         }
       ]
+    },
+    "ProjectsPage": {
+      "title": "Proyek",
+      "subtitle": "Project mini yang pernah gua bangun dan deploy saat belajar.",
+      "search_placeholder": "Cari proyek...",
+      "showing": "Menampilkan",
+      "projects": "proyek",
+      "empty": "Proyek tidak ditemukan."
     }
   }
 }

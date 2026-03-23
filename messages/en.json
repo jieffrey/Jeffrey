@@ -36,7 +36,7 @@
       }
     }
   },
-    "AboutPage": {
+  "AboutPage": {
     "title": "About",
     "subtitle": "A brief introduction about who I am.",
     "tabs": {
@@ -116,6 +116,14 @@
           "period": "2014 - 2015"
         }
       ]
+    },
+    "ProjectsPage": {
+      "title": "Projects",
+      "subtitle": "Mini projects I've built and deployed while learning.",
+      "search_placeholder": "Search projects...",
+      "showing": "Showing",
+      "projects": "projects",
+      "empty": "No projects found."
     }
   }
 }
