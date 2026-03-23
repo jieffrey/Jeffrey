@@ -124,6 +124,12 @@
       "showing": "Showing",
       "projects": "projects",
       "empty": "No projects found."
-    }
+    },
+    "ContactPage": {
+  "title": "Contact",
+  "subtitle": "Feel free to reach out through any platform below.",
+  "intro": "I'm open to collaborations, discussions, freelance work, or just a casual chat. Pick whichever platform is most comfortable for you — I'll get back to you as soon as possible.",
+  "footer_note": "Usually responds within 24 hours."
+}
   }
 }
