@@ -17,7 +17,12 @@ const Layouts = ({ children }: LayoutsProps) => {
   const { mode } = useLayout();
 
   useEffect(() => {
-    AOS.init({ duration: 800, delay: 50 });
+    AOS.init({
+      duration: 1000,
+      easing: "ease-out-cubic",
+      once: true,
+      offset: 50,
+    });
   }, []);
 
   if (mode === "topbar") {
