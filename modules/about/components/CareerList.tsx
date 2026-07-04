@@ -29,7 +29,7 @@ const CareerList = () => {
 
       <div className="relative space-y-0">
         {/* Vertical timeline line */}
-        <div className="absolute left-[7px] top-2 h-[calc(100%-16px)] w-px bg-neutral-200 dark:bg-neutral-800" />
+        <div className="absolute left-1.75 top-2 h-[calc(100%-16px)] w-px bg-neutral-200 dark:bg-neutral-800" />
 
         {items.map((career, index) => (
           <motion.div

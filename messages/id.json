@@ -116,20 +116,41 @@
           "period": "2014 - 2015"
         }
       ]
-    },
-    "ProjectsPage": {
-      "title": "Proyek",
-      "subtitle": "Project mini yang pernah gua bangun dan deploy saat belajar.",
-      "search_placeholder": "Cari proyek...",
-      "showing": "Menampilkan",
-      "projects": "proyek",
-      "empty": "Proyek tidak ditemukan."
-    },
-    "ContactPage": {
-  "title": "Contact",
-  "subtitle": "Feel free to reach out through any platform below.",
-  "intro": "I'm open to collaborations, discussions, freelance work, or just a casual chat. Pick whichever platform is most comfortable for you — I'll get back to you as soon as possible.",
-  "footer_note": "Usually responds within 24 hours."
-}
+    }
+  },
+  "AchievementsPage": {
+    "title": "Pencapaian",
+    "subtitle": "Sertifikat dan pencapaian pembelajaran yang pernah saya raih.",
+    "search_placeholder": "Cari pencapaian...",
+    "showing": "Menampilkan",
+    "certificates": "sertifikat",
+    "empty": "Tidak ada pencapaian yang ditemukan."
+  },
+  "ProjectsPage": {
+    "title": "Proyek",
+    "subtitle": "Proyek mini yang pernah saya bangun dan deploy saat belajar.",
+    "search_placeholder": "Cari proyek...",
+    "showing": "Menampilkan",
+    "projects": "proyek",
+    "empty": "Proyek tidak ditemukan."
+  },
+  "ContactPage": {
+    "title": "Kontak",
+    "subtitle": "Silakan hubungi saya melalui platform yang Anda pilih.",
+    "email_desc": "Lebih suka email? Kirim pesan langsung.",
+    "Or send me a message": "Atau kirim saya pesan",
+    "form_success": "Pesan berhasil dikirim.",
+    "form_success_sub": "Saya akan segera membalasnya.",
+    "form_send_another": "Kirim pesan lain",
+    "name": "Nama",
+    "form_email": "Email",
+    "form_message": "Pesan",
+    "form_name_placeholder": "Nama Anda",
+    "form_email_placeholder": "email@anda.com",
+    "form_message_placeholder": "Tulis pesan Anda di sini...",
+    "form_error": "Terjadi kesalahan. Silakan coba lagi.",
+    "form_sending": "Mengirim...",
+    "form_send": "Kirim pesan",
+    "footer_note": "Biasanya membalas dalam 24 jam."
   }
 }

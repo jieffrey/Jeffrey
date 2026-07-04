@@ -116,20 +116,41 @@
           "period": "2014 - 2015"
         }
       ]
-    },
-    "ProjectsPage": {
-      "title": "Projects",
-      "subtitle": "Mini projects I've built and deployed while learning.",
-      "search_placeholder": "Search projects...",
-      "showing": "Showing",
-      "projects": "projects",
-      "empty": "No projects found."
-    },
-    "ContactPage": {
-  "title": "Contact",
-  "subtitle": "Feel free to reach out through any platform below.",
-  "intro": "I'm open to collaborations, discussions, freelance work, or just a casual chat. Pick whichever platform is most comfortable for you — I'll get back to you as soon as possible.",
-  "footer_note": "Usually responds within 24 hours."
-}
+    }
+  },
+  "AchievementsPage": {
+    "title": "Achievements",
+    "subtitle": "Certificates and learning milestones I’ve earned.",
+    "search_placeholder": "Search achievements...",
+    "showing": "Showing",
+    "certificates": "certificates",
+    "empty": "No achievements found."
+  },
+  "ProjectsPage": {
+    "title": "Projects",
+    "subtitle": "Mini projects I’ve built and deployed while learning.",
+    "search_placeholder": "Search projects...",
+    "showing": "Showing",
+    "projects": "projects",
+    "empty": "No projects found."
+  },
+  "ContactPage": {
+    "title": "Contact",
+    "subtitle": "Feel free to reach out through any platform below.",
+    "email_desc": "Prefer email? Send me a message directly.",
+    "Or send me a message": "Or send me a message",
+    "form_success": "Message sent successfully.",
+    "form_success_sub": "I’ll get back to you soon.",
+    "form_send_another": "Send another message",
+    "name": "Name",
+    "form_email": "Email",
+    "form_message": "Message",
+    "form_name_placeholder": "Your name",
+    "form_email_placeholder": "your@email.com",
+    "form_message_placeholder": "Write your message here...",
+    "form_error": "Something went wrong. Please try again.",
+    "form_sending": "Sending...",
+    "form_send": "Send message",
+    "footer_note": "Usually responds within 24 hours."
   }
 }

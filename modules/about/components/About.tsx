@@ -57,7 +57,7 @@ const About = () => {
       </div>
 
       {/* Sticky tab bar */}
-      <div className="sticky top-[72px] z-10 mb-8 rounded-xl border border-neutral-200 bg-neutral-50/90 p-1 backdrop-blur-md dark:border-neutral-800 dark:bg-neutral-900/90 lg:top-4">
+      <div className="sticky top-18 z-10 mb-8 rounded-xl border border-neutral-200 bg-neutral-50/90 p-1 backdrop-blur-md dark:border-neutral-800 dark:bg-neutral-900/90 lg:top-4">
         <div className="grid grid-cols-3 gap-1">
           {TABS.map((tab) => {
             const isActive = active === tab.key;
@@ -99,7 +99,7 @@ const About = () => {
           <Story />
         </section>
 
-        <div className="h-px w-full bg-gradient-to-r from-neutral-200 via-neutral-300 to-transparent dark:from-neutral-800 dark:via-neutral-700" />
+        <div className="h-px w-full bg-linear-to-r from-neutral-200 via-neutral-300 to-transparent dark:from-neutral-800 dark:via-neutral-700" />
 
         <section
           id="career"
@@ -108,7 +108,7 @@ const About = () => {
           <CareerList />
         </section>
 
-        <div className="h-px w-full bg-gradient-to-r from-neutral-200 via-neutral-300 to-transparent dark:from-neutral-800 dark:via-neutral-700" />
+        <div className="h-px w-full bg-linear-to-r from-neutral-200 via-neutral-300 to-transparent dark:from-neutral-800 dark:via-neutral-700" />
 
         <section
           id="education"
