@@ -49,3 +49,8 @@ export const repositories = [
     stars: 8,
   },
 ];
+
+export const contributions = Array.from({ length: 210 }, (_, index) => ({
+  id: index,
+  level: Math.floor(Math.random() * 4),
+}));

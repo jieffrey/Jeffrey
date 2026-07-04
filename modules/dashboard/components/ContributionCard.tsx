@@ -1,5 +1,6 @@
 import DashboardCard from "./DashboardCard";
 import { Github } from "lucide-react";
+import { contributions } from "../data/mock";
 
 export default function ContributionCard() {
     return (
@@ -11,14 +12,17 @@ export default function ContributionCard() {
         >
             <div className="grid grid-cols-30 gap-1">
 
-                {Array.from({ length: 210 }).map((_, i) => (
+                {contributions.map((item) => (
                     <div
-                        key={i}
-                        className={`aspect-square rounded-sm ${Math.random() > 0.6
-                                ? "bg-emerald-500"
-                                : Math.random() > 0.4
-                                    ? "bg-emerald-300"
-                                    : "bg-zinc-200 dark:bg-zinc-800"
+                        key={item.id}
+                        className={`aspect-square rounded-sm
+                                ${item.level === 0
+                                ? "bg-zinc-200 dark:bg-zinc-800"
+                                : item.level === 1
+                                    ? "bg-emerald-200"
+                                    : item.level === 2
+                                        ? "bg-emerald-400"
+                                        : "bg-emerald-600"
                             }`}
                     />
                 ))}
