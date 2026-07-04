@@ -33,3 +33,4 @@ export interface GithubStats {
   repositories: number;
   commits: number;
 }
+
