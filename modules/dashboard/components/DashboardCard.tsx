@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 
@@ -10,6 +9,7 @@ interface DashboardCardProps {
     footer?: ReactNode;
     children: ReactNode;
     className?: string;
+    index?: number;
 }
 
 export default function DashboardCard({
@@ -20,24 +20,23 @@ export default function DashboardCard({
     footer,
     children,
     className,
+    index = 0,
 }: DashboardCardProps) {
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            whileHover={{
-                y: -4,
-            }}
+        <div
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+            data-aos-duration="800"
+            data-aos-easing="ease-out-cubic"
             className={cn(
-                "group rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-900",
+                "group rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-2 hover:shadow-2xl dark:border-zinc-800 dark:bg-zinc-900",
                 className
             )}
         >
             <div className="mb-6 flex items-start justify-between">
                 <div className="flex items-center gap-3">
                     {icon && (
-                        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-zinc-100 transition group-hover:scale-105 dark:bg-zinc-800">
+                        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-zinc-100 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-110 group-hover:bg-zinc-200 dark:bg-zinc-800 dark:group-hover:bg-zinc-700">
                             {icon}
                         </div>
                     )}
@@ -63,6 +62,6 @@ export default function DashboardCard({
                     {footer}
                 </div>
             )}
-        </motion.div>
+        </div>
     );
 }
