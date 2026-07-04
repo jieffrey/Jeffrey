@@ -8,18 +8,10 @@ interface ImageProps extends NextImageProps {
   rounded?: string;
 }
 
-const Image = (props: ImageProps) => {
-  const { alt, src, className, rounded, ...rest } = props;
+const Image = ({ alt, src, className, rounded, ...rest }: ImageProps) => {
   const [isLoading, setLoading] = useState(true);
-
   return (
-    <div
-      className={clsx(
-        "overflow-hidden",
-        isLoading ? "animate-pulse" : "",
-        rounded,
-      )}
-    >
+    <div className={clsx("overflow-hidden", isLoading ? "animate-pulse" : "", rounded)}>
       <NextImage
         className={clsx(
           "duration-700 ease-in-out",
@@ -34,7 +26,6 @@ const Image = (props: ImageProps) => {
         loading="lazy"
         quality={75}
         unoptimized
-        // priority
         onLoad={() => setLoading(false)}
         {...rest}
       />

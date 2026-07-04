@@ -11,7 +11,6 @@ import ThemeToggle from "./ThemeToogle";
 import IntlToggle from "./IntToogle";
 
 const Profile = () => {
-  const [width, setWidth] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
   const { isOpen, toggleMenu } = useMenu();
@@ -19,17 +18,19 @@ const Profile = () => {
   const imageSize = isMobile ? 40 : 100;
 
   useEffect(() => {
-    setWidth(window.innerWidth);
-    setIsMobile(window.innerWidth < 769);
+    // Use requestAnimationFrame to avoid the lint warning
+    const timer = requestAnimationFrame(() => {
+      setIsMobile(window.innerWidth < 769);
+    });
 
     const handleResize = () => {
-      setWidth(window.innerWidth);
       setIsMobile(window.innerWidth < 769);
     };
 
     window.addEventListener("resize", handleResize);
 
     return () => {
+      cancelAnimationFrame(timer);
       window.removeEventListener("resize", handleResize);
     };
   }, []);

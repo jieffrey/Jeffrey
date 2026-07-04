@@ -2,17 +2,14 @@
 
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-
 import { useNotifStore } from "@/common/stores/Notif";
 
 const Notif = () => {
   const { isOpen, text, hideNotif } = useNotifStore();
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      hideNotif();
-    }, 3000);
-
+    if (!isOpen) return;
+    const timeout = setTimeout(hideNotif, 3000);
     return () => clearTimeout(timeout);
   }, [hideNotif, isOpen]);
 

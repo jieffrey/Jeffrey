@@ -5,10 +5,7 @@ import {
   BiCategory as DashboardIcon,
   BiBook as ContactIcon,
 } from "react-icons/bi";
-import { IoPhonePortraitOutline as ContentIcon } from "react-icons/io5";
-import { PiChatTeardropDotsBold as ChatRoomIcon } from "react-icons/pi";
 import { PiCertificate as AchievementIcon } from "react-icons/pi";
-import { VscHubot as SmartChatIcon } from "react-icons/vsc";
 
 import { MenuItemProps } from "../types/menu";
 

@@ -17,10 +17,9 @@ const MenuItem = ({
   icon,
   onClick,
   className = "",
-  isHover,
   children,
   isExclusive,
-}: MenuItemProps) => {
+}: Omit<MenuItemProps, 'isHover'>) => {
   const [isHovered, setIsHovered] = useState(false);
   const { hideMenu } = useMenu();
   const isExternalUrl = href?.includes("http");

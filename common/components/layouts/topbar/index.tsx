@@ -17,9 +17,13 @@ const NavGroup = ({
   group,
   pathname,
   t,
-}: any) => {
+}: {
+  group: { icon: React.ReactNode; items: { href: string; title: string }[] };
+  pathname: string;
+  t: (key: string) => string;
+}) => {
   const [open, setOpen] = useState(false)
-  const isActive = group.items.some((item: any) => pathname === item.href)
+  const isActive = group.items.some((item: { href: string }) => pathname === item.href)
 
   return (
     <div
@@ -45,15 +49,15 @@ const NavGroup = ({
             exit={{ opacity: 0, y: -6 }}
             className="absolute left-1/2 top-full mt-2 w-40 -translate-x-1/2 rounded-xl border bg-white dark:bg-neutral-900 p-2 shadow-lg"
           >
-            {group.items.map((item: any) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="block px-3 py-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800"
-              >
-                {t(item.title)}
-              </Link>
-            ))}
+              {group.items.map((item: { href: string; title: string }) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="block px-3 py-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                >
+                  {t(item.title)}
+                </Link>
+              ))}
           </motion.div>
         )}
       </AnimatePresence>
