@@ -118,7 +118,7 @@ export default function RepositoriesWidget({
             <p className="mt-1 line-clamp-2 text-sm text-zinc-500 dark:text-zinc-400">
               {repo.description}
             </p>
-            <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs text-zinc-500 dark:text-zinc-400">
+            <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs text-zinc-500 dark:text-zinc-400">
               <div className="flex items-center gap-1.5">
                 <span
                   className={`h-2.5 w-2.5 rounded-full ${
@@ -134,7 +134,7 @@ export default function RepositoriesWidget({
                 <GitFork size={12} aria-hidden="true" /> {repo.forks}
               </span>
             </div>
-            <p className="mt-2 text-xs text-zinc-400 dark:text-zinc-500">
+            <p className="mt-1.5 text-xs text-zinc-400 dark:text-zinc-500">
               Updated {formatDate(repo.updated)}
             </p>
           </div>

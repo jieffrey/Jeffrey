@@ -125,7 +125,7 @@ export default function VisitorsWidget({ index = 0, loading = false, error = fal
         </p>
       }
     >
-      <div className="mb-6 grid grid-cols-2 gap-4">
+      <div className="mb-4 grid grid-cols-2 gap-3">
         {metrics.map(({ label, value }) => (
           <div key={label}>
             <p className="text-sm text-zinc-500 dark:text-zinc-400">{label}</p>

@@ -151,7 +151,7 @@ export default function UmamiWidget({ index = 0, loading = false, error = false,
         </p>
       }
     >
-      <div className="space-y-6">
+      <div className="space-y-4">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           {overview.map(({ label, value }) => (
             <div
@@ -168,7 +168,7 @@ export default function UmamiWidget({ index = 0, loading = false, error = false,
           ))}
         </div>
 
-        <div className="flex items-center gap-2.5 rounded-xl bg-zinc-50 px-4 py-3 dark:bg-zinc-800/50">
+        <div className="flex items-center gap-2.5 rounded-xl bg-zinc-50 px-3 py-2.5 dark:bg-zinc-800/50">
           <span className="relative flex h-2.5 w-2.5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 dark:bg-emerald-300 opacity-75" />
             <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500 dark:bg-emerald-400" />
@@ -179,10 +179,10 @@ export default function UmamiWidget({ index = 0, loading = false, error = false,
         </div>
 
         <div>
-          <p className="mb-3 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+          <p className="mb-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
             Traffic Sources
           </p>
-          <div className="space-y-2.5">
+          <div className="space-y-2">
             {trafficSources.map((source) => (
               <div key={source.name} className="flex items-center gap-3">
                 <span className="w-16 text-sm text-zinc-700 dark:text-zinc-300">
@@ -203,10 +203,10 @@ export default function UmamiWidget({ index = 0, loading = false, error = false,
         </div>
 
         <div>
-          <p className="mb-3 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+          <p className="mb-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
             Top Pages
           </p>
-          <div className="space-y-2.5">
+          <div className="space-y-2">
             {topPages.map((page) => (
               <div key={page.path} className="flex items-center gap-3">
                 <span className="w-24 truncate text-sm font-medium text-zinc-700 dark:text-zinc-300">

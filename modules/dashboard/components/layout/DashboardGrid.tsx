@@ -14,44 +14,44 @@ interface DashboardGridProps {
 
 export default function DashboardGrid({ loading = false }: DashboardGridProps) {
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-12">
-      <div className="md:col-span-full lg:col-span-12">
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-12">
+      <div className="flex h-full md:col-span-full lg:col-span-12">
         <DeveloperOverviewWidget index={0} loading={loading} />
       </div>
 
-      <div className="lg:col-span-4">
+      <div className="flex h-full lg:col-span-4">
         <GithubWidget index={1} loading={loading} />
       </div>
 
-      <div className="lg:col-span-8">
+      <div className="flex h-full lg:col-span-8">
         <GithubContributionWidget index={2} loading={loading} />
       </div>
 
-      <div className="lg:col-span-6">
+      <div className="flex h-full lg:col-span-6">
         <RepositoriesWidget index={3} loading={loading} />
       </div>
 
-      <div className="lg:col-span-6">
+      <div className="flex h-full lg:col-span-6">
         <WakatimeWidget index={4} loading={loading} />
       </div>
 
-      <div className="lg:col-span-6">
+      <div className="flex h-full lg:col-span-6">
         <MissionWidget index={5} loading={loading} />
       </div>
 
-      <div className="lg:col-span-6">
+      <div className="flex h-full lg:col-span-6">
         <SpotifyWidget index={6} loading={loading} />
       </div>
 
-      <div className="lg:col-span-6">
+      <div className="flex h-full lg:col-span-6">
         <MonkeytypeWidget index={7} loading={loading} />
       </div>
 
-      <div className="lg:col-span-6">
+      <div className="flex h-full lg:col-span-6">
         <VisitorsWidget index={8} loading={loading} />
       </div>
 
-      <div className="md:col-span-full lg:col-span-12">
+      <div className="flex h-full md:col-span-full lg:col-span-12">
         <UmamiWidget index={9} loading={loading} />
       </div>
     </div>

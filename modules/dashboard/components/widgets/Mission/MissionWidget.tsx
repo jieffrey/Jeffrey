@@ -117,7 +117,7 @@ export default function MissionWidget({ index = 0, loading = false, error = fals
       accent="blue"
       index={index}
     >
-      <div className="space-y-5">
+      <div className="space-y-4">
         <div>
           <h4 className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
             {mission.title}
@@ -127,7 +127,7 @@ export default function MissionWidget({ index = 0, loading = false, error = fals
           </p>
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-1.5">
           <div className="flex items-center justify-between text-sm">
             <span className="text-zinc-500 dark:text-zinc-400">Progress</span>
             <span className="font-semibold text-zinc-900 dark:text-zinc-100">
@@ -142,7 +142,7 @@ export default function MissionWidget({ index = 0, loading = false, error = fals
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-3">
           <div>
             <div className="flex items-center gap-1.5 text-xs text-zinc-400 dark:text-zinc-500">
               <Calendar size={12} aria-hidden="true" />
@@ -171,7 +171,7 @@ export default function MissionWidget({ index = 0, loading = false, error = fals
           </div>
         </div>
 
-        <div className="space-y-2.5">
+        <div className="space-y-2">
           <div className="flex items-center justify-between">
             <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
               Checklist

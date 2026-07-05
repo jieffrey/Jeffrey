@@ -136,7 +136,7 @@ export default function SpotifyWidget({ index = 0, loading = false, error = fals
         </p>
       }
     >
-      <div className="space-y-5">
+      <div className="space-y-4">
         <div className="flex aspect-square w-full items-center justify-center rounded-xl bg-zinc-100 backdrop-blur-sm dark:bg-zinc-800">
           <Music size={48} className="text-zinc-400 dark:text-zinc-600" aria-hidden="true" />
         </div>
@@ -163,7 +163,7 @@ export default function SpotifyWidget({ index = 0, loading = false, error = fals
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-6">
+        <div className="flex items-center justify-center gap-4">
           <SkipBack
             size={20}
             className="cursor-pointer text-zinc-400 transition-colors hover:text-zinc-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500/50 dark:hover:text-zinc-300"
@@ -196,10 +196,10 @@ export default function SpotifyWidget({ index = 0, loading = false, error = fals
         </div>
 
         <div>
-          <p className="mb-3 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+          <p className="mb-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
             Recently Played
           </p>
-          <div className="space-y-1">
+          <div className="space-y-0.5">
             {recentlyPlayed.map((track) => (
               <div
                 key={`${track.title}-${track.artist}`}

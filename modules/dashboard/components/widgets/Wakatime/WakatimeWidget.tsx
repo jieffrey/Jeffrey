@@ -92,12 +92,12 @@ export default function WakatimeWidget({ index = 0, loading = false, error = fal
       accent="green"
       index={index}
     >
-      <div className="space-y-6">
+      <div className="space-y-4">
         <div className="grid grid-cols-2 gap-3">
           {stats.map(({ label, value }) => (
             <div
               key={label}
-              className="rounded-xl bg-zinc-50 p-4 transition-colors hover:bg-zinc-100 dark:bg-zinc-800/50 dark:hover:bg-zinc-800"
+              className="rounded-xl bg-zinc-50 p-3 transition-colors hover:bg-zinc-100 dark:bg-zinc-800/50 dark:hover:bg-zinc-800"
             >
               <p className="text-sm text-zinc-500 dark:text-zinc-400">
                 {label}
@@ -113,7 +113,7 @@ export default function WakatimeWidget({ index = 0, loading = false, error = fal
           <p className="mb-3 text-xs font-medium text-zinc-500 dark:text-zinc-400">
             Language Breakdown
           </p>
-          <div className="space-y-3">
+          <div className="space-y-2">
             {wakatime.languageBreakdown.map((lang) => (
               <div key={lang.name} className="flex items-center gap-3">
                 <span className="w-24 truncate text-sm text-zinc-700 dark:text-zinc-300">

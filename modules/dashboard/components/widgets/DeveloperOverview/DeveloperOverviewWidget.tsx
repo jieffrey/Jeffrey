@@ -169,7 +169,7 @@ export default function DeveloperOverviewWidget({
       accent="blue"
       index={index}
     >
-      <div className="space-y-6">
+      <div className="space-y-4">
         <div>
           <div className="flex items-center gap-2">
             <Sun size={20} className="text-amber-500 dark:text-amber-400" aria-hidden="true" />
@@ -182,7 +182,7 @@ export default function DeveloperOverviewWidget({
           </p>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-2">
           <div>
             <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
               Current Focus

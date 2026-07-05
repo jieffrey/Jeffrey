@@ -41,7 +41,7 @@ export default function DashboardCard({
       data-aos-duration="800"
       data-aos-easing="ease-out-cubic"
       className={cn(
-        "group rounded-3xl border p-6 shadow-sm transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+        "group flex h-full flex-col rounded-3xl border p-5 shadow-sm transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
         "hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-zinc-900/10 dark:hover:shadow-black/30",
         "hover:border-zinc-300 dark:hover:border-zinc-500/50",
         variantStyles[variant],
@@ -57,15 +57,15 @@ export default function DashboardCard({
       />
 
       {description && (
-        <p className="-mt-4 mb-6 text-sm text-zinc-500 dark:text-zinc-400">
+        <p className="-mt-2 mb-4 text-sm text-zinc-500 dark:text-zinc-400">
           {description}
         </p>
       )}
 
-      <div>{children}</div>
+      <div className="flex-1">{children}</div>
 
       {footer && (
-        <div className="mt-6 border-t border-zinc-200 pt-4 dark:border-zinc-700/50">
+        <div className="mt-4 border-t border-zinc-200 pt-3 dark:border-zinc-700/50">
           {footer}
         </div>
       )}

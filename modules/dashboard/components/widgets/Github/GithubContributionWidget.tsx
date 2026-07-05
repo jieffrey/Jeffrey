@@ -173,7 +173,7 @@ export default function GithubContributionWidget({
         </div>
       }
     >
-      <div className="mb-4 flex items-center gap-8">
+      <div className="mb-3 flex items-center gap-6">
         <div>
           <p className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
             {total.toLocaleString()}

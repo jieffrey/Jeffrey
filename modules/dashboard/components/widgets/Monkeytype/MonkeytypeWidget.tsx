@@ -170,7 +170,7 @@ export default function MonkeytypeWidget({
         </p>
       }
     >
-      <div className="space-y-6">
+      <div className="space-y-4">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           {topStats.map(({ label, value }) => (
             <div
@@ -188,10 +188,10 @@ export default function MonkeytypeWidget({
         </div>
 
         <div>
-          <p className="mb-3 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+          <p className="mb-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
             Performance
           </p>
-          <div className="flex h-24 items-end gap-[3px]">
+          <div className="flex h-20 items-end gap-[3px]">
             {sparklineData.map((value, i) => (
               <div
                 key={i}
@@ -203,14 +203,14 @@ export default function MonkeytypeWidget({
         </div>
 
         <div>
-          <p className="mb-3 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+          <p className="mb-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
             Recent Tests
           </p>
-          <div className="space-y-1">
+          <div className="space-y-0.5">
             {recentTests.map((test, i) => (
               <div
                 key={i}
-                className="flex items-center justify-between rounded-lg p-2.5 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800/50"
+                className="flex items-center justify-between rounded-lg p-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800/50"
               >
                 <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                   {test.wpm} WPM
@@ -224,7 +224,7 @@ export default function MonkeytypeWidget({
         </div>
 
         <div>
-          <p className="mb-3 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+          <p className="mb-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
             Achievements
           </p>
           <div className="grid grid-cols-3 gap-3">

@@ -135,7 +135,7 @@ export default function GithubWidget({ index = 0, loading = false, error = false
         </div>
       }
     >
-      <p className="-mt-2 mb-6 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+      <p className="-mt-1 mb-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
         {profile.bio}
       </p>
 
