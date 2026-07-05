@@ -88,11 +88,24 @@ export interface EmptyStateProps {
   action?: ReactNode;
 }
 
+export type MissionPriority = "High" | "Medium" | "Low";
+
+export interface MissionChecklistItem {
+  id: string;
+  text: string;
+  completed: boolean;
+}
+
 export interface Mission {
   title: string;
   description: string;
   status: string;
   currentFocus: string;
+  progress: number;
+  deadline: string;
+  priority: MissionPriority;
+  reward: string;
+  checklist: MissionChecklistItem[];
 }
 
 export interface Visitors {
