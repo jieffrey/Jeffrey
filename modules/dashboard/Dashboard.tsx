@@ -1,5 +1,5 @@
-import DashboardGrid from "./components/DashboardGrid";
-import DashboardHeader from "./components/DashboardHeader";
+import DashboardGrid from "./components/layout/DashboardGrid";
+import DashboardHeader from "./components/layout/DashboardHeader";
 
 export default function Dashboard() {
     return (
