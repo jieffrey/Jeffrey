@@ -22,6 +22,8 @@ export interface Repository {
   description: string;
   language: string;
   stars: number;
+  forks: number;
+  updated: string;
 }
 
 export interface SpotifyTrack {
