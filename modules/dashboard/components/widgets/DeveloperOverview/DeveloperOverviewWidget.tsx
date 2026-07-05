@@ -1,9 +1,12 @@
-import { Command, Sun, Flame, Coffee, Gauge, CheckSquare } from "lucide-react";
+import { Command, Sun, Flame, Coffee, Gauge, CheckSquare, WifiOff } from "lucide-react";
 import DashboardCard from "../../common/DashboardCard";
+import EmptyState from "../../common/EmptyState";
 
 interface DeveloperOverviewWidgetProps {
   index?: number;
   loading?: boolean;
+  error?: boolean;
+  onRetry?: () => void;
 }
 
 interface DeveloperData {
@@ -88,7 +91,29 @@ function OverviewSkeleton() {
 export default function DeveloperOverviewWidget({
   index = 0,
   loading = false,
+  error = false,
+  onRetry,
 }: DeveloperOverviewWidgetProps) {
+  if (error) {
+    return (
+        <DashboardCard title="Widget Unavailable">
+        <EmptyState
+          icon={<WifiOff className="h-6 w-6" />}
+          title="Connection Lost"
+          description="Unable to load widget data. Please try again."
+          action={
+            <button
+              onClick={onRetry ?? (() => {})}
+              className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+            >
+              Retry
+            </button>
+          }
+        />
+      </DashboardCard>
+    );
+  }
+
   if (loading) {
     return (
       <DashboardCard
