@@ -98,13 +98,13 @@ export default function DeveloperOverviewWidget({
     return (
         <DashboardCard title="Widget Unavailable">
         <EmptyState
-          icon={<WifiOff className="h-6 w-6" />}
+          icon={<WifiOff className="h-6 w-6" aria-hidden="true" />}
           title="Connection Lost"
           description="Unable to load widget data. Please try again."
           action={
             <button
               onClick={onRetry ?? (() => {})}
-              className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+              className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500/50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
             >
               Retry
             </button>
@@ -172,7 +172,7 @@ export default function DeveloperOverviewWidget({
       <div className="space-y-6">
         <div>
           <div className="flex items-center gap-2">
-            <Sun size={20} className="text-amber-500 dark:text-amber-400" />
+            <Sun size={20} className="text-amber-500 dark:text-amber-400" aria-hidden="true" />
             <p className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
               {greeting}, {mockData.developer.name}
             </p>
@@ -215,7 +215,7 @@ export default function DeveloperOverviewWidget({
               key={label}
               className="rounded-xl bg-zinc-50 p-3 dark:bg-zinc-800/50"
             >
-              <Icon size={16} className="text-zinc-400 dark:text-zinc-500" />
+              <Icon size={16} className="text-zinc-400 dark:text-zinc-500" aria-hidden="true" />
               <p className="mt-1.5 text-lg font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
                 {value}
               </p>

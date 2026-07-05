@@ -84,13 +84,13 @@ export default function SpotifyWidget({ index = 0, loading = false, error = fals
     return (
         <DashboardCard title="Widget Unavailable">
         <EmptyState
-          icon={<WifiOff className="h-6 w-6" />}
+          icon={<WifiOff className="h-6 w-6" aria-hidden="true" />}
           title="Connection Lost"
           description="Unable to load widget data. Please try again."
           action={
             <button
               onClick={onRetry ?? (() => {})}
-              className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+              className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500/50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
             >
               Retry
             </button>
@@ -138,7 +138,7 @@ export default function SpotifyWidget({ index = 0, loading = false, error = fals
     >
       <div className="space-y-5">
         <div className="flex aspect-square w-full items-center justify-center rounded-xl bg-zinc-100 backdrop-blur-sm dark:bg-zinc-800">
-          <Music size={48} className="text-zinc-400 dark:text-zinc-600" />
+          <Music size={48} className="text-zinc-400 dark:text-zinc-600" aria-hidden="true" />
         </div>
 
         <div>
@@ -166,17 +166,32 @@ export default function SpotifyWidget({ index = 0, loading = false, error = fals
         <div className="flex items-center justify-center gap-6">
           <SkipBack
             size={20}
-            className="cursor-pointer text-zinc-400 transition-colors hover:text-zinc-700 dark:hover:text-zinc-300"
+            className="cursor-pointer text-zinc-400 transition-colors hover:text-zinc-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500/50 dark:hover:text-zinc-300"
+            role="button"
+            tabIndex={0}
+            aria-label="Skip to previous track"
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') e.preventDefault(); }}
           />
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:hover:bg-zinc-300">
+          <div
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-zinc-900 transition-colors hover:bg-zinc-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500/50 dark:bg-zinc-100 dark:hover:bg-zinc-300"
+            role="button"
+            tabIndex={0}
+            aria-label="Play current track"
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') e.preventDefault(); }}
+          >
             <Play
               size={20}
               className="ml-0.5 text-white dark:text-zinc-900"
+              aria-hidden="true"
             />
           </div>
           <SkipForward
             size={20}
-            className="cursor-pointer text-zinc-400 transition-colors hover:text-zinc-700 dark:hover:text-zinc-300"
+            className="cursor-pointer text-zinc-400 transition-colors hover:text-zinc-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500/50 dark:hover:text-zinc-300"
+            role="button"
+            tabIndex={0}
+            aria-label="Skip to next track"
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') e.preventDefault(); }}
           />
         </div>
 
@@ -191,7 +206,7 @@ export default function SpotifyWidget({ index = 0, loading = false, error = fals
                 className="flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-700/50"
               >
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-zinc-200 dark:bg-zinc-700">
-                  <Music size={14} className="text-zinc-400" />
+                  <Music size={14} className="text-zinc-400" aria-hidden="true" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-sm font-medium text-zinc-900 dark:text-zinc-100">

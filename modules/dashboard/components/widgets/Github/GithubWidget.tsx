@@ -60,13 +60,13 @@ export default function GithubWidget({ index = 0, loading = false, error = false
     return (
         <DashboardCard title="Widget Unavailable">
         <EmptyState
-          icon={<WifiOff className="h-6 w-6" />}
+          icon={<WifiOff className="h-6 w-6" aria-hidden="true" />}
           title="Connection Lost"
           description="Unable to load widget data. Please try again."
           action={
             <button
               onClick={onRetry ?? (() => {})}
-              className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+              className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500/50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
             >
               Retry
             </button>
@@ -126,9 +126,10 @@ export default function GithubWidget({ index = 0, loading = false, error = false
             href={`https://github.com/${profile.username}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+            aria-label="View Jeffrey's GitHub profile (opens in a new tab)"
+            className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500/50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
           >
-            <ExternalLink size={16} />
+            <ExternalLink size={16} aria-hidden="true" />
             View GitHub
           </a>
         </div>

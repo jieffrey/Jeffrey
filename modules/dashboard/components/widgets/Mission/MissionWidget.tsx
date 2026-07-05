@@ -75,13 +75,13 @@ export default function MissionWidget({ index = 0, loading = false, error = fals
     return (
         <DashboardCard title="Widget Unavailable">
         <EmptyState
-          icon={<WifiOff className="h-6 w-6" />}
+          icon={<WifiOff className="h-6 w-6" aria-hidden="true" />}
           title="Connection Lost"
           description="Unable to load widget data. Please try again."
           action={
             <button
               onClick={onRetry ?? (() => {})}
-              className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+              className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500/50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
             >
               Retry
             </button>
@@ -145,7 +145,7 @@ export default function MissionWidget({ index = 0, loading = false, error = fals
         <div className="grid grid-cols-2 gap-4">
           <div>
             <div className="flex items-center gap-1.5 text-xs text-zinc-400 dark:text-zinc-500">
-              <Calendar size={12} />
+              <Calendar size={12} aria-hidden="true" />
               <span>Deadline</span>
             </div>
             <p className="mt-0.5 text-sm font-medium text-zinc-900 dark:text-zinc-100">
@@ -162,7 +162,7 @@ export default function MissionWidget({ index = 0, loading = false, error = fals
           </div>
           <div className="col-span-2">
             <div className="flex items-center gap-1.5 text-xs text-zinc-400 dark:text-zinc-500">
-              <Award size={12} />
+              <Award size={12} aria-hidden="true" />
               <span>Reward</span>
             </div>
             <p className="mt-0.5 text-sm font-medium text-zinc-900 dark:text-zinc-100">
@@ -186,11 +186,13 @@ export default function MissionWidget({ index = 0, loading = false, error = fals
                 <CheckCircle2
                   size={18}
                   className="mt-0.5 shrink-0 text-emerald-500 dark:text-emerald-400"
+                  aria-hidden="true"
                 />
               ) : (
                 <Circle
                   size={18}
                   className="mt-0.5 shrink-0 text-zinc-300 dark:text-zinc-600"
+                  aria-hidden="true"
                 />
               )}
               <span
