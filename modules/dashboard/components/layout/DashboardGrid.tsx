@@ -1,7 +1,7 @@
 import OverviewCard from "../cards/OverviewCard";
 import GithubProfileCard from "../cards/GithubProfileCard";
 import ContributionCard from "../cards/ContributionCard";
-import { overview } from "../../data/mock";
+import { overview } from "../../data/overview";
 
 export default function DashboardGrid() {
   return (

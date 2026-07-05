@@ -85,3 +85,41 @@ export interface EmptyStateProps {
   description?: string;
   action?: ReactNode;
 }
+
+export interface Mission {
+  title: string;
+  description: string;
+  status: string;
+  currentFocus: string;
+}
+
+export interface Visitors {
+  total: number;
+  today: number;
+  weekly: number;
+  monthly: number;
+  change: string;
+}
+
+export interface WakatimeStats {
+  totalHours: number;
+  dailyAverage: string;
+  languages: string[];
+  currentStreak: number;
+  bestDay: string;
+}
+
+export interface MonkeytypeStats {
+  wpm: number;
+  accuracy: number;
+  testsCompleted: number;
+  highestWpm: number;
+  rank: string;
+}
+
+export interface UmamiStats {
+  pageViews: number;
+  visitors: number;
+  bounceRate: string;
+  avgDuration: string;
+}
