@@ -116,12 +116,21 @@ export interface Visitors {
   change: string;
 }
 
+export interface LanguageBreakdown {
+  name: string;
+  percentage: number;
+  color: string;
+}
+
 export interface WakatimeStats {
   totalHours: number;
   dailyAverage: string;
   languages: string[];
   currentStreak: number;
   bestDay: string;
+  todayTime: string;
+  weeklyTime: string;
+  languageBreakdown: LanguageBreakdown[];
 }
 
 export interface MonkeytypeStats {

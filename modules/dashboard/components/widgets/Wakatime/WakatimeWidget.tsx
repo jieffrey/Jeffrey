@@ -7,52 +7,62 @@ interface WakatimeWidgetProps {
 }
 
 export default function WakatimeWidget({ index = 0 }: WakatimeWidgetProps) {
+  const stats: { label: string; value: string }[] = [
+    { label: "Today", value: wakatime.todayTime },
+    { label: "Weekly", value: wakatime.weeklyTime },
+    { label: "Average / Day", value: wakatime.dailyAverage },
+    { label: "Current Streak", value: `${wakatime.currentStreak} days` },
+  ];
+
   return (
     <DashboardCard
       title="WakaTime"
       subtitle="Coding Activity"
       icon={<Clock size={20} />}
-      status="mock"
+      status="live"
       accent="green"
       index={index}
     >
-      <div className="space-y-4">
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400">Total Hours</p>
-            <p className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-              {wakatime.totalHours}
-            </p>
-          </div>
-          <div>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400">Daily Avg</p>
-            <p className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-              {wakatime.dailyAverage}
-            </p>
-          </div>
-          <div>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400">Best Day</p>
-            <p className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-              {wakatime.bestDay}
-            </p>
-          </div>
-          <div>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400">Streak</p>
-            <p className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-              {wakatime.currentStreak} days
-            </p>
-          </div>
+      <div className="space-y-6">
+        <div className="grid grid-cols-2 gap-3">
+          {stats.map(({ label, value }) => (
+            <div
+              key={label}
+              className="rounded-xl bg-zinc-50 p-4 transition-colors hover:bg-zinc-100 dark:bg-zinc-800/50 dark:hover:bg-zinc-800"
+            >
+              <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                {label}
+              </p>
+              <p className="mt-1 text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+                {value}
+              </p>
+            </div>
+          ))}
         </div>
+
         <div>
-          <p className="mb-2 text-sm text-zinc-500 dark:text-zinc-400">Languages</p>
-          <div className="flex flex-wrap gap-2">
-            {wakatime.languages.map((lang) => (
-              <span
-                key={lang}
-                className="rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
-              >
-                {lang}
-              </span>
+          <p className="mb-3 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+            Language Breakdown
+          </p>
+          <div className="space-y-3">
+            {wakatime.languageBreakdown.map((lang) => (
+              <div key={lang.name} className="flex items-center gap-3">
+                <span className="w-24 truncate text-sm text-zinc-700 dark:text-zinc-300">
+                  {lang.name}
+                </span>
+                <div className="h-2.5 flex-1 rounded-full bg-zinc-200 dark:bg-zinc-700">
+                  <div
+                    className="h-full rounded-full transition-all duration-1000 ease-out"
+                    style={{
+                      width: `${lang.percentage}%`,
+                      backgroundColor: lang.color,
+                    }}
+                  />
+                </div>
+                <span className="w-10 shrink-0 text-right text-sm font-medium tabular-nums text-zinc-900 dark:text-zinc-100">
+                  {lang.percentage}%
+                </span>
+              </div>
             ))}
           </div>
         </div>
