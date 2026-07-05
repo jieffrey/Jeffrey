@@ -4,6 +4,7 @@ import { github } from "../../../data/github";
 
 interface GithubWidgetProps {
   index?: number;
+  loading?: boolean;
 }
 
 interface GithubProfile {
@@ -24,7 +25,51 @@ const profile: GithubProfile = {
   primaryLanguage: "TypeScript",
 };
 
-export default function GithubWidget({ index = 0 }: GithubWidgetProps) {
+function GithubSkeleton() {
+  return (
+    <div className="animate-pulse space-y-6">
+      <div className="-mt-2 mb-6 flex items-center gap-3">
+        <div className="h-11 w-11 rounded-2xl bg-zinc-200 dark:bg-zinc-700" />
+        <div className="space-y-2 flex-1">
+          <div className="h-4 w-24 rounded bg-zinc-200 dark:bg-zinc-700" />
+          <div className="h-3 w-32 rounded bg-zinc-100 dark:bg-zinc-800" />
+        </div>
+      </div>
+      <div className="h-4 w-full rounded bg-zinc-200 dark:bg-zinc-700" />
+      <div className="grid grid-cols-2 gap-4">
+        {[0, 1, 2, 3].map((i) => (
+          <div key={i}>
+            <div className="h-3 w-20 rounded bg-zinc-100 dark:bg-zinc-800" />
+            <div className="mt-1 h-6 w-12 rounded bg-zinc-200 dark:bg-zinc-700" />
+          </div>
+        ))}
+      </div>
+      <div className="flex items-center justify-between border-t border-zinc-200 pt-4 dark:border-zinc-700/50">
+        <div className="h-5 w-24 rounded-full bg-zinc-200 dark:bg-zinc-700" />
+        <div className="h-9 w-28 rounded-xl bg-zinc-200 dark:bg-zinc-700" />
+      </div>
+    </div>
+  );
+}
+
+export default function GithubWidget({ index = 0, loading = false }: GithubWidgetProps) {
+  if (loading) {
+    return (
+      <DashboardCard
+        title={profile.name}
+        subtitle={`@${profile.username}`}
+        icon={
+          <div className="flex h-full w-full items-center justify-center rounded-2xl bg-zinc-200 dark:bg-zinc-700" />
+        }
+        status="live"
+        accent="purple"
+        index={index}
+      >
+        <GithubSkeleton />
+      </DashboardCard>
+    );
+  }
+
   const stats: { label: string; value: number }[] = [
     { label: "Followers", value: github.followers },
     { label: "Following", value: github.following },

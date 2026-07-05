@@ -3,6 +3,7 @@ import DashboardCard from "../../common/DashboardCard";
 
 interface GithubContributionWidgetProps {
   index?: number;
+  loading?: boolean;
 }
 
 interface CellData {
@@ -67,9 +68,65 @@ const cells = generateCells();
 const total = calculateTotal(cells);
 const streak = calculateStreak(cells);
 
+function ContributionSkeleton() {
+  return (
+    <div className="animate-pulse space-y-4">
+      <div className="flex items-center gap-8">
+        <div className="space-y-1">
+          <div className="h-8 w-16 rounded bg-zinc-200 dark:bg-zinc-700" />
+          <div className="h-3 w-20 rounded bg-zinc-100 dark:bg-zinc-800" />
+        </div>
+        <div className="space-y-1">
+          <div className="h-8 w-12 rounded bg-zinc-200 dark:bg-zinc-700" />
+          <div className="h-3 w-16 rounded bg-zinc-100 dark:bg-zinc-800" />
+        </div>
+      </div>
+      <div
+        className="grid gap-[3px]"
+        style={{
+          gridTemplateColumns: "repeat(53, 1fr)",
+          gridTemplateRows: "repeat(7, auto)",
+          gridAutoFlow: "column",
+        }}
+      >
+        {Array.from({ length: 371 }, (_, i) => (
+          <div
+            key={i}
+            className="aspect-square rounded-[3px] bg-zinc-200 dark:bg-zinc-700"
+          />
+        ))}
+      </div>
+      <div className="flex items-center gap-2">
+        <div className="h-3 w-8 rounded bg-zinc-100 dark:bg-zinc-800" />
+        <div className="h-3 w-12 rounded bg-zinc-200 dark:bg-zinc-700" />
+        <div className="h-3 w-12 rounded bg-zinc-200 dark:bg-zinc-700" />
+        <div className="h-3 w-12 rounded bg-zinc-200 dark:bg-zinc-700" />
+        <div className="h-3 w-12 rounded bg-zinc-200 dark:bg-zinc-700" />
+        <div className="h-3 w-8 rounded bg-zinc-100 dark:bg-zinc-800" />
+      </div>
+    </div>
+  );
+}
+
 export default function GithubContributionWidget({
   index = 0,
+  loading = false,
 }: GithubContributionWidgetProps) {
+  if (loading) {
+    return (
+      <DashboardCard
+        title="Contributions"
+        subtitle="Realtime Activity"
+        icon={<Github size={20} />}
+        status="live"
+        accent="green"
+        index={index}
+      >
+        <ContributionSkeleton />
+      </DashboardCard>
+    );
+  }
+
   return (
     <DashboardCard
       title="Contributions"

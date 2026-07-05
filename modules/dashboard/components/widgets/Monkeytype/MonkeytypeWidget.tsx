@@ -3,6 +3,7 @@ import DashboardCard from "../../common/DashboardCard";
 
 interface MonkeytypeWidgetProps {
   index?: number;
+  loading?: boolean;
 }
 
 interface TestResult {
@@ -41,9 +42,88 @@ const achievements: { label: string; value: string }[] = [
   { label: "Best Consistency", value: "94%" },
 ];
 
+function MonkeytypeSkeleton() {
+  return (
+    <div className="animate-pulse space-y-6">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {[0, 1, 2, 3].map((i) => (
+          <div
+            key={i}
+            className="rounded-xl bg-zinc-50 p-3 dark:bg-zinc-800/50"
+          >
+            <div className="h-3 w-10 rounded bg-zinc-100 dark:bg-zinc-800" />
+            <div className="mt-1 h-5 w-14 rounded bg-zinc-200 dark:bg-zinc-700" />
+          </div>
+        ))}
+      </div>
+      <div>
+        <div className="mb-3 h-3 w-20 rounded bg-zinc-100 dark:bg-zinc-800" />
+        <div className="flex h-24 items-end gap-[3px]">
+          {sparklineData.map((_, i) => (
+            <div
+              key={i}
+              className="flex-1 rounded-sm bg-zinc-200 dark:bg-zinc-700"
+              style={{ height: `${sparklineData[i]}%` }}
+            />
+          ))}
+        </div>
+      </div>
+      <div>
+        <div className="mb-3 h-3 w-20 rounded bg-zinc-100 dark:bg-zinc-800" />
+        <div className="space-y-1">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <div
+              key={i}
+              className="flex items-center justify-between rounded-lg p-2.5"
+            >
+              <div className="h-4 w-20 rounded bg-zinc-200 dark:bg-zinc-700" />
+              <div className="h-3 w-14 rounded bg-zinc-100 dark:bg-zinc-800" />
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <div className="mb-3 h-3 w-20 rounded bg-zinc-100 dark:bg-zinc-800" />
+        <div className="grid grid-cols-3 gap-3">
+          {[0, 1, 2].map((i) => (
+            <div
+              key={i}
+              className="rounded-xl bg-zinc-50 p-3 dark:bg-zinc-800/50"
+            >
+              <div className="h-3 w-16 rounded bg-zinc-100 dark:bg-zinc-800" />
+              <div className="mt-1 h-5 w-14 rounded bg-zinc-200 dark:bg-zinc-700" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function MonkeytypeWidget({
   index = 0,
+  loading = false,
 }: MonkeytypeWidgetProps) {
+  if (loading) {
+    return (
+      <DashboardCard
+        title="Monkeytype"
+        subtitle="Typing Statistics"
+        icon={<Keyboard size={20} />}
+        status="mock"
+        accent="purple"
+        index={index}
+        footer={
+          <p className="text-xs text-zinc-400 dark:text-zinc-500">
+            Last synced today
+          </p>
+        }
+      >
+        <MonkeytypeSkeleton />
+      </DashboardCard>
+    );
+  }
+
   const topStats: { label: string; value: string }[] = [
     { label: "WPM", value: stats.wpm.toString() },
     { label: "Accuracy", value: `${stats.accuracy}%` },

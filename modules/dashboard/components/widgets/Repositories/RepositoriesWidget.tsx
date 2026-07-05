@@ -5,6 +5,7 @@ import type { Repository } from "../../../types";
 
 interface RepositoriesWidgetProps {
   index?: number;
+  loading?: boolean;
 }
 
 const languageColors: Record<string, string> = {
@@ -27,9 +28,50 @@ function formatDate(dateString: string): string {
 
 const latest = repositories.slice(0, 3);
 
+function RepositoriesSkeleton() {
+  return (
+    <div className="animate-pulse grid grid-cols-1 gap-4 md:grid-cols-3">
+      {[0, 1, 2].map((i) => (
+        <div
+          key={i}
+          className="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-700/50 dark:bg-zinc-800/50"
+        >
+          <div className="h-5 w-36 rounded bg-zinc-200 dark:bg-zinc-700" />
+          <div className="mt-2 space-y-1.5">
+            <div className="h-3 w-full rounded bg-zinc-100 dark:bg-zinc-800" />
+            <div className="h-3 w-3/4 rounded bg-zinc-100 dark:bg-zinc-800" />
+          </div>
+          <div className="mt-4 flex items-center gap-3">
+            <div className="h-2.5 w-2.5 rounded-full bg-zinc-200 dark:bg-zinc-700" />
+            <div className="h-3 w-16 rounded bg-zinc-100 dark:bg-zinc-800" />
+            <div className="h-3 w-8 rounded bg-zinc-100 dark:bg-zinc-800" />
+          </div>
+          <div className="mt-3 h-3 w-28 rounded bg-zinc-100 dark:bg-zinc-800" />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function RepositoriesWidget({
   index = 0,
+  loading = false,
 }: RepositoriesWidgetProps) {
+  if (loading) {
+    return (
+      <DashboardCard
+        title="Repositories"
+        subtitle="Latest Projects"
+        icon={<GitFork size={20} />}
+        status="mock"
+        accent="yellow"
+        index={index}
+      >
+        <RepositoriesSkeleton />
+      </DashboardCard>
+    );
+  }
+
   return (
     <DashboardCard
       title="Repositories"

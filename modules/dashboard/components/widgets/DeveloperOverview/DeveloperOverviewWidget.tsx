@@ -3,6 +3,7 @@ import DashboardCard from "../../common/DashboardCard";
 
 interface DeveloperOverviewWidgetProps {
   index?: number;
+  loading?: boolean;
 }
 
 interface DeveloperData {
@@ -53,9 +54,56 @@ function formatTime(): string {
   });
 }
 
+function OverviewSkeleton() {
+  return (
+    <div className="animate-pulse space-y-6">
+      <div className="space-y-2">
+        <div className="flex items-center gap-2">
+          <div className="h-5 w-5 rounded bg-zinc-200 dark:bg-zinc-700" />
+          <div className="h-6 w-72 rounded bg-zinc-200 dark:bg-zinc-700" />
+        </div>
+        <div className="h-4 w-56 rounded bg-zinc-100 dark:bg-zinc-800" />
+      </div>
+      <div className="space-y-3">
+        {[0, 1, 2].map((i) => (
+          <div key={i} className="space-y-1">
+            <div className="h-3 w-20 rounded bg-zinc-100 dark:bg-zinc-800" />
+            <div className="h-4 w-48 rounded bg-zinc-200 dark:bg-zinc-700" />
+          </div>
+        ))}
+      </div>
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {[0, 1, 2, 3].map((i) => (
+          <div key={i} className="rounded-xl bg-zinc-50 p-3 dark:bg-zinc-800/50">
+            <div className="h-4 w-4 rounded bg-zinc-200 dark:bg-zinc-700" />
+            <div className="mt-1.5 h-5 w-16 rounded bg-zinc-200 dark:bg-zinc-700" />
+            <div className="mt-1 h-3 w-12 rounded bg-zinc-100 dark:bg-zinc-800" />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function DeveloperOverviewWidget({
   index = 0,
+  loading = false,
 }: DeveloperOverviewWidgetProps) {
+  if (loading) {
+    return (
+      <DashboardCard
+        title="Overview"
+        subtitle="Command Center"
+        icon={<Command size={20} />}
+        status="live"
+        accent="blue"
+        index={index}
+      >
+        <OverviewSkeleton />
+      </DashboardCard>
+    );
+  }
+
   const greeting = getGreeting();
   const dateStr = formatDate();
   const timeStr = formatTime();

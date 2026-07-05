@@ -4,9 +4,55 @@ import { wakatime } from "../../../data/wakatime";
 
 interface WakatimeWidgetProps {
   index?: number;
+  loading?: boolean;
 }
 
-export default function WakatimeWidget({ index = 0 }: WakatimeWidgetProps) {
+function WakatimeSkeleton() {
+  return (
+    <div className="animate-pulse space-y-6">
+      <div className="grid grid-cols-2 gap-3">
+        {[0, 1, 2, 3].map((i) => (
+          <div
+            key={i}
+            className="rounded-xl bg-zinc-50 p-4 dark:bg-zinc-800/50"
+          >
+            <div className="h-3 w-16 rounded bg-zinc-100 dark:bg-zinc-800" />
+            <div className="mt-1 h-7 w-20 rounded bg-zinc-200 dark:bg-zinc-700" />
+          </div>
+        ))}
+      </div>
+      <div>
+        <div className="mb-3 h-3 w-32 rounded bg-zinc-100 dark:bg-zinc-800" />
+        <div className="space-y-3">
+          {[0, 1, 2, 3].map((i) => (
+            <div key={i} className="flex items-center gap-3">
+              <div className="h-4 w-24 rounded bg-zinc-200 dark:bg-zinc-700" />
+              <div className="h-2.5 flex-1 rounded-full bg-zinc-200 dark:bg-zinc-700" />
+              <div className="h-4 w-10 rounded bg-zinc-200 dark:bg-zinc-700" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function WakatimeWidget({ index = 0, loading = false }: WakatimeWidgetProps) {
+  if (loading) {
+    return (
+      <DashboardCard
+        title="WakaTime"
+        subtitle="Coding Activity"
+        icon={<Clock size={20} />}
+        status="live"
+        accent="green"
+        index={index}
+      >
+        <WakatimeSkeleton />
+      </DashboardCard>
+    );
+  }
+
   const stats: { label: string; value: string }[] = [
     { label: "Today", value: wakatime.todayTime },
     { label: "Weekly", value: wakatime.weeklyTime },

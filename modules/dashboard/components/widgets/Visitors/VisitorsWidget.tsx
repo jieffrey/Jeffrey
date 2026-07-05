@@ -3,6 +3,7 @@ import DashboardCard from "../../common/DashboardCard";
 
 interface VisitorsWidgetProps {
   index?: number;
+  loading?: boolean;
 }
 
 interface CountryData {
@@ -31,7 +32,55 @@ const visitorsData: {
   ],
 };
 
-export default function VisitorsWidget({ index = 0 }: VisitorsWidgetProps) {
+function VisitorsSkeleton() {
+  return (
+    <div className="animate-pulse space-y-6">
+      <div className="grid grid-cols-2 gap-4">
+        {[0, 1, 2, 3].map((i) => (
+          <div key={i}>
+            <div className="h-3 w-16 rounded bg-zinc-100 dark:bg-zinc-800" />
+            <div className="mt-1 h-7 w-20 rounded bg-zinc-200 dark:bg-zinc-700" />
+          </div>
+        ))}
+      </div>
+      <div>
+        <div className="mb-3 h-3 w-24 rounded bg-zinc-100 dark:bg-zinc-800" />
+        <div className="space-y-3">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <div key={i} className="flex items-center gap-3">
+              <div className="h-5 w-6 rounded bg-zinc-200 dark:bg-zinc-700" />
+              <div className="h-4 flex-1 rounded bg-zinc-200 dark:bg-zinc-700" />
+              <div className="h-2 w-24 rounded-full bg-zinc-200 dark:bg-zinc-700" />
+              <div className="h-4 w-8 rounded bg-zinc-200 dark:bg-zinc-700" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function VisitorsWidget({ index = 0, loading = false }: VisitorsWidgetProps) {
+  if (loading) {
+    return (
+      <DashboardCard
+        title="Visitors"
+        subtitle="Analytics Overview"
+        icon={<Globe size={20} />}
+        status="mock"
+        accent="blue"
+        index={index}
+        footer={
+          <p className="text-xs text-zinc-400 dark:text-zinc-500">
+            Updated 5 minutes ago
+          </p>
+        }
+      >
+        <VisitorsSkeleton />
+      </DashboardCard>
+    );
+  }
+
   const metrics: { label: string; value: string }[] = [
     { label: "Today", value: visitorsData.today.toLocaleString() },
     { label: "This Week", value: visitorsData.weekly.toLocaleString() },

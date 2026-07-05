@@ -3,6 +3,7 @@ import DashboardCard from "../../common/DashboardCard";
 
 interface UmamiWidgetProps {
   index?: number;
+  loading?: boolean;
 }
 
 interface TrafficSource {
@@ -39,7 +40,80 @@ const topPages: TopPage[] = [
   { path: "/dashboard", views: 3200, trend: [15, 20, 18, 25, 22, 28, 35] },
 ];
 
-export default function UmamiWidget({ index = 0 }: UmamiWidgetProps) {
+function UmamiSkeleton() {
+  return (
+    <div className="animate-pulse space-y-6">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {[0, 1, 2, 3].map((i) => (
+          <div
+            key={i}
+            className="rounded-xl bg-zinc-50 p-3 dark:bg-zinc-800/50"
+          >
+            <div className="h-3 w-14 rounded bg-zinc-100 dark:bg-zinc-800" />
+            <div className="mt-1 h-5 w-16 rounded bg-zinc-200 dark:bg-zinc-700" />
+          </div>
+        ))}
+      </div>
+      <div className="flex items-center gap-2.5 rounded-xl bg-zinc-50 px-4 py-3 dark:bg-zinc-800/50">
+        <div className="h-2.5 w-2.5 rounded-full bg-zinc-200 dark:bg-zinc-700" />
+        <div className="h-4 w-20 rounded bg-zinc-200 dark:bg-zinc-700" />
+      </div>
+      <div>
+        <div className="mb-3 h-3 w-28 rounded bg-zinc-100 dark:bg-zinc-800" />
+        <div className="space-y-2.5">
+          {[0, 1, 2, 3].map((i) => (
+            <div key={i} className="flex items-center gap-3">
+              <div className="h-4 w-16 rounded bg-zinc-200 dark:bg-zinc-700" />
+              <div className="h-2 flex-1 rounded-full bg-zinc-200 dark:bg-zinc-700" />
+              <div className="h-4 w-10 rounded bg-zinc-200 dark:bg-zinc-700" />
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <div className="mb-3 h-3 w-20 rounded bg-zinc-100 dark:bg-zinc-800" />
+        <div className="space-y-2.5">
+          {[0, 1, 2, 3].map((i) => (
+            <div key={i} className="flex items-center gap-3">
+              <div className="h-4 w-20 rounded bg-zinc-200 dark:bg-zinc-700" />
+              <div className="h-4 w-12 rounded bg-zinc-100 dark:bg-zinc-800" />
+              <div className="flex h-6 flex-1 items-end gap-[2px]">
+                {[0, 1, 2, 3, 4, 5, 6].map((j) => (
+                  <div
+                    key={j}
+                    className="flex-1 rounded-sm bg-zinc-200 dark:bg-zinc-700"
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function UmamiWidget({ index = 0, loading = false }: UmamiWidgetProps) {
+  if (loading) {
+    return (
+      <DashboardCard
+        title="Website Analytics"
+        subtitle="Umami"
+        icon={<Activity size={20} />}
+        status="live"
+        accent="blue"
+        index={index}
+        footer={
+          <p className="text-xs text-zinc-400 dark:text-zinc-500">
+            Updated 2 minutes ago
+          </p>
+        }
+      >
+        <UmamiSkeleton />
+      </DashboardCard>
+    );
+  }
+
   return (
     <DashboardCard
       title="Website Analytics"

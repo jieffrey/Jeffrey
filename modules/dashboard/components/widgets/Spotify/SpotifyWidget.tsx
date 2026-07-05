@@ -3,6 +3,7 @@ import DashboardCard from "../../common/DashboardCard";
 
 interface SpotifyWidgetProps {
   index?: number;
+  loading?: boolean;
 }
 
 interface Track {
@@ -37,7 +38,65 @@ function formatTime(seconds: number): string {
   return `${m}:${s.toString().padStart(2, "0")}`;
 }
 
-export default function SpotifyWidget({ index = 0 }: SpotifyWidgetProps) {
+function SpotifySkeleton() {
+  return (
+    <div className="animate-pulse space-y-5">
+      <div className="aspect-square w-full rounded-xl bg-zinc-200 dark:bg-zinc-700" />
+      <div className="space-y-1.5">
+        <div className="h-5 w-28 rounded bg-zinc-200 dark:bg-zinc-700" />
+        <div className="h-4 w-20 rounded bg-zinc-100 dark:bg-zinc-800" />
+      </div>
+      <div className="space-y-1.5">
+        <div className="h-1.5 rounded-full bg-zinc-200 dark:bg-zinc-700" />
+        <div className="flex justify-between">
+          <div className="h-3 w-8 rounded bg-zinc-100 dark:bg-zinc-800" />
+          <div className="h-3 w-8 rounded bg-zinc-100 dark:bg-zinc-800" />
+        </div>
+      </div>
+      <div className="flex items-center justify-center gap-6">
+        <div className="h-5 w-5 rounded bg-zinc-200 dark:bg-zinc-700" />
+        <div className="h-10 w-10 rounded-full bg-zinc-200 dark:bg-zinc-700" />
+        <div className="h-5 w-5 rounded bg-zinc-200 dark:bg-zinc-700" />
+      </div>
+      <div>
+        <div className="mb-3 h-3 w-28 rounded bg-zinc-100 dark:bg-zinc-800" />
+        <div className="space-y-1">
+          {[0, 1, 2, 3].map((i) => (
+            <div key={i} className="flex items-center gap-3 rounded-lg p-2">
+              <div className="h-9 w-9 rounded-md bg-zinc-200 dark:bg-zinc-700" />
+              <div className="flex-1 space-y-1.5">
+                <div className="h-3 w-32 rounded bg-zinc-200 dark:bg-zinc-700" />
+                <div className="h-3 w-20 rounded bg-zinc-100 dark:bg-zinc-800" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function SpotifyWidget({ index = 0, loading = false }: SpotifyWidgetProps) {
+  if (loading) {
+    return (
+      <DashboardCard
+        title="Spotify"
+        subtitle="Currently Listening"
+        icon={<Music size={20} />}
+        status="live"
+        accent="green"
+        index={index}
+        footer={
+          <p className="text-xs text-zinc-400 dark:text-zinc-500">
+            Connected with Spotify
+          </p>
+        }
+      >
+        <SpotifySkeleton />
+      </DashboardCard>
+    );
+  }
+
   const progressPercent = (currentTrack.progress / currentTrack.duration) * 100;
 
   return (

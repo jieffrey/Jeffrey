@@ -5,6 +5,7 @@ import type { MissionPriority } from "../../../types";
 
 interface MissionWidgetProps {
   index?: number;
+  loading?: boolean;
 }
 
 const priorityStyles: Record<MissionPriority, string> = {
@@ -22,7 +23,66 @@ function formatDate(dateString: string): string {
   });
 }
 
-export default function MissionWidget({ index = 0 }: MissionWidgetProps) {
+function MissionSkeleton() {
+  return (
+    <div className="animate-pulse space-y-5">
+      <div className="space-y-1">
+        <div className="h-5 w-48 rounded bg-zinc-200 dark:bg-zinc-700" />
+        <div className="h-3 w-64 rounded bg-zinc-100 dark:bg-zinc-800" />
+      </div>
+      <div className="space-y-2">
+        <div className="flex items-center justify-between">
+          <div className="h-3 w-14 rounded bg-zinc-100 dark:bg-zinc-800" />
+          <div className="h-3 w-8 rounded bg-zinc-200 dark:bg-zinc-700" />
+        </div>
+        <div className="h-2.5 rounded-full bg-zinc-200 dark:bg-zinc-700" />
+      </div>
+      <div className="grid grid-cols-2 gap-4">
+        <div className="space-y-1">
+          <div className="h-3 w-16 rounded bg-zinc-100 dark:bg-zinc-800" />
+          <div className="h-4 w-24 rounded bg-zinc-200 dark:bg-zinc-700" />
+        </div>
+        <div className="space-y-1">
+          <div className="h-3 w-12 rounded bg-zinc-100 dark:bg-zinc-800" />
+          <div className="h-5 w-14 rounded-full bg-zinc-200 dark:bg-zinc-700" />
+        </div>
+        <div className="col-span-2 space-y-1">
+          <div className="h-3 w-14 rounded bg-zinc-100 dark:bg-zinc-800" />
+          <div className="h-4 w-36 rounded bg-zinc-200 dark:bg-zinc-700" />
+        </div>
+      </div>
+      <div className="space-y-2.5">
+        <div className="flex items-center justify-between">
+          <div className="h-3 w-16 rounded bg-zinc-100 dark:bg-zinc-800" />
+          <div className="h-3 w-8 rounded bg-zinc-100 dark:bg-zinc-800" />
+        </div>
+        {[0, 1, 2, 3, 4].map((i) => (
+          <div key={i} className="flex items-center gap-3">
+            <div className="h-[18px] w-[18px] rounded-full bg-zinc-200 dark:bg-zinc-700" />
+            <div className="h-4 flex-1 rounded bg-zinc-100 dark:bg-zinc-800" />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function MissionWidget({ index = 0, loading = false }: MissionWidgetProps) {
+  if (loading) {
+    return (
+      <DashboardCard
+        title="Mission"
+        subtitle="Current Objective"
+        icon={<Target size={20} />}
+        status="live"
+        accent="blue"
+        index={index}
+      >
+        <MissionSkeleton />
+      </DashboardCard>
+    );
+  }
+
   const completedCount = mission.checklist.filter((t) => t.completed).length;
 
   return (
