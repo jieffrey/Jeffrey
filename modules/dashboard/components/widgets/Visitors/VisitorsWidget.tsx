@@ -151,7 +151,7 @@ export default function VisitorsWidget({ index = 0, loading = false, error = fal
               </span>
               <div className="h-2 w-24 shrink-0 rounded-full bg-zinc-200 dark:bg-zinc-700">
                 <div
-                  className="h-full rounded-full bg-blue-500 transition-all duration-500"
+                  className="h-full rounded-full bg-blue-500 dark:bg-blue-400 transition-all duration-500"
                   style={{ width: `${country.percentage}%` }}
                 />
               </div>

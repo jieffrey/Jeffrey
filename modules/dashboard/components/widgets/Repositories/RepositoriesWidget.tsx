@@ -12,12 +12,12 @@ interface RepositoriesWidgetProps {
 }
 
 const languageColors: Record<string, string> = {
-  TypeScript: "bg-blue-500",
-  PHP: "bg-purple-500",
-  Python: "bg-green-500",
-  JavaScript: "bg-yellow-500",
-  Rust: "bg-orange-600",
-  Go: "bg-cyan-500",
+  TypeScript: "bg-blue-500 dark:bg-blue-400",
+  PHP: "bg-purple-500 dark:bg-purple-400",
+  Python: "bg-green-500 dark:bg-green-400",
+  JavaScript: "bg-yellow-500 dark:bg-yellow-400",
+  Rust: "bg-orange-600 dark:bg-orange-500",
+  Go: "bg-cyan-500 dark:bg-cyan-400",
 };
 
 function formatDate(dateString: string): string {
@@ -122,7 +122,7 @@ export default function RepositoriesWidget({
               <div className="flex items-center gap-1.5">
                 <span
                   className={`h-2.5 w-2.5 rounded-full ${
-                    languageColors[repo.language] ?? "bg-zinc-400"
+                    languageColors[repo.language] ?? "bg-zinc-400 dark:bg-zinc-500"
                   }`}
                 />
                 <span>{repo.language}</span>

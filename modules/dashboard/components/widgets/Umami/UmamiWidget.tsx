@@ -170,8 +170,8 @@ export default function UmamiWidget({ index = 0, loading = false, error = false,
 
         <div className="flex items-center gap-2.5 rounded-xl bg-zinc-50 px-4 py-3 dark:bg-zinc-800/50">
           <span className="relative flex h-2.5 w-2.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 dark:bg-emerald-300 opacity-75" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500 dark:bg-emerald-400" />
           </span>
           <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
             {realtime} Online
@@ -190,7 +190,7 @@ export default function UmamiWidget({ index = 0, loading = false, error = false,
                 </span>
                 <div className="h-2 flex-1 rounded-full bg-zinc-200 dark:bg-zinc-700">
                   <div
-                    className="h-full rounded-full bg-blue-500 transition-all duration-500"
+                    className="h-full rounded-full bg-blue-500 dark:bg-blue-400 transition-all duration-500"
                     style={{ width: `${source.percentage}%` }}
                   />
                 </div>
@@ -219,7 +219,7 @@ export default function UmamiWidget({ index = 0, loading = false, error = false,
                   {page.trend.map((value, i) => (
                     <div
                       key={i}
-                      className="flex-1 rounded-sm bg-emerald-400/60 transition-opacity duration-200 hover:opacity-100"
+                      className="flex-1 rounded-sm bg-emerald-400/60 dark:bg-emerald-300/60 transition-opacity duration-200 hover:opacity-100"
                       style={{ height: `${value}%` }}
                     />
                   ))}

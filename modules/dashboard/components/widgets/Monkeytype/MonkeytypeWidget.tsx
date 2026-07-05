@@ -195,7 +195,7 @@ export default function MonkeytypeWidget({
             {sparklineData.map((value, i) => (
               <div
                 key={i}
-                className="flex-1 rounded-sm bg-emerald-500/60 opacity-80 transition-all duration-200 hover:opacity-100"
+                className="flex-1 rounded-sm bg-emerald-500/60 dark:bg-emerald-400/60 opacity-80 transition-all duration-200 hover:opacity-100"
                 style={{ height: `${value}%` }}
               />
             ))}

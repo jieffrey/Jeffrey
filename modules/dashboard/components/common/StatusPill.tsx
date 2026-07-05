@@ -2,9 +2,9 @@ import { cn } from "@/lib/utils";
 import type { StatusPillProps } from "../../types";
 
 const statusConfig = {
-  live: { dot: "bg-emerald-500", label: "Live", ring: "ring-emerald-500/20" },
-  mock: { dot: "bg-amber-500", label: "Mock", ring: "ring-amber-500/20" },
-  offline: { dot: "bg-red-500", label: "Offline", ring: "ring-red-500/20" },
+  live: { dot: "bg-emerald-500 dark:bg-emerald-400", label: "Live", ring: "ring-emerald-500/20 dark:ring-emerald-400/20" },
+  mock: { dot: "bg-amber-500 dark:bg-amber-400", label: "Mock", ring: "ring-amber-500/20 dark:ring-amber-400/20" },
+  offline: { dot: "bg-red-500 dark:bg-red-400", label: "Offline", ring: "ring-red-500/20 dark:ring-red-400/20" },
 } as const;
 
 export default function StatusPill({ status, size = "sm" }: StatusPillProps) {

@@ -172,7 +172,7 @@ export default function DeveloperOverviewWidget({
       <div className="space-y-6">
         <div>
           <div className="flex items-center gap-2">
-            <Sun size={20} className="text-amber-500" />
+            <Sun size={20} className="text-amber-500 dark:text-amber-400" />
             <p className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
               {greeting}, {mockData.developer.name}
             </p>

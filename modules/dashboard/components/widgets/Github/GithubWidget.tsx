@@ -103,7 +103,7 @@ export default function GithubWidget({ index = 0, loading = false, error = false
   return (
     <DashboardCard
       icon={
-        <div className="flex h-full w-full items-center justify-center rounded-2xl bg-purple-500 text-sm font-bold text-white">
+        <div className="flex h-full w-full items-center justify-center rounded-2xl bg-purple-500 dark:bg-purple-600 text-sm font-bold text-white">
           {profile.initials}
         </div>
       }

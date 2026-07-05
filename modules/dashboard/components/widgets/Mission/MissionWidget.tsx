@@ -136,7 +136,7 @@ export default function MissionWidget({ index = 0, loading = false, error = fals
           </div>
           <div className="h-2.5 rounded-full bg-zinc-200 dark:bg-zinc-700">
             <div
-              className="h-full rounded-full bg-emerald-500 transition-all duration-1000 ease-out"
+              className="h-full rounded-full bg-emerald-500 dark:bg-emerald-400 transition-all duration-1000 ease-out"
               style={{ width: `${mission.progress}%` }}
             />
           </div>
@@ -185,7 +185,7 @@ export default function MissionWidget({ index = 0, loading = false, error = fals
               {item.completed ? (
                 <CheckCircle2
                   size={18}
-                  className="mt-0.5 shrink-0 text-emerald-500"
+                  className="mt-0.5 shrink-0 text-emerald-500 dark:text-emerald-400"
                 />
               ) : (
                 <Circle

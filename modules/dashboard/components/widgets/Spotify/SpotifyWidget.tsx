@@ -153,7 +153,7 @@ export default function SpotifyWidget({ index = 0, loading = false, error = fals
         <div className="space-y-1.5">
           <div className="h-1.5 rounded-full bg-zinc-200 dark:bg-zinc-700">
             <div
-              className="h-full rounded-full bg-emerald-500 transition-all duration-1000 ease-linear"
+              className="h-full rounded-full bg-emerald-500 dark:bg-emerald-400 transition-all duration-1000 ease-linear"
               style={{ width: `${progressPercent}%` }}
             />
           </div>
