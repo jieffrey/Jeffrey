@@ -3,18 +3,12 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { BiCollection as ProjectIcon } from "react-icons/bi";
-import { BsSearch, BsGithub, BsGlobe } from "react-icons/bs";
-import { HiArrowUpRight } from "react-icons/hi2";
+import { BsSearch } from "react-icons/bs";
 import SectionHeading from "@/common/components/elements/SectionHeading";
 import SectionSubHeading from "@/common/components/elements/SubHeading";
+import { PROJECTS, PROJECT_CATEGORIES } from "../data/project";
+import ProjectCard from "./ProjectCard";
 import { cn } from "@/lib/utils";
-import { PROJECTS, CATEGORIES } from "../data/project";
-
-const STATUS_CONFIG = {
-  live:        { label: "Live",        className: "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400" },
-  development: { label: "In Progress", className: "bg-amber-100 text-amber-700 dark:bg-amber-950/40 dark:text-amber-400" },
-  archived:    { label: "Archived",    className: "bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-500" },
-};
 
 const Projects = () => {
   const t = useTranslations("ProjectsPage");
@@ -35,7 +29,6 @@ const Projects = () => {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div className="space-y-1">
         <SectionHeading title={t("title")} icon={<ProjectIcon size={20} />} />
         <SectionSubHeading>
@@ -43,7 +36,6 @@ const Projects = () => {
         </SectionSubHeading>
       </div>
 
-      {/* Search */}
       <div className="relative">
         <BsSearch
           size={14}
@@ -58,9 +50,8 @@ const Projects = () => {
         />
       </div>
 
-      {/* Category filter */}
       <div className="flex flex-wrap gap-2">
-        {CATEGORIES.map((cat) => {
+        {PROJECT_CATEGORIES.map((cat) => {
           const isActive = activeCategory === cat;
           return (
             <motion.button
@@ -90,7 +81,6 @@ const Projects = () => {
         })}
       </div>
 
-      {/* Results count */}
       <p className="text-xs text-neutral-400 dark:text-neutral-600">
         {t("showing")}{" "}
         <span className="font-medium text-neutral-600 dark:text-neutral-400">
@@ -99,109 +89,11 @@ const Projects = () => {
         {t("projects")}
       </p>
 
-      {/* Project grid */}
       <motion.div layout className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <AnimatePresence mode="popLayout">
           {filtered.length > 0 ? (
             filtered.map((project, index) => (
-              <motion.div
-                key={project.title}
-                layout
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.97 }}
-                transition={{ delay: 0.05 * index, duration: 0.25 }}
-                className="group flex flex-col gap-3 rounded-xl border border-neutral-200 bg-neutral-50 p-4 transition-all duration-200 hover:border-neutral-300 hover:shadow-sm dark:border-neutral-800 dark:bg-neutral-900 dark:hover:border-neutral-700"
-              >
-                {/* Top row */}
-                <div className="flex items-start justify-between gap-2">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2">
-                      <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
-                        {project.title}
-                      </h3>
-                      <span
-                        className={cn(
-                          "shrink-0 rounded-full px-2 py-0.5 text-xs font-medium",
-                          STATUS_CONFIG[project.status].className
-                        )}
-                      >
-                        {STATUS_CONFIG[project.status].label}
-                      </span>
-                    </div>
-                    <p className="mt-1 text-xs text-neutral-500 dark:text-neutral-500">
-                      {project.year} · {project.category}
-                    </p>
-                  </div>
-
-                  {/* Action buttons */}
-                  <div className="flex shrink-0 items-center gap-1 opacity-0 transition-all duration-200 group-hover:opacity-100">
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="rounded-lg p-1.5 text-neutral-400 hover:bg-neutral-200 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-neutral-300"
-                      >
-                        <BsGithub size={14} />
-                      </a>
-                    )}
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="rounded-lg p-1.5 text-neutral-400 hover:bg-neutral-200 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-neutral-300"
-                      >
-                        <HiArrowUpRight size={14} />
-                      </a>
-                    )}
-                  </div>
-                </div>
-
-                {/* Description */}
-                <p className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
-                  {project.description}
-                </p>
-
-                {/* Tech stack */}
-                <div className="flex flex-wrap gap-1.5">
-                  {project.techStack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-full bg-neutral-100 px-2.5 py-0.5 text-xs text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Footer links */}
-                <div className="flex items-center gap-3 border-t border-neutral-200 pt-2.5 dark:border-neutral-800">
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-xs text-neutral-400 transition-colors hover:text-neutral-700 dark:hover:text-neutral-300"
-                    >
-                      <BsGithub size={12} />
-                      Source Code
-                    </a>
-                  )}
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-xs text-neutral-400 transition-colors hover:text-neutral-700 dark:hover:text-neutral-300"
-                    >
-                      <BsGlobe size={12} />
-                      Live Demo
-                    </a>
-                  )}
-                </div>
-              </motion.div>
+              <ProjectCard key={project.slug} project={project} index={index} />
             ))
           ) : (
             <motion.div
