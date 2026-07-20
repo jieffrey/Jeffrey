@@ -1,6 +1,7 @@
 import DashboardCard from "../../common/DashboardCard";
 import EmptyState from "../../common/EmptyState";
 import { WifiOff } from "lucide-react";
+import { BsTwitterX } from 'react-icons/bs';
 
 interface GithubContributionWidgetProps {
   index?: number;
@@ -104,14 +105,14 @@ export default function GithubContributionWidget({
 
   if (loading) {
     return (
-      <DashboardCard status="live" index={index}>
+      <DashboardCard status="live" index={index} title="">
         <ContributionSkeleton />
       </DashboardCard>
     );
   }
 
   return (
-    <DashboardCard status="live" index={index}>
+    <DashboardCard status="live" index={index} title="">
       {/* h-full + justify-center: this card gets stretched to match the
           profile card's height, so center the (shorter) content in that
           space instead of leaving it pinned to the top with a gap below */}

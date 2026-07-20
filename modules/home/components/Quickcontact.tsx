@@ -10,8 +10,8 @@ import SectionSubHeading from "@/common/components/elements/SubHeading";
 const CONTACTS = [
   {
     label: "GitHub",
-    handle: "@jeffreykalsah",       // ganti dengan handle lo
-    href: "https://github.com/jeffreykalsah",
+    handle: "@jieffrey",
+    href: "https://github.com/jieffrey",
     icon: <BsGithub size={18} />,
     color: "hover:text-neutral-900 dark:hover:text-neutral-100",
     bg: "hover:bg-neutral-100 dark:hover:bg-neutral-800",
@@ -19,31 +19,31 @@ const CONTACTS = [
   {
     label: "LinkedIn",
     handle: "Jeffrey Kalsah",
-    href: "https://linkedin.com/in/jeffreykalsah",
+    href: "https://www.linkedin.com/in/jeffrey-kalsah-alkautsar-9abb1b394",
     icon: <BsLinkedin size={18} />,
     color: "hover:text-blue-600",
     bg: "hover:bg-blue-50 dark:hover:bg-blue-950/30",
   },
   {
     label: "Instagram",
-    handle: "@jeffreystudios",
-    href: "https://instagram.com/jeffreystudios",
+    handle: "@jklshhh",
+    href: "https://instagram.com/jklshhh",
     icon: <BsInstagram size={18} />,
     color: "hover:text-pink-500",
     bg: "hover:bg-pink-50 dark:hover:bg-pink-950/30",
   },
   {
     label: "TikTok",
-    handle: "@jeffreystudios",
-    href: "https://tiktok.com/@jeffreystudios",
+    handle: "@jieffreyyyy",
+    href: "https://tiktok.com/@jieffreyyyy",
     icon: <SiTiktok size={16} />,
     color: "hover:text-neutral-900 dark:hover:text-neutral-100",
     bg: "hover:bg-neutral-100 dark:hover:bg-neutral-800",
   },
   {
     label: "Email",
-    handle: "jeffrey@example.com",  // ganti dengan email lo
-    href: "mailto:jeffrey@example.com",
+    handle: "kalsahalkautsar@gmail.com", 
+    href: "mailto:kalsahalkautsar@gmail.com",
     icon: <BsEnvelope size={18} />,
     color: "hover:text-emerald-600",
     bg: "hover:bg-emerald-50 dark:hover:bg-emerald-950/30",
