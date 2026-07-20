@@ -20,8 +20,8 @@ export default function WidgetHeader({
         )}
 
         <div className="min-w-0">
-          <div className="flex items-center gap-2">
-            <h3 className="truncate font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+          <div className="flex min-w-0 items-center gap-2">
+            <h3 className="min-w-0 truncate font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
               {title}
             </h3>
 

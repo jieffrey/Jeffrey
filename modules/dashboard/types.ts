@@ -22,6 +22,8 @@ export interface Repository {
   description: string;
   language: string;
   stars: number;
+  forks: number;
+  updated: string;
 }
 
 export interface SpotifyTrack {
@@ -84,4 +86,64 @@ export interface EmptyStateProps {
   title: string;
   description?: string;
   action?: ReactNode;
+}
+
+export type MissionPriority = "High" | "Medium" | "Low";
+
+export interface MissionChecklistItem {
+  id: string;
+  text: string;
+  completed: boolean;
+}
+
+export interface Mission {
+  title: string;
+  description: string;
+  status: string;
+  currentFocus: string;
+  progress: number;
+  deadline: string;
+  priority: MissionPriority;
+  reward: string;
+  checklist: MissionChecklistItem[];
+}
+
+export interface Visitors {
+  total: number;
+  today: number;
+  weekly: number;
+  monthly: number;
+  change: string;
+}
+
+export interface LanguageBreakdown {
+  name: string;
+  percentage: number;
+  color: string;
+}
+
+export interface WakatimeStats {
+  totalHours: number;
+  dailyAverage: string;
+  languages: string[];
+  currentStreak: number;
+  bestDay: string;
+  todayTime: string;
+  weeklyTime: string;
+  languageBreakdown: LanguageBreakdown[];
+}
+
+export interface MonkeytypeStats {
+  wpm: number;
+  accuracy: number;
+  testsCompleted: number;
+  highestWpm: number;
+  rank: string;
+}
+
+export interface UmamiStats {
+  pageViews: number;
+  visitors: number;
+  bounceRate: string;
+  avgDuration: string;
 }

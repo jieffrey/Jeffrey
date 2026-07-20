@@ -1,6 +1,6 @@
 import { Github } from "lucide-react";
 import DashboardCard from "../common/DashboardCard";
-import { contributions } from "../../data/mock";
+import { contributions } from "../../data/github";
 
 const levelColors = [
   "bg-zinc-200 dark:bg-zinc-800",

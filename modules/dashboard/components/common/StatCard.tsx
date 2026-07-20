@@ -46,7 +46,7 @@ export default function StatCard({
         {change && (
           <p
             className={cn(
-              "text-sm font-medium text-emerald-500",
+              "text-sm font-medium text-emerald-500 dark:text-emerald-400",
               changeClassName
             )}
           >

@@ -1,6 +1,6 @@
 import { Github } from "lucide-react";
 import DashboardCard from "../common/DashboardCard";
-import { github } from "../../data/mock";
+import { github } from "../../data/github";
 
 const stats = [
   { label: "Repositories", value: github.repositories, size: "text-3xl font-bold" },
