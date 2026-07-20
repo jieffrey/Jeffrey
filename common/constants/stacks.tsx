@@ -17,6 +17,7 @@ import {
   SiFirebase,
   SiPrisma,
   SiMongodb,
+  SiGo
 } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
 
@@ -158,5 +159,12 @@ export const STACKS: SkillProps[] = [
     background: "bg-orange-500/10",
     color: "text-orange-500",
     category: ["Tools"],
+  },
+  {
+    name: "Go",
+    icon: <SiGo size={iconSize} />,
+    background: "bg-blue-500/10",
+    color: "text-blue-500",
+    category: ["Frontend", "Backend"],
   },
 ];  
