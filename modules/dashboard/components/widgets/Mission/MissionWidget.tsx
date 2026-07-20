@@ -28,41 +28,28 @@ function formatDate(dateString: string): string {
 
 function MissionSkeleton() {
   return (
-    <div className="animate-pulse space-y-5">
+    <div className="animate-pulse space-y-4">
       <div className="space-y-1">
-        <div className="h-5 w-48 rounded bg-zinc-200 dark:bg-zinc-700" />
-        <div className="h-3 w-64 rounded bg-zinc-100 dark:bg-zinc-800" />
+        <div className="h-5 w-40 rounded bg-zinc-200 dark:bg-zinc-700" />
+        <div className="h-3 w-56 rounded bg-zinc-100 dark:bg-zinc-800" />
       </div>
-      <div className="space-y-2">
-        <div className="flex items-center justify-between">
-          <div className="h-3 w-14 rounded bg-zinc-100 dark:bg-zinc-800" />
-          <div className="h-3 w-8 rounded bg-zinc-200 dark:bg-zinc-700" />
-        </div>
+      <div className="space-y-1">
         <div className="h-2.5 rounded-full bg-zinc-200 dark:bg-zinc-700" />
       </div>
-      <div className="grid grid-cols-2 gap-4">
-        <div className="space-y-1">
-          <div className="h-3 w-16 rounded bg-zinc-100 dark:bg-zinc-800" />
-          <div className="h-4 w-24 rounded bg-zinc-200 dark:bg-zinc-700" />
-        </div>
-        <div className="space-y-1">
-          <div className="h-3 w-12 rounded bg-zinc-100 dark:bg-zinc-800" />
-          <div className="h-5 w-14 rounded-full bg-zinc-200 dark:bg-zinc-700" />
-        </div>
-        <div className="col-span-2 space-y-1">
-          <div className="h-3 w-14 rounded bg-zinc-100 dark:bg-zinc-800" />
-          <div className="h-4 w-36 rounded bg-zinc-200 dark:bg-zinc-700" />
-        </div>
+      <div className="grid grid-cols-3 gap-2">
+        {[0, 1, 2].map((i) => (
+          <div key={i} className="space-y-1">
+            <div className="h-3 w-12 rounded bg-zinc-100 dark:bg-zinc-800" />
+            <div className="h-4 w-20 rounded bg-zinc-200 dark:bg-zinc-700" />
+          </div>
+        ))}
       </div>
-      <div className="space-y-2.5">
-        <div className="flex items-center justify-between">
-          <div className="h-3 w-16 rounded bg-zinc-100 dark:bg-zinc-800" />
-          <div className="h-3 w-8 rounded bg-zinc-100 dark:bg-zinc-800" />
-        </div>
-        {[0, 1, 2, 3, 4].map((i) => (
-          <div key={i} className="flex items-center gap-3">
-            <div className="h-[18px] w-[18px] rounded-full bg-zinc-200 dark:bg-zinc-700" />
-            <div className="h-4 flex-1 rounded bg-zinc-100 dark:bg-zinc-800" />
+      <div className="space-y-1.5">
+        <div className="h-3 w-16 rounded bg-zinc-100 dark:bg-zinc-800" />
+        {[0, 1, 2].map((i) => (
+          <div key={i} className="flex items-center gap-2">
+            <div className="h-[18px] w-[18px] rounded-full bg-zinc-200 dark:bg-zinc-700 shrink-0" />
+            <div className="h-3 flex-1 rounded bg-zinc-100 dark:bg-zinc-800" />
           </div>
         ))}
       </div>
@@ -107,6 +94,8 @@ export default function MissionWidget({ index = 0, loading = false, error = fals
   }
 
   const completedCount = mission.checklist.filter((t) => t.completed).length;
+  const visibleChecklist = mission.checklist.slice(0, 3);
+  const remainingCount = mission.checklist.length - 3;
 
   return (
     <DashboardCard
@@ -117,24 +106,24 @@ export default function MissionWidget({ index = 0, loading = false, error = fals
       accent="blue"
       index={index}
     >
-      <div className="space-y-4">
+      <div className="space-y-5">
         <div>
-          <h4 className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+          <h4 className="text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 truncate">
             {mission.title}
           </h4>
-          <p className="mt-0.5 text-sm text-zinc-500 dark:text-zinc-400">
+          <p className="text-xs text-zinc-500 dark:text-zinc-400 truncate">
             {mission.description}
           </p>
         </div>
 
-        <div className="space-y-1.5">
-          <div className="flex items-center justify-between text-sm">
+        <div className="space-y-1">
+          <div className="flex items-center justify-between text-xs">
             <span className="text-zinc-500 dark:text-zinc-400">Progress</span>
             <span className="font-semibold text-zinc-900 dark:text-zinc-100">
               {mission.progress}%
             </span>
           </div>
-          <div className="h-2.5 rounded-full bg-zinc-200 dark:bg-zinc-700">
+          <div className="h-2 rounded-full bg-zinc-200 dark:bg-zinc-700">
             <div
               className="h-full rounded-full bg-emerald-500 dark:bg-emerald-400 transition-all duration-1000 ease-out"
               style={{ width: `${mission.progress}%` }}
@@ -142,36 +131,36 @@ export default function MissionWidget({ index = 0, loading = false, error = fals
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-3 gap-2">
           <div>
-            <div className="flex items-center gap-1.5 text-xs text-zinc-400 dark:text-zinc-500">
-              <Calendar size={12} aria-hidden="true" />
+            <div className="flex items-center gap-1 text-xs text-zinc-400 dark:text-zinc-500">
+              <Calendar size={11} aria-hidden="true" />
               <span>Deadline</span>
             </div>
-            <p className="mt-0.5 text-sm font-medium text-zinc-900 dark:text-zinc-100">
+            <p className="text-xs font-medium text-zinc-900 dark:text-zinc-100">
               {formatDate(mission.deadline)}
             </p>
           </div>
           <div>
             <p className="text-xs text-zinc-400 dark:text-zinc-500">Priority</p>
             <span
-              className={`mt-0.5 inline-block rounded-full px-2.5 py-0.5 text-xs font-medium ${priorityStyles[mission.priority]}`}
+              className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium ${priorityStyles[mission.priority]}`}
             >
               {mission.priority}
             </span>
           </div>
-          <div className="col-span-2">
-            <div className="flex items-center gap-1.5 text-xs text-zinc-400 dark:text-zinc-500">
-              <Award size={12} aria-hidden="true" />
+          <div>
+            <div className="flex items-center gap-1 text-xs text-zinc-400 dark:text-zinc-500">
+              <Award size={11} aria-hidden="true" />
               <span>Reward</span>
             </div>
-            <p className="mt-0.5 text-sm font-medium text-zinc-900 dark:text-zinc-100">
+            <p className="text-xs font-medium text-zinc-900 dark:text-zinc-100 truncate">
               {mission.reward}
             </p>
           </div>
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-1">
           <div className="flex items-center justify-between">
             <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
               Checklist
@@ -180,23 +169,23 @@ export default function MissionWidget({ index = 0, loading = false, error = fals
               {completedCount}/{mission.checklist.length}
             </p>
           </div>
-          {mission.checklist.map((item) => (
-            <div key={item.id} className="flex items-start gap-3">
+          {visibleChecklist.map((item) => (
+            <div key={item.id} className="flex items-start gap-2">
               {item.completed ? (
                 <CheckCircle2
-                  size={18}
+                  size={16}
                   className="mt-0.5 shrink-0 text-emerald-500 dark:text-emerald-400"
                   aria-hidden="true"
                 />
               ) : (
                 <Circle
-                  size={18}
+                  size={16}
                   className="mt-0.5 shrink-0 text-zinc-300 dark:text-zinc-600"
                   aria-hidden="true"
                 />
               )}
               <span
-                className={`text-sm leading-relaxed ${
+                className={`text-xs leading-relaxed ${
                   item.completed
                     ? "text-zinc-400 line-through dark:text-zinc-500"
                     : "text-zinc-700 dark:text-zinc-300"
@@ -206,6 +195,11 @@ export default function MissionWidget({ index = 0, loading = false, error = fals
               </span>
             </div>
           ))}
+          {remainingCount > 0 && (
+            <p className="text-xs text-zinc-400 dark:text-zinc-500 pl-6">
+              +{remainingCount} more
+            </p>
+          )}
         </div>
       </div>
     </DashboardCard>

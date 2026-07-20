@@ -45,47 +45,39 @@ const topPages: TopPage[] = [
 
 function UmamiSkeleton() {
   return (
-    <div className="animate-pulse space-y-6">
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+    <div className="animate-pulse space-y-4">
+      <div className="grid grid-cols-2 gap-2 @sm:grid-cols-4">
         {[0, 1, 2, 3].map((i) => (
-          <div
-            key={i}
-            className="rounded-xl bg-zinc-50 p-3 dark:bg-zinc-800/50"
-          >
-            <div className="h-3 w-14 rounded bg-zinc-100 dark:bg-zinc-800" />
-            <div className="mt-1 h-5 w-16 rounded bg-zinc-200 dark:bg-zinc-700" />
+          <div key={i} className="rounded-lg bg-zinc-50 p-2 dark:bg-zinc-800/50">
+            <div className="h-2.5 w-12 rounded bg-zinc-100 dark:bg-zinc-800" />
+            <div className="mt-1 h-5 w-14 rounded bg-zinc-200 dark:bg-zinc-700" />
           </div>
         ))}
       </div>
-      <div className="flex items-center gap-2.5 rounded-xl bg-zinc-50 px-4 py-3 dark:bg-zinc-800/50">
-        <div className="h-2.5 w-2.5 rounded-full bg-zinc-200 dark:bg-zinc-700" />
-        <div className="h-4 w-20 rounded bg-zinc-200 dark:bg-zinc-700" />
+      <div className="flex items-center gap-2 rounded-lg bg-zinc-50 px-3 py-2 dark:bg-zinc-800/50">
+        <div className="h-2 w-2 rounded-full bg-zinc-200 dark:bg-zinc-700" />
+        <div className="h-3 w-20 rounded bg-zinc-200 dark:bg-zinc-700" />
       </div>
-      <div>
-        <div className="mb-3 h-3 w-28 rounded bg-zinc-100 dark:bg-zinc-800" />
-        <div className="space-y-2.5">
+      <div className="grid grid-cols-2 gap-3">
+        <div className="space-y-2">
+          <div className="h-3 w-20 rounded bg-zinc-100 dark:bg-zinc-800" />
           {[0, 1, 2, 3].map((i) => (
-            <div key={i} className="flex items-center gap-3">
-              <div className="h-4 w-16 rounded bg-zinc-200 dark:bg-zinc-700" />
+            <div key={i} className="flex items-center gap-2">
+              <div className="h-3 w-12 rounded bg-zinc-200 dark:bg-zinc-700" />
               <div className="h-2 flex-1 rounded-full bg-zinc-200 dark:bg-zinc-700" />
-              <div className="h-4 w-10 rounded bg-zinc-200 dark:bg-zinc-700" />
+              <div className="h-3 w-6 rounded bg-zinc-200 dark:bg-zinc-700" />
             </div>
           ))}
         </div>
-      </div>
-      <div>
-        <div className="mb-3 h-3 w-20 rounded bg-zinc-100 dark:bg-zinc-800" />
-        <div className="space-y-2.5">
+        <div className="space-y-2">
+          <div className="h-3 w-16 rounded bg-zinc-100 dark:bg-zinc-800" />
           {[0, 1, 2, 3].map((i) => (
-            <div key={i} className="flex items-center gap-3">
-              <div className="h-4 w-20 rounded bg-zinc-200 dark:bg-zinc-700" />
-              <div className="h-4 w-12 rounded bg-zinc-100 dark:bg-zinc-800" />
-              <div className="flex h-6 flex-1 items-end gap-[2px]">
+            <div key={i} className="flex items-center gap-2">
+              <div className="h-3 w-16 rounded bg-zinc-200 dark:bg-zinc-700" />
+              <div className="h-3 w-10 rounded bg-zinc-100 dark:bg-zinc-800" />
+              <div className="flex h-4 flex-1 items-end gap-0.5">
                 {[0, 1, 2, 3, 4, 5, 6].map((j) => (
-                  <div
-                    key={j}
-                    className="flex-1 rounded-sm bg-zinc-200 dark:bg-zinc-700"
-                  />
+                  <div key={j} className="flex-1 rounded-sm bg-zinc-200 dark:bg-zinc-700" />
                 ))}
               </div>
             </div>
@@ -151,81 +143,87 @@ export default function UmamiWidget({ index = 0, loading = false, error = false,
         </p>
       }
     >
-      <div className="space-y-4">
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <div className="space-y-5">
+        <div className="grid grid-cols-2 gap-3 @sm:grid-cols-4">
           {overview.map(({ label, value }) => (
             <div
               key={label}
-              className="rounded-xl bg-zinc-50 p-3 transition-colors hover:bg-zinc-100 dark:bg-zinc-800/50 dark:hover:bg-zinc-800"
+              className="rounded-3xl bg-zinc-50 p-3 dark:bg-zinc-900/40"
             >
-              <p className="text-xs text-zinc-500 dark:text-zinc-400">
+              <p className="text-[11px] uppercase tracking-[0.22em] text-zinc-400 dark:text-zinc-500">
                 {label}
               </p>
-              <p className="mt-1 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+              <p className="mt-2 text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
                 {value}
               </p>
             </div>
           ))}
         </div>
 
-        <div className="flex items-center gap-2.5 rounded-xl bg-zinc-50 px-3 py-2.5 dark:bg-zinc-800/50">
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 dark:bg-emerald-300 opacity-75" />
-            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500 dark:bg-emerald-400" />
-          </span>
-          <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-            {realtime} Online
-          </span>
-        </div>
-
-        <div>
-          <p className="mb-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
-            Traffic Sources
-          </p>
-          <div className="space-y-2">
-            {trafficSources.map((source) => (
-              <div key={source.name} className="flex items-center gap-3">
-                <span className="w-16 text-sm text-zinc-700 dark:text-zinc-300">
-                  {source.name}
-                </span>
-                <div className="h-2 flex-1 rounded-full bg-zinc-200 dark:bg-zinc-700">
-                  <div
-                    className="h-full rounded-full bg-blue-500 dark:bg-blue-400 transition-all duration-500"
-                    style={{ width: `${source.percentage}%` }}
-                  />
-                </div>
-                <span className="w-10 shrink-0 text-right text-sm font-medium tabular-nums text-zinc-900 dark:text-zinc-100">
-                  {source.percentage}%
-                </span>
-              </div>
-            ))}
+        <div className="rounded-3xl bg-zinc-50 p-3 dark:bg-zinc-900/40">
+          <div className="flex items-center justify-between">
+            <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+              Live visitors
+            </p>
+            <span className="text-xs font-semibold text-zinc-900 dark:text-zinc-100">
+              {realtime}
+            </span>
+          </div>
+          <div className="mt-3 flex items-center gap-2">
+            <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
+            <span className="text-xs text-zinc-500 dark:text-zinc-400">
+              Active users on site right now
+            </span>
           </div>
         </div>
 
-        <div>
-          <p className="mb-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
-            Top Pages
-          </p>
-          <div className="space-y-2">
-            {topPages.map((page) => (
-              <div key={page.path} className="flex items-center gap-3">
-                <span className="w-24 truncate text-sm font-medium text-zinc-700 dark:text-zinc-300">
-                  {page.path}
-                </span>
-                <span className="w-12 shrink-0 text-right text-sm tabular-nums text-zinc-500 dark:text-zinc-400">
-                  {(page.views / 1000).toFixed(1)}K
-                </span>
-                <div className="flex h-6 flex-1 items-end gap-[2px]">
-                  {page.trend.map((value, i) => (
+        <div className="grid gap-3 @sm:grid-cols-2">
+          <div>
+            <p className="mb-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+              Traffic sources
+            </p>
+            <div className="space-y-2">
+              {trafficSources.map((source) => (
+                <div key={source.name} className="space-y-1">
+                  <div className="flex items-center justify-between text-sm text-zinc-700 dark:text-zinc-300">
+                    <span>{source.name}</span>
+                    <span className="font-semibold text-zinc-900 dark:text-zinc-100">
+                      {source.percentage}%
+                    </span>
+                  </div>
+                  <div className="h-2 rounded-full bg-zinc-200 dark:bg-zinc-800">
                     <div
-                      key={i}
-                      className="flex-1 rounded-sm bg-emerald-400/60 dark:bg-emerald-300/60 transition-opacity duration-200 hover:opacity-100"
-                      style={{ height: `${value}%` }}
+                      className="h-full rounded-full bg-blue-500 dark:bg-blue-400"
+                      style={{ width: `${source.percentage}%` }}
                     />
-                  ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <p className="mb-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+              Top pages
+            </p>
+            <div className="space-y-2">
+              {topPages.slice(0, 3).map((page) => (
+                <div key={page.path} className="rounded-2xl bg-zinc-100 p-3 dark:bg-zinc-950">
+                  <div className="flex items-center justify-between gap-3 text-sm text-zinc-900 dark:text-zinc-100">
+                    <span className="truncate">{page.path}</span>
+                    <span className="font-semibold">
+                      {(page.views / 1000).toFixed(1)}K
+                    </span>
+                  </div>
+                  <div className="mt-2 h-2 rounded-full bg-zinc-200 dark:bg-zinc-800">
+                    <div
+                      className="h-full rounded-full bg-emerald-500 dark:bg-emerald-400"
+                      style={{ width: `${Math.min(100, page.views / 150)}%` }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

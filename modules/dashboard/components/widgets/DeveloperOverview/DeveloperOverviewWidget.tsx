@@ -75,7 +75,7 @@ function OverviewSkeleton() {
           </div>
         ))}
       </div>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 @sm:grid-cols-4">
         {[0, 1, 2, 3].map((i) => (
           <div key={i} className="rounded-xl bg-zinc-50 p-3 dark:bg-zinc-800/50">
             <div className="h-4 w-4 rounded bg-zinc-200 dark:bg-zinc-700" />
@@ -170,46 +170,41 @@ export default function DeveloperOverviewWidget({
       index={index}
     >
       <div className="space-y-4">
-        <div>
-          <div className="flex items-center gap-2">
-            <Sun size={20} className="text-amber-500 dark:text-amber-400" aria-hidden="true" />
-            <p className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-              {greeting}, {mockData.developer.name}
+        <div className="flex items-start justify-between">
+          <div>
+            <div className="flex items-center gap-2">
+              <Sun size={20} className="text-amber-500 dark:text-amber-400" aria-hidden="true" />
+              <p className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+                {greeting}, {mockData.developer.name}
+              </p>
+            </div>
+            <p className="mt-0.5 text-sm text-zinc-500 dark:text-zinc-400">
+              {dateStr} · {timeStr}
             </p>
           </div>
-          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-            {dateStr} · {timeStr}
-          </p>
-        </div>
-
-        <div className="space-y-2">
-          <div>
-            <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
-              Current Focus
-            </p>
-            <p className="mt-0.5 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-              {mockData.currentFocus}
-            </p>
-          </div>
-          <div>
-            <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
-              Today&apos;s Goal
-            </p>
-            <p className="mt-0.5 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-              {mockData.todayGoal}
-            </p>
-          </div>
-          <div>
-            <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
-              Current Project
-            </p>
-            <p className="mt-0.5 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-              {mockData.currentProject}
-            </p>
+          <div className="flex items-start gap-6">
+            <div>
+              <p className="text-xs text-zinc-400 dark:text-zinc-500">Focus</p>
+              <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                {mockData.currentFocus}
+              </p>
+            </div>
+            <div>
+              <p className="text-xs text-zinc-400 dark:text-zinc-500">Goal</p>
+              <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                {mockData.todayGoal}
+              </p>
+            </div>
+            <div>
+              <p className="text-xs text-zinc-400 dark:text-zinc-500">Project</p>
+              <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                {mockData.currentProject}
+              </p>
+            </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 @sm:grid-cols-4">
           {stats.map(({ icon: Icon, label, value }) => (
             <div
               key={label}

@@ -30,24 +30,26 @@ const profile: GithubProfile = {
 
 function GithubSkeleton() {
   return (
-    <div className="animate-pulse space-y-6">
-      <div className="-mt-2 mb-6 flex items-center gap-3">
-        <div className="h-11 w-11 rounded-2xl bg-zinc-200 dark:bg-zinc-700" />
-        <div className="space-y-2 flex-1">
-          <div className="h-4 w-24 rounded bg-zinc-200 dark:bg-zinc-700" />
-          <div className="h-3 w-32 rounded bg-zinc-100 dark:bg-zinc-800" />
+    <div className="animate-pulse space-y-4">
+      <div className="space-y-3">
+        <div className="flex items-center gap-3">
+          <div className="h-11 w-11 rounded-2xl bg-zinc-200 dark:bg-zinc-700" />
+          <div className="space-y-2 flex-1">
+            <div className="h-4 w-24 rounded bg-zinc-200 dark:bg-zinc-700" />
+            <div className="h-3 w-32 rounded bg-zinc-100 dark:bg-zinc-800" />
+          </div>
+        </div>
+        <div className="h-4 w-full rounded bg-zinc-200 dark:bg-zinc-700" />
+        <div className="grid grid-cols-2 gap-3">
+          {[0, 1, 2, 3].map((i) => (
+            <div key={i}>
+              <div className="h-3 w-16 rounded bg-zinc-100 dark:bg-zinc-800" />
+              <div className="mt-1 h-6 w-12 rounded bg-zinc-200 dark:bg-zinc-700" />
+            </div>
+          ))}
         </div>
       </div>
-      <div className="h-4 w-full rounded bg-zinc-200 dark:bg-zinc-700" />
-      <div className="grid grid-cols-2 gap-4">
-        {[0, 1, 2, 3].map((i) => (
-          <div key={i}>
-            <div className="h-3 w-20 rounded bg-zinc-100 dark:bg-zinc-800" />
-            <div className="mt-1 h-6 w-12 rounded bg-zinc-200 dark:bg-zinc-700" />
-          </div>
-        ))}
-      </div>
-      <div className="flex items-center justify-between border-t border-zinc-200 pt-4 dark:border-zinc-700/50">
+      <div className="flex items-center justify-between border-t border-zinc-200 pt-3 dark:border-zinc-700/50 mt-3">
         <div className="h-5 w-24 rounded-full bg-zinc-200 dark:bg-zinc-700" />
         <div className="h-9 w-28 rounded-xl bg-zinc-200 dark:bg-zinc-700" />
       </div>
@@ -113,12 +115,10 @@ export default function GithubWidget({ index = 0, loading = false, error = false
       accent="purple"
       index={index}
       footer={
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-zinc-400 dark:text-zinc-500">
-              Language:
-            </span>
-            <span className="rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+        <div className="grid gap-3 @sm:grid-cols-[1fr_auto]">
+          <div className="flex min-w-0 items-center gap-2">
+            <span className="text-xs text-zinc-400 dark:text-zinc-500">Language:</span>
+            <span className="truncate rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
               {profile.primaryLanguage}
             </span>
           </div>
@@ -127,7 +127,7 @@ export default function GithubWidget({ index = 0, loading = false, error = false
             target="_blank"
             rel="noopener noreferrer"
             aria-label="View Jeffrey's GitHub profile (opens in a new tab)"
-            className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500/50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500/50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300 sm:w-auto"
           >
             <ExternalLink size={16} aria-hidden="true" />
             View GitHub
@@ -141,9 +141,11 @@ export default function GithubWidget({ index = 0, loading = false, error = false
 
       <div className="grid grid-cols-2 gap-4">
         {stats.map(({ label, value }) => (
-          <div key={label}>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400">{label}</p>
-            <p className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          <div key={label} className="rounded-2xl bg-zinc-50 p-3 dark:bg-zinc-900/40">
+            <p className="text-xs uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500">
+              {label}
+            </p>
+            <p className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
               {value.toLocaleString()}
             </p>
           </div>

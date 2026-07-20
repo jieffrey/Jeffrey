@@ -1,4 +1,4 @@
-import { GitFork, WifiOff } from "lucide-react";
+import { GitFork, WifiOff, ExternalLink } from "lucide-react";
 import DashboardCard from "../../common/DashboardCard";
 import EmptyState from "../../common/EmptyState";
 import { repositories } from "../../../data/repositories";
@@ -33,23 +33,19 @@ const latest = repositories.slice(0, 3);
 
 function RepositoriesSkeleton() {
   return (
-    <div className="animate-pulse grid grid-cols-1 gap-4 md:grid-cols-3">
+    <div className="animate-pulse space-y-2">
       {[0, 1, 2].map((i) => (
-        <div
-          key={i}
-          className="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-700/50 dark:bg-zinc-800/50"
-        >
-          <div className="h-5 w-36 rounded bg-zinc-200 dark:bg-zinc-700" />
-          <div className="mt-2 space-y-1.5">
+        <div key={i} className="flex items-start gap-3 p-2">
+          <div className="h-5 w-5 mt-0.5 rounded bg-zinc-200 dark:bg-zinc-700 shrink-0" />
+          <div className="flex-1 space-y-1.5">
+            <div className="h-4 w-36 rounded bg-zinc-200 dark:bg-zinc-700" />
             <div className="h-3 w-full rounded bg-zinc-100 dark:bg-zinc-800" />
-            <div className="h-3 w-3/4 rounded bg-zinc-100 dark:bg-zinc-800" />
+            <div className="flex gap-3">
+              <div className="h-3 w-16 rounded bg-zinc-100 dark:bg-zinc-800" />
+              <div className="h-3 w-8 rounded bg-zinc-100 dark:bg-zinc-800" />
+              <div className="h-3 w-8 rounded bg-zinc-100 dark:bg-zinc-800" />
+            </div>
           </div>
-          <div className="mt-4 flex items-center gap-3">
-            <div className="h-2.5 w-2.5 rounded-full bg-zinc-200 dark:bg-zinc-700" />
-            <div className="h-3 w-16 rounded bg-zinc-100 dark:bg-zinc-800" />
-            <div className="h-3 w-8 rounded bg-zinc-100 dark:bg-zinc-800" />
-          </div>
-          <div className="mt-3 h-3 w-28 rounded bg-zinc-100 dark:bg-zinc-800" />
         </div>
       ))}
     </div>
@@ -64,14 +60,14 @@ export default function RepositoriesWidget({
 }: RepositoriesWidgetProps) {
   if (error) {
     return (
-        <DashboardCard title="Widget Unavailable">
+      <DashboardCard title="Widget Unavailable">
         <EmptyState
           icon={<WifiOff className="h-6 w-6" aria-hidden="true" />}
           title="Connection Lost"
           description="Unable to load widget data. Please try again."
           action={
             <button
-              onClick={onRetry ?? (() => {})}
+              onClick={onRetry ?? (() => { })}
               className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500/50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
             >
               Retry
@@ -105,38 +101,51 @@ export default function RepositoriesWidget({
       status="mock"
       accent="yellow"
       index={index}
+      footer={
+        <div className="flex items-center justify-between">
+          <span className="text-xs text-zinc-400 dark:text-zinc-500">
+            {repositories.length} repositories
+          </span>
+          <a
+            href="https://github.com/jeffreystudios"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100"
+          >
+            View all repositories
+            <ExternalLink size={12} aria-hidden="true" />
+          </a>
+        </div>
+      }
     >
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+      <div className="space-y-1">
         {latest.map((repo: Repository) => (
           <div
             key={repo.name}
-            className="rounded-xl border border-zinc-200 bg-zinc-50 p-4 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:border-zinc-500"
-          >
-            <p className="font-semibold text-zinc-900 dark:text-zinc-100">
-              {repo.name}
-            </p>
-            <p className="mt-1 line-clamp-2 text-sm text-zinc-500 dark:text-zinc-400">
-              {repo.description}
-            </p>
-            <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs text-zinc-500 dark:text-zinc-400">
-              <div className="flex items-center gap-1.5">
-                <span
-                  className={`h-2.5 w-2.5 rounded-full ${
-                    languageColors[repo.language] ?? "bg-zinc-400 dark:bg-zinc-500"
-                  }`}
-                />
-                <span>{repo.language}</span>
+            className="flex items-start gap-3 rounded-xl px-2 py-3 hover:bg-zinc-50 dark:hover:bg-zinc-800/40 transition-colors"          >
+            <GitFork size={16} className="mt-0.5 shrink-0 text-zinc-400 dark:text-zinc-500" aria-hidden="true" />
+            <div className="min-w-0 flex-1">
+              <p className="text-[15px] font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+                {repo.name}
+              </p>
+              <p className="mt-0.5 line-clamp-2 leading-5 text-xs text-zinc-500 dark:text-zinc-400">
+                {repo.description}
+              </p>
+              <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-0.5 text-xs text-zinc-400 dark:text-zinc-500">
+                <span className="flex items-center gap-1">
+                  <span
+                    className={`h-2 w-2 rounded-full ${languageColors[repo.language] ?? "bg-zinc-400 dark:bg-zinc-500"
+                      }`}
+                  />
+                  {repo.language}
+                </span>
+                <span>★ {repo.stars}</span>
+                <span className="flex items-center gap-0.5">
+                  <GitFork size={10} aria-hidden="true" /> {repo.forks}
+                </span>
+                <span>Updated {formatDate(repo.updated)}</span>
               </div>
-              <span className="flex items-center gap-1">
-                ★ {repo.stars}
-              </span>
-              <span className="flex items-center gap-1">
-                <GitFork size={12} aria-hidden="true" /> {repo.forks}
-              </span>
             </div>
-            <p className="mt-1.5 text-xs text-zinc-400 dark:text-zinc-500">
-              Updated {formatDate(repo.updated)}
-            </p>
           </div>
         ))}
       </div>

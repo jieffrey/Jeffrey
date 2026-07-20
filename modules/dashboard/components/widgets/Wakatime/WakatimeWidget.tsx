@@ -12,29 +12,24 @@ interface WakatimeWidgetProps {
 
 function WakatimeSkeleton() {
   return (
-    <div className="animate-pulse space-y-6">
-      <div className="grid grid-cols-2 gap-3">
+    <div className="animate-pulse space-y-4">
+      <div className="grid grid-cols-2 gap-2">
         {[0, 1, 2, 3].map((i) => (
-          <div
-            key={i}
-            className="rounded-xl bg-zinc-50 p-4 dark:bg-zinc-800/50"
-          >
-            <div className="h-3 w-16 rounded bg-zinc-100 dark:bg-zinc-800" />
-            <div className="mt-1 h-7 w-20 rounded bg-zinc-200 dark:bg-zinc-700" />
+          <div key={i} className="rounded-lg bg-zinc-50 p-2 dark:bg-zinc-800/50">
+            <div className="h-2.5 w-12 rounded bg-zinc-100 dark:bg-zinc-800" />
+            <div className="mt-1 h-5 w-16 rounded bg-zinc-200 dark:bg-zinc-700" />
           </div>
         ))}
       </div>
-      <div>
-        <div className="mb-3 h-3 w-32 rounded bg-zinc-100 dark:bg-zinc-800" />
-        <div className="space-y-3">
-          {[0, 1, 2, 3].map((i) => (
-            <div key={i} className="flex items-center gap-3">
-              <div className="h-4 w-24 rounded bg-zinc-200 dark:bg-zinc-700" />
-              <div className="h-2.5 flex-1 rounded-full bg-zinc-200 dark:bg-zinc-700" />
-              <div className="h-4 w-10 rounded bg-zinc-200 dark:bg-zinc-700" />
-            </div>
-          ))}
-        </div>
+      <div className="space-y-2">
+        <div className="h-3 w-28 rounded bg-zinc-100 dark:bg-zinc-800" />
+        {[0, 1, 2, 3].map((i) => (
+          <div key={i} className="flex items-center gap-2">
+            <div className="h-3 w-20 rounded bg-zinc-200 dark:bg-zinc-700" />
+            <div className="h-2 flex-1 rounded-full bg-zinc-200 dark:bg-zinc-700" />
+            <div className="h-3 w-8 rounded bg-zinc-200 dark:bg-zinc-700" />
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -92,17 +87,17 @@ export default function WakatimeWidget({ index = 0, loading = false, error = fal
       accent="green"
       index={index}
     >
-      <div className="space-y-4">
-        <div className="grid grid-cols-2 gap-3">
+      <div className="space-y-5">
+        <div className="grid grid-cols-2 gap-2">
           {stats.map(({ label, value }) => (
             <div
               key={label}
-              className="rounded-xl bg-zinc-50 p-3 transition-colors hover:bg-zinc-100 dark:bg-zinc-800/50 dark:hover:bg-zinc-800"
+              className="rounded-lg bg-zinc-50 p-2 transition-colors hover:bg-zinc-100 dark:bg-zinc-800/50 dark:hover:bg-zinc-800"
             >
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
+              <p className="text-xs text-zinc-500 dark:text-zinc-400">
                 {label}
               </p>
-              <p className="mt-1 text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+              <p className="text-lg font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
                 {value}
               </p>
             </div>
@@ -110,16 +105,16 @@ export default function WakatimeWidget({ index = 0, loading = false, error = fal
         </div>
 
         <div>
-          <p className="mb-3 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+          <p className="mb-1.5 text-xs font-medium text-zinc-500 dark:text-zinc-400">
             Language Breakdown
           </p>
-          <div className="space-y-2">
-            {wakatime.languageBreakdown.map((lang) => (
-              <div key={lang.name} className="flex items-center gap-3">
-                <span className="w-24 truncate text-sm text-zinc-700 dark:text-zinc-300">
+          <div className="space-y-1.5">
+            {wakatime.languageBreakdown.slice(0, 4).map((lang) => (
+              <div key={lang.name} className="flex items-center gap-2">
+                <span className="w-20 truncate text-xs text-zinc-700 dark:text-zinc-300">
                   {lang.name}
                 </span>
-                <div className="h-2.5 flex-1 rounded-full bg-zinc-200 dark:bg-zinc-700">
+                <div className="h-2 flex-1 rounded-full bg-zinc-200 dark:bg-zinc-700">
                   <div
                     className="h-full rounded-full transition-all duration-1000 ease-out"
                     style={{
@@ -128,7 +123,7 @@ export default function WakatimeWidget({ index = 0, loading = false, error = fal
                     }}
                   />
                 </div>
-                <span className="w-10 shrink-0 text-right text-sm font-medium tabular-nums text-zinc-900 dark:text-zinc-100">
+                <span className="w-8 shrink-0 text-right text-xs font-medium tabular-nums text-zinc-900 dark:text-zinc-100">
                   {lang.percentage}%
                 </span>
               </div>

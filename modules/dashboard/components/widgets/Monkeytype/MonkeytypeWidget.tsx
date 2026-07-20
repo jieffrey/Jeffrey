@@ -47,54 +47,41 @@ const achievements: { label: string; value: string }[] = [
 
 function MonkeytypeSkeleton() {
   return (
-    <div className="animate-pulse space-y-6">
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+    <div className="animate-pulse space-y-4">
+      <div className="grid grid-cols-2 gap-3 @sm:grid-cols-4">
         {[0, 1, 2, 3].map((i) => (
-          <div
-            key={i}
-            className="rounded-xl bg-zinc-50 p-3 dark:bg-zinc-800/50"
-          >
-            <div className="h-3 w-10 rounded bg-zinc-100 dark:bg-zinc-800" />
-            <div className="mt-1 h-5 w-14 rounded bg-zinc-200 dark:bg-zinc-700" />
+          <div key={i} className="rounded-lg bg-zinc-50 p-2 dark:bg-zinc-800/50">
+            <div className="h-2.5 w-10 rounded bg-zinc-100 dark:bg-zinc-800" />
+            <div className="mt-1 h-4 w-12 rounded bg-zinc-200 dark:bg-zinc-700" />
           </div>
         ))}
       </div>
       <div>
-        <div className="mb-3 h-3 w-20 rounded bg-zinc-100 dark:bg-zinc-800" />
-        <div className="flex h-24 items-end gap-[3px]">
+        <div className="mb-1.5 h-3 w-16 rounded bg-zinc-100 dark:bg-zinc-800" />
+        <div className="flex h-[70px] items-end gap-[3px]">
           {sparklineData.map((_, i) => (
-            <div
-              key={i}
-              className="flex-1 rounded-sm bg-zinc-200 dark:bg-zinc-700"
-              style={{ height: `${sparklineData[i]}%` }}
-            />
+            <div key={i} className="flex-1 rounded-sm bg-zinc-200 dark:bg-zinc-700" />
           ))}
         </div>
       </div>
       <div>
-        <div className="mb-3 h-3 w-20 rounded bg-zinc-100 dark:bg-zinc-800" />
-        <div className="space-y-1">
+        <div className="mb-1 h-3 w-16 rounded bg-zinc-100 dark:bg-zinc-800" />
+        <div className="space-y-0.5">
           {[0, 1, 2, 3, 4].map((i) => (
-            <div
-              key={i}
-              className="flex items-center justify-between rounded-lg p-2.5"
-            >
-              <div className="h-4 w-20 rounded bg-zinc-200 dark:bg-zinc-700" />
-              <div className="h-3 w-14 rounded bg-zinc-100 dark:bg-zinc-800" />
+            <div key={i} className="flex items-center justify-between rounded p-1.5 bg-zinc-50 dark:bg-zinc-800/30">
+              <div className="h-3 w-16 rounded bg-zinc-200 dark:bg-zinc-700" />
+              <div className="h-2.5 w-10 rounded bg-zinc-100 dark:bg-zinc-800" />
             </div>
           ))}
         </div>
       </div>
       <div>
-        <div className="mb-3 h-3 w-20 rounded bg-zinc-100 dark:bg-zinc-800" />
-        <div className="grid grid-cols-3 gap-3">
+        <div className="mb-1.5 h-3 w-16 rounded bg-zinc-100 dark:bg-zinc-800" />
+        <div className="grid grid-cols-3 gap-2">
           {[0, 1, 2].map((i) => (
-            <div
-              key={i}
-              className="rounded-xl bg-zinc-50 p-3 dark:bg-zinc-800/50"
-            >
-              <div className="h-3 w-16 rounded bg-zinc-100 dark:bg-zinc-800" />
-              <div className="mt-1 h-5 w-14 rounded bg-zinc-200 dark:bg-zinc-700" />
+            <div key={i} className="rounded-lg bg-zinc-50 p-2 dark:bg-zinc-800/50">
+              <div className="h-2.5 w-12 rounded bg-zinc-100 dark:bg-zinc-800" />
+              <div className="mt-0.5 h-4 w-12 rounded bg-zinc-200 dark:bg-zinc-700" />
             </div>
           ))}
         </div>
@@ -159,7 +146,7 @@ export default function MonkeytypeWidget({
   return (
     <DashboardCard
       title="Monkeytype"
-      subtitle="Typing Statistics"
+      subtitle="Typing Performance"
       icon={<Keyboard size={20} />}
       status="mock"
       accent="purple"
@@ -170,75 +157,44 @@ export default function MonkeytypeWidget({
         </p>
       }
     >
-      <div className="space-y-4">
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <div className="space-y-5">
+        <div className="grid grid-cols-2 gap-3 @sm:grid-cols-4">
           {topStats.map(({ label, value }) => (
             <div
               key={label}
-              className="rounded-xl bg-zinc-50 p-3 transition-colors hover:bg-zinc-100 dark:bg-zinc-800/50 dark:hover:bg-zinc-800"
+              className="rounded-3xl bg-zinc-50 p-3 dark:bg-zinc-900/40"
             >
-              <p className="text-xs text-zinc-500 dark:text-zinc-400">
+              <p className="text-[11px] uppercase tracking-[0.22em] text-zinc-400 dark:text-zinc-500">
                 {label}
               </p>
-              <p className="mt-1 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+              <p className="mt-2 text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
                 {value}
               </p>
             </div>
           ))}
         </div>
 
-        <div>
-          <p className="mb-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
-            Performance
-          </p>
-          <div className="flex h-20 items-end gap-[3px]">
-            {sparklineData.map((value, i) => (
-              <div
-                key={i}
-                className="flex-1 rounded-sm bg-emerald-500/60 dark:bg-emerald-400/60 opacity-80 transition-all duration-200 hover:opacity-100"
-                style={{ height: `${value}%` }}
-              />
-            ))}
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+              Recent sessions
+            </p>
+            <span className="text-xs text-zinc-400 dark:text-zinc-500">
+              Best: {achievements[0].value}
+            </span>
           </div>
-        </div>
-
-        <div>
-          <p className="mb-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
-            Recent Tests
-          </p>
-          <div className="space-y-0.5">
+          <div className="space-y-2">
             {recentTests.map((test, i) => (
               <div
                 key={i}
-                className="flex items-center justify-between rounded-lg p-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800/50"
+                className="flex items-center justify-between rounded-2xl border border-zinc-200 bg-white px-3 py-2 text-sm dark:border-zinc-800 dark:bg-zinc-950"
               >
-                <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                <span className="font-semibold text-zinc-900 dark:text-zinc-100">
                   {test.wpm} WPM
                 </span>
-                <span className="text-xs text-zinc-400 dark:text-zinc-500">
+                <span className="text-xs text-zinc-500 dark:text-zinc-400">
                   {test.accuracy}% acc
                 </span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <p className="mb-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
-            Achievements
-          </p>
-          <div className="grid grid-cols-3 gap-3">
-            {achievements.map((ach) => (
-              <div
-                key={ach.label}
-                className="rounded-xl bg-zinc-50 p-3 transition-colors hover:bg-zinc-100 dark:bg-zinc-800/50 dark:hover:bg-zinc-800"
-              >
-                <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                  {ach.label}
-                </p>
-                <p className="mt-1 text-lg font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-                  {ach.value}
-                </p>
               </div>
             ))}
           </div>

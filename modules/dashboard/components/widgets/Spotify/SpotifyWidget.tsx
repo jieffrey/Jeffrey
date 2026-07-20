@@ -1,4 +1,4 @@
-import { Music, SkipBack, Play, SkipForward, WifiOff } from "lucide-react";
+import { Music, WifiOff } from "lucide-react";
 import DashboardCard from "../../common/DashboardCard";
 import EmptyState from "../../common/EmptyState";
 
@@ -9,80 +9,44 @@ interface SpotifyWidgetProps {
   onRetry?: () => void;
 }
 
-interface Track {
+interface CurrentTrack {
   title: string;
   artist: string;
-  album: string;
-}
-
-interface CurrentTrack extends Track {
   duration: number;
   progress: number;
 }
 
+// Mock data — swap for a real Spotify Web API call in
+// modules/dashboard/services/spotify.ts once you wire it up.
 const currentTrack: CurrentTrack = {
   title: "After Dark",
   artist: "Mr.Kitty",
-  album: "After Dark",
   duration: 234,
   progress: 86,
 };
 
-const recentlyPlayed: Track[] = [
-  { title: "Glimpse of Us", artist: "Joji", album: "Glimpse of Us" },
-  { title: "Drunk", artist: "Keshi", album: "Drunk" },
-  { title: "Do I Wanna Know?", artist: "Arctic Monkeys", album: "AM" },
-  { title: "Blinding Lights", artist: "The Weeknd", album: "After Hours" },
-];
-
-function formatTime(seconds: number): string {
-  const m = Math.floor(seconds / 60);
-  const s = seconds % 60;
-  return `${m}:${s.toString().padStart(2, "0")}`;
-}
-
 function SpotifySkeleton() {
   return (
-    <div className="animate-pulse space-y-5">
-      <div className="aspect-square w-full rounded-xl bg-zinc-200 dark:bg-zinc-700" />
-      <div className="space-y-1.5">
-        <div className="h-5 w-28 rounded bg-zinc-200 dark:bg-zinc-700" />
-        <div className="h-4 w-20 rounded bg-zinc-100 dark:bg-zinc-800" />
-      </div>
-      <div className="space-y-1.5">
-        <div className="h-1.5 rounded-full bg-zinc-200 dark:bg-zinc-700" />
-        <div className="flex justify-between">
-          <div className="h-3 w-8 rounded bg-zinc-100 dark:bg-zinc-800" />
-          <div className="h-3 w-8 rounded bg-zinc-100 dark:bg-zinc-800" />
-        </div>
-      </div>
-      <div className="flex items-center justify-center gap-6">
-        <div className="h-5 w-5 rounded bg-zinc-200 dark:bg-zinc-700" />
-        <div className="h-10 w-10 rounded-full bg-zinc-200 dark:bg-zinc-700" />
-        <div className="h-5 w-5 rounded bg-zinc-200 dark:bg-zinc-700" />
-      </div>
-      <div>
-        <div className="mb-3 h-3 w-28 rounded bg-zinc-100 dark:bg-zinc-800" />
-        <div className="space-y-1">
-          {[0, 1, 2, 3].map((i) => (
-            <div key={i} className="flex items-center gap-3 rounded-lg p-2">
-              <div className="h-9 w-9 rounded-md bg-zinc-200 dark:bg-zinc-700" />
-              <div className="flex-1 space-y-1.5">
-                <div className="h-3 w-32 rounded bg-zinc-200 dark:bg-zinc-700" />
-                <div className="h-3 w-20 rounded bg-zinc-100 dark:bg-zinc-800" />
-              </div>
-            </div>
-          ))}
-        </div>
+    <div className="flex animate-pulse items-center gap-4">
+      <div className="h-14 w-14 shrink-0 rounded-2xl bg-zinc-200 dark:bg-zinc-700" />
+      <div className="min-w-0 flex-1 space-y-2">
+        <div className="h-4 w-24 rounded bg-zinc-200 dark:bg-zinc-700" />
+        <div className="h-3 w-16 rounded bg-zinc-100 dark:bg-zinc-800" />
+        <div className="h-1 rounded-full bg-zinc-200 dark:bg-zinc-700" />
       </div>
     </div>
   );
 }
 
-export default function SpotifyWidget({ index = 0, loading = false, error = false, onRetry }: SpotifyWidgetProps) {
+export default function SpotifyWidget({
+  index = 0,
+  loading = false,
+  error = false,
+  onRetry,
+}: SpotifyWidgetProps) {
   if (error) {
     return (
-        <DashboardCard title="Widget Unavailable">
+      <DashboardCard title="Widget Unavailable">
         <EmptyState
           icon={<WifiOff className="h-6 w-6" aria-hidden="true" />}
           title="Connection Lost"
@@ -102,19 +66,7 @@ export default function SpotifyWidget({ index = 0, loading = false, error = fals
 
   if (loading) {
     return (
-      <DashboardCard
-        title="Spotify"
-        subtitle="Currently Listening"
-        icon={<Music size={20} />}
-        status="live"
-        accent="green"
-        index={index}
-        footer={
-          <p className="text-xs text-zinc-400 dark:text-zinc-500">
-            Connected with Spotify
-          </p>
-        }
-      >
+      <DashboardCard status="live" index={index} title="">
         <SpotifySkeleton />
       </DashboardCard>
     );
@@ -123,101 +75,23 @@ export default function SpotifyWidget({ index = 0, loading = false, error = fals
   const progressPercent = (currentTrack.progress / currentTrack.duration) * 100;
 
   return (
-    <DashboardCard
-      title="Spotify"
-      subtitle="Currently Listening"
-      icon={<Music size={20} />}
-      status="live"
-      accent="green"
-      index={index}
-      footer={
-        <p className="text-xs text-zinc-400 dark:text-zinc-500">
-          Connected with Spotify
-        </p>
-      }
-    >
-      <div className="space-y-4">
-        <div className="flex aspect-square w-full items-center justify-center rounded-xl bg-zinc-100 backdrop-blur-sm dark:bg-zinc-800">
-          <Music size={48} className="text-zinc-400 dark:text-zinc-600" aria-hidden="true" />
+    <DashboardCard status="live" index={index} title="">
+      <div className="flex items-center gap-4">
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-emerald-50 dark:bg-emerald-950/40">
+          <Music size={22} className="text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
         </div>
-
-        <div>
-          <p className="text-lg font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
             {currentTrack.title}
           </p>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">
+          <p className="truncate text-sm text-zinc-400 dark:text-zinc-500">
             {currentTrack.artist}
           </p>
-        </div>
-
-        <div className="space-y-1.5">
-          <div className="h-1.5 rounded-full bg-zinc-200 dark:bg-zinc-700">
+          <div className="mt-2 h-1 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-800">
             <div
-              className="h-full rounded-full bg-emerald-500 dark:bg-emerald-400 transition-all duration-1000 ease-linear"
+              className="h-full rounded-full bg-emerald-500 transition-all duration-1000 ease-linear"
               style={{ width: `${progressPercent}%` }}
             />
-          </div>
-          <div className="flex justify-between text-xs tabular-nums text-zinc-400 dark:text-zinc-500">
-            <span>{formatTime(currentTrack.progress)}</span>
-            <span>{formatTime(currentTrack.duration)}</span>
-          </div>
-        </div>
-
-        <div className="flex items-center justify-center gap-4">
-          <SkipBack
-            size={20}
-            className="cursor-pointer text-zinc-400 transition-colors hover:text-zinc-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500/50 dark:hover:text-zinc-300"
-            role="button"
-            tabIndex={0}
-            aria-label="Skip to previous track"
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') e.preventDefault(); }}
-          />
-          <div
-            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-zinc-900 transition-colors hover:bg-zinc-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500/50 dark:bg-zinc-100 dark:hover:bg-zinc-300"
-            role="button"
-            tabIndex={0}
-            aria-label="Play current track"
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') e.preventDefault(); }}
-          >
-            <Play
-              size={20}
-              className="ml-0.5 text-white dark:text-zinc-900"
-              aria-hidden="true"
-            />
-          </div>
-          <SkipForward
-            size={20}
-            className="cursor-pointer text-zinc-400 transition-colors hover:text-zinc-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500/50 dark:hover:text-zinc-300"
-            role="button"
-            tabIndex={0}
-            aria-label="Skip to next track"
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') e.preventDefault(); }}
-          />
-        </div>
-
-        <div>
-          <p className="mb-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
-            Recently Played
-          </p>
-          <div className="space-y-0.5">
-            {recentlyPlayed.map((track) => (
-              <div
-                key={`${track.title}-${track.artist}`}
-                className="flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-700/50"
-              >
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-zinc-200 dark:bg-zinc-700">
-                  <Music size={14} className="text-zinc-400" aria-hidden="true" />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                    {track.title}
-                  </p>
-                  <p className="truncate text-xs text-zinc-500 dark:text-zinc-400">
-                    {track.artist}
-                  </p>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>
