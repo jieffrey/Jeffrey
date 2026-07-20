@@ -12,7 +12,7 @@ const IntlToggle = () => {
   const [isPending, startTransition] = useTransition();
 
   const locales = [
-    { value: "en", flag: "🇺🇸" },
+    { value: "en", flag: "en" },
     { value: "id", flag: "🇮🇩" },
   ];
 

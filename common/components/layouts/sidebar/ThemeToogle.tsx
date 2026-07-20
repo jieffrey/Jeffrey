@@ -19,7 +19,6 @@ const ThemeToggle = () => {
     return () => cancelAnimationFrame(timer);
   }, []);
 
-  // Placeholder biar layout gak shift saat SSR
   if (!mounted) {
     return (
       <div className="h-10 w-22 rounded-full border-[1.5px] border-neutral-300 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800" />
