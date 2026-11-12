@@ -9,6 +9,8 @@ interface PrintFaceProps {
   face: PrintFaceId;
   /** Big text on the artwork, already localized. */
   title?: string;
+  /** Hide the title and corner radius; used through CoverFace. */
+  cover?: boolean;
 }
 
 const token = (name: string) => `var(--color-${name})`;
@@ -32,19 +34,29 @@ const STACK_PILLS = [
 const TROPHY_X = [40, 130, 220];
 const MINI_HEAT = miniHeatLevels();
 
-function Art({ className, children }: { className: string; children: ReactNode }) {
-  return <span className={cn(s.art, className)}>{children}</span>;
+function Art({
+  className,
+  cover,
+  children,
+}: {
+  className: string;
+  cover?: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <span className={cn(s.art, cover && s.cover, className)}>{children}</span>
+  );
 }
 
 /** Illustrated artwork of a print. Purely decorative: the print labels it. */
-export default function PrintFace({ face, title }: PrintFaceProps) {
+export default function PrintFace({ face, title, cover }: PrintFaceProps) {
   const t = useTranslations("line.faces");
   const heading = title ? <span className={s.title}>{title}</span> : null;
 
   switch (face) {
     case "about":
       return (
-        <Art className={s.fAbout}>
+        <Art className={s.fAbout} cover={cover}>
           <span className={s.photo}>
             <Image src="/images/Profile.jpg" alt="" width={236} height={280} />
           </span>
@@ -55,7 +67,7 @@ export default function PrintFace({ face, title }: PrintFaceProps) {
       );
     case "lapor":
       return (
-        <Art className={s.fLapor}>
+        <Art className={s.fLapor} cover={cover}>
           {MAP_PINS.map((pin) => (
             <svg
               key={`${pin.x}-${pin.y}`}
@@ -76,7 +88,7 @@ export default function PrintFace({ face, title }: PrintFaceProps) {
       );
     case "wavy":
       return (
-        <Art className={s.fWavy}>
+        <Art className={s.fWavy} cover={cover}>
           <span className={s.ticket}>
             <span>{t("admit")}</span>
             <b>{title}</b>
@@ -87,14 +99,14 @@ export default function PrintFace({ face, title }: PrintFaceProps) {
       );
     case "mst":
       return (
-        <Art className={s.fMst}>
+        <Art className={s.fMst} cover={cover}>
           <span className={s.gps} />
           <span className={cn(s.title, "max-w-[9ch]")}>{title}</span>
         </Art>
       );
     case "now":
       return (
-        <Art className={s.fNow}>
+        <Art className={s.fNow} cover={cover}>
           <span className={s.nowLabel}>{t("nowLabel")}</span>
           <span className={s.miniHeat}>
             {MINI_HEAT.map((level, i) => (
@@ -109,7 +121,7 @@ export default function PrintFace({ face, title }: PrintFaceProps) {
       );
     case "stack":
       return (
-        <Art className={s.fStack}>
+        <Art className={s.fStack} cover={cover}>
           {STACK_PILLS.map((pill) => {
             const style: CSSProperties = {
               left: pill.x,
@@ -129,7 +141,7 @@ export default function PrintFace({ face, title }: PrintFaceProps) {
       );
     case "cabinet":
       return (
-        <Art className={s.fCabinet}>
+        <Art className={s.fCabinet} cover={cover}>
           {TROPHY_X.map((x) => (
             <svg
               key={x}
@@ -155,7 +167,7 @@ export default function PrintFace({ face, title }: PrintFaceProps) {
       );
     case "contact":
       return (
-        <Art className={s.fContact}>
+        <Art className={s.fContact} cover={cover}>
           <span className={s.contactBig}>
             {t("contactLead")}
             <em>{t("contactAccent")}</em>

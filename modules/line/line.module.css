@@ -169,6 +169,16 @@
   line-height: 1;
 }
 
+/* Cover variant: fills its parent, used outside The Line. */
+.cover {
+  height: 100%;
+  border-radius: 0;
+}
+
+.cover .title {
+  display: none;
+}
+
 /* about */
 .fAbout {
   background: var(--color-lime);

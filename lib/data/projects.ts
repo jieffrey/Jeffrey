@@ -12,6 +12,8 @@ export interface Project {
   /** Short name for tight spaces (print captions). */
   shortTitle: string;
   face: ProjectFace;
+  /** Own project or client work. Shown in the rank line. */
+  type: "project" | "client";
   /** One-line category, e.g. "Smart geo complaint system". */
   kind: Localized;
   summary: Localized;
@@ -39,6 +41,7 @@ export const PROJECTS: Project[] = [
     title: "LaporAja",
     shortTitle: "LaporAja",
     face: "lapor",
+    type: "project",
     kind: {
       en: "Smart geo complaint system",
       id: "Sistem pengaduan berbasis lokasi",
@@ -61,6 +64,7 @@ export const PROJECTS: Project[] = [
     title: "Wavy",
     shortTitle: "Wavy",
     face: "wavy",
+    type: "project",
     kind: {
       en: "Concert ticket marketplace",
       id: "Marketplace tiket konser",
@@ -83,9 +87,10 @@ export const PROJECTS: Project[] = [
     title: "Mountain Safety Tracker",
     shortTitle: "Mountain Safety",
     face: "mst",
+    type: "client",
     kind: {
-      en: "Client project · Hiking safety",
-      id: "Proyek klien · Keselamatan pendakian",
+      en: "Hiking safety app and dashboard",
+      id: "Aplikasi dan dashboard keselamatan pendakian",
     },
     summary: {
       en: "A mobile app for hikers and a basecamp dashboard for rangers: live GPS tracking, offline sync when the signal drops, and geofencing alerts.",
