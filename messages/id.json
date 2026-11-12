@@ -153,7 +153,15 @@
   },
   "stack": {
     "nav": "Stack",
-    "grid": "Grid radial · 3 cincin · jari-jari 30°"
+    "grid": "Grid radial · 3 cincin · jari-jari 30°",
+    "title": "Semuanya mengorbit <em>TypeScript.</em>",
+    "ghost": "Orbit · Orbit · Orbit · Orbit ·",
+    "core": "TS",
+    "rings": {
+      "core": "Inti",
+      "build": "Bangun",
+      "extras": "Ekstra"
+    }
   },
   "cabinet": {
     "nav": "Lemari",

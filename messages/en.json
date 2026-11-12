@@ -153,7 +153,15 @@
   },
   "stack": {
     "nav": "Stack",
-    "grid": "Radial grid · 3 rings · 30° spokes"
+    "grid": "Radial grid · 3 rings · 30° spokes",
+    "title": "Everything orbits <em>TypeScript.</em>",
+    "ghost": "Orbit · Orbit · Orbit · Orbit ·",
+    "core": "TS",
+    "rings": {
+      "core": "Core",
+      "build": "Build",
+      "extras": "Extras"
+    }
   },
   "cabinet": {
     "nav": "Cabinet",
