@@ -45,12 +45,15 @@ export default function Cabinet() {
           Math.min(300, (box.clientWidth - ITEM_WIDTH) / (count - 1));
         const start = () => box.clientWidth * 0.6;
         const end = () => -(count - 1) * step() + box.clientWidth * 0.1;
+        // The rise is centered on the travel, so the objects in view stay
+        // inside the frame instead of climbing over the heading.
+        const rise = (x: number) => (x - (start() + end()) / 2) * SLOPE;
         gsap.fromTo(
           rail,
-          { x: start, y: () => start() * SLOPE },
+          { x: start, y: () => rise(start()) },
           {
             x: end,
-            y: () => end() * SLOPE,
+            y: () => rise(end()),
             ease: "none",
             scrollTrigger: {
               trigger: el,
