@@ -165,7 +165,17 @@
   },
   "cabinet": {
     "nav": "Lemari",
-    "grid": "Grid diagonal · sumbu 30°"
+    "grid": "Grid diagonal · sumbu 30°",
+    "title": "Disimpan seperti <em>piala.</em>",
+    "ghost": "Piala · Piala · Piala · Piala ·",
+    "open": "Buka {title}",
+    "kinds": {
+      "award": "Penghargaan",
+      "certificate": "Sertifikat",
+      "hackathon": "Hackathon",
+      "medal": "Medali",
+      "milestone": "Tonggak"
+    }
   },
   "contact": {
     "nav": "Kontak",
@@ -200,5 +210,20 @@
     "linksEmpty": "Tautan akan segera ditambahkan.",
     "next": "Proyek berikutnya",
     "metaTitle": "{title} — studi kasus"
+  },
+  "achievementDetail": {
+    "back": "Lemari",
+    "kind": "Jenis",
+    "issuer": "Diberikan oleh",
+    "date": "Tanggal",
+    "credential": "Kredensial",
+    "credentialLink": "Lihat kredensial",
+    "about": "Tentang pencapaian ini",
+    "built": "Yang saya bangun",
+    "proof": "Foto atau sertifikat",
+    "proofEmpty": "Foto atau sertifikatnya akan ditaruh di sini.",
+    "proofAlt": "{title}: foto atau sertifikat",
+    "next": "Berikutnya di lemari",
+    "metaTitle": "{title} — pencapaian"
   }
 }
