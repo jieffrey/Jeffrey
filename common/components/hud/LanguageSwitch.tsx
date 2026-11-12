@@ -32,7 +32,7 @@ export default function LanguageSwitch() {
       type="button"
       onClick={onSwitch}
       disabled={pending}
-      aria-label={t("switchTo", { language: t(next) })}
+      aria-label={`${routing.locales.join(" / ").toUpperCase()} — ${t("switchTo", { language: t(next) })}`}
       className="hud-chip pointer-events-auto gap-1.5 disabled:opacity-60"
     >
       {routing.locales.map((l, i) => (

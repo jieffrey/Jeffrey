@@ -128,6 +128,16 @@ export function useLineScene(refs: LineSceneRefs, count: number) {
       requestAnimationFrame(() => ScrollTrigger.refresh());
     };
 
+    // Layout is measured on resize only, never inside the frame loop.
+    const metrics = { top: 0, height: 0, loop: 0, width: 0, segment: 1 };
+    const measure = () => {
+      metrics.top = absoluteTop(section);
+      metrics.height = section.offsetHeight;
+      metrics.loop = marquee.scrollWidth / MARQUEE_REPEAT;
+      metrics.width = window.innerWidth;
+      metrics.segment = segment();
+    };
+
     let prev = 0;
     let velocity = 0;
     let mouseX = 0;
@@ -140,6 +150,8 @@ export function useLineScene(refs: LineSceneRefs, count: number) {
     let startedAt = 0;
     let slowSeconds = 0;
     let lastPrint = -1;
+    let lastHead = "";
+    const opacities: string[] = [];
 
     const onPointerMove = (e: PointerEvent) => {
       mouseX = e.clientX / window.innerWidth - 0.5;
@@ -191,12 +203,16 @@ export function useLineScene(refs: LineSceneRefs, count: number) {
         }
       }
 
+      // Nothing is visible behind the loader; the first frame after it
+      // starts from the intro pose.
+      if (!useUi.getState().loaderDone) return;
+
       const y = window.scrollY;
-      const top = absoluteTop(section);
-      if (y >= top + section.offsetHeight) return;
+      const { top } = metrics;
+      if (y >= top + metrics.height) return;
 
       const { config } = useCamera.getState();
-      const raw = (y - top) / segment();
+      const raw = (y - top) / metrics.segment;
       const target = sceneMode ? clamp(raw, 0, count - 1) : raw;
       velocity += (target - prev - velocity) * 0.2;
       prev = target;
@@ -212,7 +228,7 @@ export function useLineScene(refs: LineSceneRefs, count: number) {
 
       const d = lineStep(config.gap);
       const { intro, t } = cam;
-      const width = window.innerWidth;
+      const { width } = metrics;
       const scale = Math.min(1, width / 1100) * (width < 720 ? 0.85 : 1);
       world.style.transform = `scale(${scale}) translate3d(0,${intro.y}px,0) rotateX(${config.tilt - parallaxY * 4}deg) rotateY(${parallaxX * 6 + intro.ry}deg) translate3d(${-t * d.x}px,${-t * d.y}px,${-t * d.z + intro.z}px)`;
 
@@ -221,15 +237,24 @@ export function useLineScene(refs: LineSceneRefs, count: number) {
         let opacity = 1;
         if (rel < -0.55) opacity = Math.max(0, 1 + (rel + 0.55) * 2.2);
         else if (rel > 3.5) opacity = Math.max(0.12, 1 - (rel - 3.5) * 0.3);
-        hanger.style.opacity = opacity.toFixed(3);
-        hanger.style.pointerEvents = opacity < 0.3 ? "none" : "auto";
+        // Most prints sit at a constant opacity; only write real changes.
+        const value = opacity.toFixed(2);
+        if (opacities[i] !== value) {
+          opacities[i] = value;
+          hanger.style.opacity = value;
+          hanger.style.pointerEvents = opacity < 0.3 ? "none" : "auto";
+        }
       });
       swing(now, config.sway, true);
 
-      head.style.transform = `translateY(${-t * 24}px)`;
-      head.style.opacity = String(Math.max(0.18, 1 - t * 0.55));
+      const headKey = t.toFixed(3);
+      if (headKey !== lastHead) {
+        lastHead = headKey;
+        head.style.transform = `translateY(${-t * 24}px)`;
+        head.style.opacity = String(Math.max(0.18, 1 - t * 0.55));
+      }
 
-      const loop = marquee.scrollWidth / MARQUEE_REPEAT;
+      const { loop } = metrics;
       if (loop > 0) {
         marquee.style.transform = `translateX(${-((t * 220 + now * 0.02) % loop)}px) skewX(${clamp(-velocity * 400, -14, 14)}deg)`;
       }
@@ -243,6 +268,12 @@ export function useLineScene(refs: LineSceneRefs, count: number) {
     };
 
     place();
+    measure();
+    const refresh = () => {
+      measure();
+    };
+    window.addEventListener("resize", refresh);
+    ScrollTrigger.addEventListener("refresh", refresh);
     const unsubscribe = useCamera.subscribe((state, previous) => {
       if (state.config !== previous.config) place();
     });
@@ -253,6 +284,8 @@ export function useLineScene(refs: LineSceneRefs, count: number) {
 
     return () => {
       unsubscribe();
+      window.removeEventListener("resize", refresh);
+      ScrollTrigger.removeEventListener("refresh", refresh);
       window.removeEventListener("pointermove", onPointerMove);
       section.removeEventListener("pointerover", onPointerOver);
       section.removeEventListener("pointerleave", onPointerLeave);

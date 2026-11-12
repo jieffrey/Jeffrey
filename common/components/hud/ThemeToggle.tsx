@@ -20,7 +20,7 @@ export default function ThemeToggle() {
     <button
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      aria-label={isDark ? t("toLight") : t("toDark")}
+      aria-label={`${isDark ? t("dark") : t("light")} — ${isDark ? t("toLight") : t("toDark")}`}
       className="hud-chip pointer-events-auto"
     >
       <span

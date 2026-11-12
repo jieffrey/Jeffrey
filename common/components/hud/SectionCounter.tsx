@@ -24,7 +24,7 @@ export default function SectionCounter() {
   };
 
   return (
-    <p className="hud-chip pointer-events-auto tabular-nums" aria-live="polite">
+    <p className="hud-chip pointer-events-auto tabular-nums max-[719px]:h-9 max-[719px]:px-3 max-[719px]:text-[11px]" aria-live="polite">
       {activeSection === "line" && linePrint !== null
         ? t("hud.counter.line", {
             ...values,

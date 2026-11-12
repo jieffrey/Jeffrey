@@ -79,9 +79,9 @@ export default function Contact() {
       <div
         aria-hidden
         data-axis
-        className="absolute inset-y-0 left-1/2 w-px bg-paper-static/18"
+        className="absolute inset-y-0 left-1/2 w-px bg-paper-static/18 grid-on:w-0.5 grid-on:bg-lime"
       />
-      <div className="relative mx-auto flex max-w-[1320px] flex-col items-center gap-8 px-pad">
+      <div className="relative mx-auto flex max-w-[1320px] flex-col items-center gap-8 px-pad grid-on:*:outline grid-on:*:outline-offset-[6px] grid-on:*:outline-lime/50 grid-on:*:outline-dashed">
         <SectionHeader
           id="contact"
           title={title}

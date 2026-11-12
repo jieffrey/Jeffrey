@@ -2,6 +2,8 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+/* Grid mode: the GRID chip sets data-grid="on" on <html>. */
+@custom-variant grid-on (&:where([data-grid="on"] *));
 
 /*
  * Design tokens for "The Line". See DESIGN.md.
@@ -179,6 +181,11 @@
 }
 
 @layer base {
+  :root {
+    /* Tint of the column / module overlays; sections may override it. */
+    --gridline: color-mix(in srgb, var(--color-blue) 14%, transparent);
+  }
+
   html {
     @apply bg-paper font-display text-ink antialiased;
     color-scheme: light;

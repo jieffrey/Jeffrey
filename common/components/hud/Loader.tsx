@@ -84,7 +84,7 @@ export default function Loader() {
       <div aria-hidden>
         <div
           ref={countRef}
-          className="text-[clamp(120px,24vw,360px)] leading-[0.8] font-extrabold tracking-[-0.06em] text-lime tabular-nums"
+          className="text-[clamp(120px,24vw,360px)] leading-[0.8] font-extrabold tracking-[-0.06em] text-lime tabular-nums contain-content"
         >
           000
         </div>

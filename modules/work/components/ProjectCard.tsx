@@ -115,12 +115,18 @@ export default function ProjectCard({ project, index, primary }: ProjectCardProp
       data-cursor="open"
       aria-label={t("open", { title: project.title })}
       className={cn(
-        "group relative col-span-12 flex flex-col gap-3.5",
+        "group relative col-span-12 flex flex-col gap-3.5 grid-on:outline-[1.5px] grid-on:outline-offset-[6px] grid-on:outline-blue grid-on:outline-dashed",
         primary
           ? "min-[961px]:col-span-7 min-[961px]:row-span-2"
           : "min-[961px]:col-span-5 min-[961px]:col-start-8",
       )}
     >
+      <span
+        aria-hidden
+        className="absolute top-3 left-3 z-10 hidden rounded bg-blue px-2 py-1 font-mono text-[11px] text-print uppercase grid-on:block"
+      >
+        {primary ? t("overlay.primary") : t("overlay.secondary")}
+      </span>
       <div
         ref={art}
         className={cn(
