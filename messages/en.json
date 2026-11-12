@@ -133,7 +133,23 @@
   },
   "about": {
     "nav": "About",
-    "grid": "Baseline + column grid · 8pt baseline · 12 cols"
+    "grid": "Baseline + column grid · 8pt baseline · 12 cols",
+    "title": "About",
+    "statement": "I'm Kalsah, a full-stack developer who likes owning the whole thing: shaping the data, designing the API, and sweating the last pixel on web and mobile. I want the things I ship to feel <em>alive</em> when you touch them.",
+    "notes": {
+      "now": {
+        "label": "Now",
+        "text": "Building LaporAja, a smart geo complaint system, as my final project."
+      },
+      "back": {
+        "label": "Back",
+        "text": "Hono, Bun, PostgreSQL, raw SQL on Neon."
+      },
+      "front": {
+        "label": "Front",
+        "text": "Next.js, React Native, Expo, Tailwind, Motion."
+      }
+    }
   },
   "stack": {
     "nav": "Stack",
