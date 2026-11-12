@@ -1,39 +1,37 @@
-import { use } from "react";
-import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "next-intl";
 import Section from "@/common/components/section/Section";
 import TheLine from "@/modules/line/components/TheLine";
-import { SECTIONS, type SectionId } from "@/lib/sections";
+import Now from "@/modules/now/components/Now";
+import { getGithub } from "@/lib/data/github";
+import { getSpotify } from "@/lib/data/spotify";
+import type { SectionId } from "@/lib/sections";
 
-/** Surface per section until each one is built in its own phase. */
-const SURFACES: Record<Exclude<SectionId, "line">, string> = {
-  now: "bg-night text-snow",
-  work: "bg-paper text-ink",
-  about: "bg-paper-2 text-ink",
-  stack: "bg-paper text-ink",
-  cabinet: "bg-paper-2 text-ink",
-  contact: "bg-paper text-ink",
-};
+/** Sections still waiting for their phase, with their placeholder surface. */
+const PLACEHOLDERS: { id: Exclude<SectionId, "line">; surface: string }[] = [
+  { id: "work", surface: "bg-paper text-ink" },
+  { id: "about", surface: "bg-paper-2 text-ink" },
+  { id: "stack", surface: "bg-paper text-ink" },
+  { id: "cabinet", surface: "bg-paper-2 text-ink" },
+  { id: "contact", surface: "bg-paper text-ink" },
+];
 
-const PLACEHOLDERS = SECTIONS.map((s) => s.id).filter(
-  (id): id is Exclude<SectionId, "line"> => id !== "line",
-);
-
-export default function HomePage({
+export default async function HomePage({
   params,
 }: {
   params: Promise<{ locale: Locale }>;
 }) {
-  const { locale } = use(params);
+  const { locale } = await params;
   setRequestLocale(locale);
-  const t = useTranslations();
+  const t = await getTranslations();
+  const [github, spotify] = await Promise.all([getGithub(), getSpotify()]);
 
   return (
     <>
       <TheLine />
-      {PLACEHOLDERS.map((id) => (
-        <Section key={id} id={id} className={SURFACES[id]}>
+      <Now github={github} spotify={spotify} />
+      {PLACEHOLDERS.map(({ id, surface }) => (
+        <Section key={id} id={id} className={surface}>
           <div className="my-auto max-w-3xl">
             <h2 className="font-display text-[clamp(3.5rem,12vw,10rem)] leading-[0.88] font-extrabold tracking-display">
               {t(`${id}.nav`)}
