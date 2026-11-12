@@ -72,7 +72,52 @@
   },
   "now": {
     "nav": "Now",
-    "grid": "Modular grid · 12 cols × 88px modules"
+    "grid": "Modular grid · 12 cols × 88px modules",
+    "title": "What I'm up to, <em>live.</em>",
+    "mock": "Mock data · wires to GitHub + Spotify API",
+    "heat": {
+      "label": "GitHub contributions",
+      "period": "in the last year",
+      "streak": "streak {days, plural, one {# day} other {# days}}",
+      "less": "Less",
+      "more": "More",
+      "tooltip": "{count, plural, =0 {No contributions} one {# contribution} other {# contributions}}",
+      "aria": "Contribution heatmap: {count, number} contributions in the last 52 weeks"
+    },
+    "spotify": {
+      "label": "Now playing",
+      "paused": "Paused",
+      "nothing": "Nothing playing right now",
+      "play": "Play",
+      "pause": "Pause",
+      "progress": "Playback position"
+    },
+    "area": {
+      "label": "Commits per week",
+      "period": "avg · last {weeks} weeks",
+      "delta": "{value} vs prev",
+      "week": "Week {current} of {total}",
+      "commits": "{count, plural, one {<b>#</b> commit} other {<b>#</b> commits}}",
+      "aria": "Commits per week: {average, number} on average over the last {weeks} weeks"
+    },
+    "languages": {
+      "label": "Top languages",
+      "aria": "Top languages: {list}"
+    },
+    "profile": {
+      "handle": "@{login}",
+      "repos": "repos",
+      "stars": "stars",
+      "followers": "followers"
+    },
+    "weekday": {
+      "label": "Commits by weekday",
+      "commits": "{count, plural, one {# commit} other {# commits}}",
+      "aria": "Commits by weekday: {list}"
+    },
+    "building": {
+      "label": "Currently building"
+    }
   },
   "work": {
     "nav": "Work",

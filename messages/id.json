@@ -72,7 +72,52 @@
   },
   "now": {
     "nav": "Kini",
-    "grid": "Grid modular · 12 kolom × modul 88px"
+    "grid": "Grid modular · 12 kolom × modul 88px",
+    "title": "Yang lagi saya kerjakan, <em>live.</em>",
+    "mock": "Data contoh · nanti tersambung ke API GitHub + Spotify",
+    "heat": {
+      "label": "Kontribusi GitHub",
+      "period": "dalam setahun terakhir",
+      "streak": "beruntun {days, plural, other {# hari}}",
+      "less": "Sedikit",
+      "more": "Banyak",
+      "tooltip": "{count, plural, =0 {Tidak ada kontribusi} other {# kontribusi}}",
+      "aria": "Heatmap kontribusi: {count, number} kontribusi dalam 52 minggu terakhir"
+    },
+    "spotify": {
+      "label": "Sedang diputar",
+      "paused": "Dijeda",
+      "nothing": "Lagi tidak memutar apa-apa",
+      "play": "Putar",
+      "pause": "Jeda",
+      "progress": "Posisi pemutaran"
+    },
+    "area": {
+      "label": "Commit per minggu",
+      "period": "rata-rata · {weeks} minggu terakhir",
+      "delta": "{value} vs sebelumnya",
+      "week": "Minggu {current} dari {total}",
+      "commits": "{count, plural, other {<b>#</b> commit}}",
+      "aria": "Commit per minggu: rata-rata {average, number} selama {weeks} minggu terakhir"
+    },
+    "languages": {
+      "label": "Bahasa teratas",
+      "aria": "Bahasa teratas: {list}"
+    },
+    "profile": {
+      "handle": "@{login}",
+      "repos": "repo",
+      "stars": "bintang",
+      "followers": "pengikut"
+    },
+    "weekday": {
+      "label": "Commit per hari",
+      "commits": "{count, plural, other {# commit}}",
+      "aria": "Commit per hari: {list}"
+    },
+    "building": {
+      "label": "Sedang dibangun"
+    }
   },
   "work": {
     "nav": "Karya",
