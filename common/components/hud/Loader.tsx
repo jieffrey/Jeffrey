@@ -10,21 +10,23 @@ const pad = (value: number) => String(Math.round(value)).padStart(3, "0");
 /**
  * First-visit loader: ink overlay, lime 000 → 100 counter, progress bar, then
  * a wipe up. The inline boot script decides whether it shows at all (see
- * lib/loader.ts); this component only plays it and reports completion.
+ * lib/loader.ts). The page is released (scroll unlocked, intro started) when
+ * the count ends, while the wipe is still running.
  */
 export default function Loader() {
-  const t = useTranslations("loader");
+  const t = useTranslations();
   const rootRef = useRef<HTMLDivElement>(null);
-  const countRef = useRef<HTMLSpanElement>(null);
-  const barRef = useRef<HTMLDivElement>(null);
+  const countRef = useRef<HTMLDivElement>(null);
+  const barRef = useRef<HTMLElement>(null);
 
   useGSAP(() => {
     const root = rootRef.current;
     const html = document.documentElement;
     const { loaderDone, setLoaderDone } = useUi.getState();
+    html.dataset.hydrated = "1";
 
-    const finish = () => {
-      delete html.dataset.loader;
+    const release = () => {
+      html.dataset.ready = "1";
       try {
         sessionStorage.setItem(LOADER_SESSION_KEY, "1");
       } catch {
@@ -34,16 +36,18 @@ export default function Loader() {
     };
 
     if (!root || loaderDone || html.dataset.loader !== "on") {
-      finish();
+      delete html.dataset.loader;
+      release();
       return;
     }
 
+    window.scrollTo(0, 0);
     const progress = { value: 0 };
     gsap
-      .timeline({ onComplete: finish })
+      .timeline()
       .to(progress, {
         value: 100,
-        duration: 1.8,
+        duration: 1.7,
         ease: "power2.inOut",
         onUpdate: () => {
           if (countRef.current) countRef.current.textContent = pad(progress.value);
@@ -51,12 +55,15 @@ export default function Loader() {
             barRef.current.style.transform = `scaleX(${progress.value / 100})`;
           }
         },
+        onComplete: release,
       })
       .to(root, {
-        clipPath: "inset(0 0 100% 0)",
-        duration: 0.9,
+        clipPath: "inset(0% 0% 100% 0%)",
+        duration: 1.2,
         ease: "expo.inOut",
-        delay: 0.15,
+        onComplete: () => {
+          delete html.dataset.loader;
+        },
       });
   });
 
@@ -64,21 +71,29 @@ export default function Loader() {
     <div
       ref={rootRef}
       role="status"
-      className="loader fixed inset-0 z-[100] flex-col justify-end bg-ink-static p-5 text-lime sm:p-8"
+      className="loader fixed inset-0 z-[100] flex-col justify-between bg-ink-static px-pad py-7 text-paper-static"
     >
-      <span className="sr-only">{t("label")}</span>
-      <span
-        ref={countRef}
+      <span className="sr-only">{t("loader.label")}</span>
+      <div
         aria-hidden
-        className="font-display text-[clamp(7rem,28vw,24rem)] leading-[0.8] font-extrabold tracking-display tabular-nums"
+        className="flex justify-between font-mono text-xs tracking-hud text-ash uppercase"
       >
-        000
-      </span>
-      <div aria-hidden className="mt-6 h-[3px] w-full bg-paper-static/15">
+        <span>{t("hud.brand")}</span>
+        <span>{t("loader.tagline")}</span>
+      </div>
+      <div aria-hidden>
         <div
-          ref={barRef}
-          className="h-full origin-left scale-x-0 bg-lime will-change-transform"
-        />
+          ref={countRef}
+          className="text-[clamp(120px,24vw,360px)] leading-[0.8] font-extrabold tracking-[-0.06em] text-lime tabular-nums"
+        >
+          000
+        </div>
+        <div className="h-0.5 bg-paper-static/15">
+          <i
+            ref={barRef}
+            className="block h-full origin-left scale-x-0 bg-lime will-change-transform"
+          />
+        </div>
       </div>
     </div>
   );

@@ -56,7 +56,7 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
   if (reducedMotion) return <>{children}</>;
 
   return (
-    <ReactLenis root ref={lenisRef} options={{ autoRaf: false }}>
+    <ReactLenis root ref={lenisRef} options={{ autoRaf: false, lerp: 0.09 }}>
       {children}
     </ReactLenis>
   );
