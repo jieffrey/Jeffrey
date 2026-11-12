@@ -121,15 +121,47 @@
   },
   "work": {
     "nav": "Karya",
-    "grid": "Grid hierarkis · 12 kolom · 1 utama + 2 sekunder"
+    "grid": "Grid hierarkis · 12 kolom · 1 utama + 2 sekunder",
+    "title": "<em>Karya</em> pilihan",
+    "ghost": "Karya pilihan · Karya pilihan ·",
+    "rank": {
+      "featured": "Unggulan",
+      "project": "Proyek",
+      "client": "Proyek klien"
+    },
+    "open": "Buka studi kasus {title}"
   },
   "about": {
     "nav": "Tentang",
-    "grid": "Grid baseline + kolom · baseline 8pt · 12 kolom"
+    "grid": "Grid baseline + kolom · baseline 8pt · 12 kolom",
+    "title": "Tentang",
+    "statement": "Saya Kalsah, full-stack developer yang suka memegang semuanya dari ujung ke ujung: merancang data, mendesain API, sampai merapikan piksel terakhir di web dan mobile. Saya ingin apa pun yang saya rilis terasa <em>hidup</em> saat disentuh.",
+    "notes": {
+      "now": {
+        "label": "Kini",
+        "text": "Sedang membangun LaporAja, sistem pengaduan berbasis lokasi, sebagai tugas akhir."
+      },
+      "back": {
+        "label": "Back",
+        "text": "Hono, Bun, PostgreSQL, raw SQL di Neon."
+      },
+      "front": {
+        "label": "Front",
+        "text": "Next.js, React Native, Expo, Tailwind, Motion."
+      }
+    }
   },
   "stack": {
     "nav": "Stack",
-    "grid": "Grid radial · 3 cincin · jari-jari 30°"
+    "grid": "Grid radial · 3 cincin · jari-jari 30°",
+    "title": "Semuanya mengorbit <em>TypeScript.</em>",
+    "ghost": "Orbit · Orbit · Orbit · Orbit ·",
+    "core": "TS",
+    "rings": {
+      "core": "Inti",
+      "build": "Bangun",
+      "extras": "Ekstra"
+    }
   },
   "cabinet": {
     "nav": "Lemari",
@@ -144,5 +176,29 @@
     "title": "Foto yang ini jatuh dari jemuran.",
     "body": "Halaman yang kamu cari tidak ada, atau sudah dipindahkan.",
     "back": "Kembali ke beranda"
+  },
+  "workDetail": {
+    "back": "Semua karya",
+    "eyebrow": "Studi kasus",
+    "role": "Peran",
+    "year": "Tahun",
+    "stack": "Stack",
+    "status": "Status",
+    "statuses": {
+      "active": "Sedang dikerjakan",
+      "shipped": "Sudah rilis",
+      "archived": "Diarsipkan"
+    },
+    "problem": "Masalahnya",
+    "built": "Yang saya bangun",
+    "screenshots": "Tangkapan layar",
+    "screenshotsEmpty": "Tangkapan layar menyusul.",
+    "screenshotAlt": "Tangkapan layar {title} ke-{number}",
+    "links": "Tautan",
+    "live": "Situs live",
+    "github": "Kode di GitHub",
+    "linksEmpty": "Tautan akan segera ditambahkan.",
+    "next": "Proyek berikutnya",
+    "metaTitle": "{title} — studi kasus"
   }
 }

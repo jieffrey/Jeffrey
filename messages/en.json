@@ -121,15 +121,47 @@
   },
   "work": {
     "nav": "Work",
-    "grid": "Hierarchical grid · 12 cols · 1 primary + 2 secondary"
+    "grid": "Hierarchical grid · 12 cols · 1 primary + 2 secondary",
+    "title": "Selected <em>work</em>",
+    "ghost": "Selected work · Selected work ·",
+    "rank": {
+      "featured": "Featured",
+      "project": "Project",
+      "client": "Client project"
+    },
+    "open": "Open the {title} case study"
   },
   "about": {
     "nav": "About",
-    "grid": "Baseline + column grid · 8pt baseline · 12 cols"
+    "grid": "Baseline + column grid · 8pt baseline · 12 cols",
+    "title": "About",
+    "statement": "I'm Kalsah, a full-stack developer who likes owning the whole thing: shaping the data, designing the API, and sweating the last pixel on web and mobile. I want the things I ship to feel <em>alive</em> when you touch them.",
+    "notes": {
+      "now": {
+        "label": "Now",
+        "text": "Building LaporAja, a smart geo complaint system, as my final project."
+      },
+      "back": {
+        "label": "Back",
+        "text": "Hono, Bun, PostgreSQL, raw SQL on Neon."
+      },
+      "front": {
+        "label": "Front",
+        "text": "Next.js, React Native, Expo, Tailwind, Motion."
+      }
+    }
   },
   "stack": {
     "nav": "Stack",
-    "grid": "Radial grid · 3 rings · 30° spokes"
+    "grid": "Radial grid · 3 rings · 30° spokes",
+    "title": "Everything orbits <em>TypeScript.</em>",
+    "ghost": "Orbit · Orbit · Orbit · Orbit ·",
+    "core": "TS",
+    "rings": {
+      "core": "Core",
+      "build": "Build",
+      "extras": "Extras"
+    }
   },
   "cabinet": {
     "nav": "Cabinet",
@@ -144,5 +176,29 @@
     "title": "This print fell off the line.",
     "body": "The page you are looking for does not exist, or it has moved.",
     "back": "Back to home"
+  },
+  "workDetail": {
+    "back": "All work",
+    "eyebrow": "Case study",
+    "role": "Role",
+    "year": "Year",
+    "stack": "Stack",
+    "status": "Status",
+    "statuses": {
+      "active": "In progress",
+      "shipped": "Shipped",
+      "archived": "Archived"
+    },
+    "problem": "The problem",
+    "built": "What I built",
+    "screenshots": "Screenshots",
+    "screenshotsEmpty": "Screenshots are on their way.",
+    "screenshotAlt": "{title} screenshot {number}",
+    "links": "Links",
+    "live": "Live site",
+    "github": "Source on GitHub",
+    "linksEmpty": "Links will be added soon.",
+    "next": "Next project",
+    "metaTitle": "{title} — case study"
   }
 }
