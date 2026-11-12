@@ -1,129 +1,133 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+ * Design tokens for "The Line". See DESIGN.md.
+ * Components must use these through Tailwind utilities (bg-paper, text-ink,
+ * font-mono, ...) and never hardcode hex values.
+ */
+@theme {
+  /* Surfaces and text. These four swap in the dark ("lights off") theme. */
+  --color-paper: #f3efe6;
+  --color-paper-2: #ece6d9;
+  --color-ink: #161513;
+  --color-muted: #5c574e;
+  --color-rope: #8c8270;
+
+  /* Same values as paper / ink, but they never swap with the theme. */
+  --color-paper-static: #f3efe6;
+  --color-ink-static: #161513;
+
+  /* Accents. Identical in both themes. */
+  --color-lime: #c8f03c;
+  --color-pink: #ff8fc7;
+  --color-blue: #3d5afe;
+  --color-orange: #ff7a2f;
+  --color-teal: #2fd3b5;
+  --color-yellow: #ffd43b;
+
+  /* Now dashboard. Always dark in both themes. */
+  --color-night: #0e0e10;
+  --color-card: #17171a;
+  --color-edge: #26262b;
+  --color-dim: #9b9ba3;
+  --color-violet: #7c6cf6;
+  --color-violet-2: #b9afff;
+
+  /* Contribution heatmap scale, low to high. */
+  --color-heat-0: #24242a;
+  --color-heat-1: #3a3470;
+  --color-heat-2: #5a4fc0;
+  --color-heat-3: #7c6cf6;
+  --color-heat-4: #b9afff;
+
+  --tracking-display: -0.045em;
+  --tracking-hud: 0.08em;
+
+  --ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-expo-in-out: cubic-bezier(0.87, 0, 0.13, 1);
+}
+
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", monospace;
+  --font-sans: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
 }
 
-:root {
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-}
-
+/* Lights off: paper goes near-black, ink becomes paper, accents stay. */
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --color-paper: #121110;
+  --color-paper-2: #1a1917;
+  --color-ink: #f3efe6;
+  --color-muted: #a8a294;
+  --color-rope: #6e6656;
+  color-scheme: dark;
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
   html {
-    @apply font-sans;
+    @apply bg-paper font-display text-ink antialiased;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply min-h-screen overflow-x-clip;
+  }
+
+  ::selection {
+    @apply bg-lime text-ink-static;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-4 outline-blue;
+  }
+
+  /* The custom cursor replaces the native one on mouse devices only. */
+  html[data-cursor="on"],
+  html[data-cursor="on"] * {
+    cursor: none;
+  }
+}
+
+/*
+ * Loader. Hidden unless the inline boot script in <head> turned it on, so it
+ * never covers content when JS is off or the visitor prefers reduced motion.
+ * The failsafe animation removes it even if the app bundle never hydrates.
+ */
+.loader {
+  display: none;
+}
+
+html[data-loader="on"] .loader {
+  display: flex;
+  clip-path: inset(0 0 0% 0);
+  animation: loader-failsafe 0s linear 8s forwards;
+}
+
+@keyframes loader-failsafe {
+  to {
+    visibility: hidden;
+  }
+}
+
+@utility hud-chip {
+  @apply inline-flex h-9 items-center gap-2 rounded-full border border-ink/15 bg-paper/85 px-3.5 font-mono text-[11px] leading-none font-medium tracking-hud whitespace-nowrap text-ink uppercase backdrop-blur-md;
+}
+
+@utility eyebrow {
+  @apply font-mono text-[11px] leading-4 font-medium tracking-hud uppercase;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
