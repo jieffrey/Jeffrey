@@ -1,11 +1,13 @@
 "use client";
 import { useRef, useState } from "react";
 import dynamic from "next/dynamic";
+import { MotionConfig } from "motion/react";
 import { useTranslations } from "next-intl";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import type { GithubData } from "@/lib/data/github";
 import type { SpotifyNowPlaying } from "@/lib/data/spotify";
 import { motionOn } from "@/lib/motion";
+import ColumnsOverlay from "@/common/components/section/ColumnsOverlay";
 import SectionHeader from "@/common/components/section/SectionHeader";
 import { BuildingTile, ProfileTile } from "./SmallTiles";
 import SpotifyTile from "./SpotifyTile";
@@ -44,17 +46,30 @@ export default function Now({ github, spotify }: NowProps) {
   const section = useRef<HTMLElement>(null);
   const grid = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(false);
+  // True once the section is within two viewports; chart code loads then.
+  const [near, setNear] = useState(false);
 
   useGSAP(
     () => {
       if (!section.current || !grid.current) return;
+      const approach = ScrollTrigger.create({
+        trigger: section.current,
+        start: "top 300%",
+        once: true,
+        onEnter: () => setNear(true),
+      });
       const enter = ScrollTrigger.create({
         trigger: grid.current,
         start: "top 85%",
         once: true,
         onEnter: () => setActive(true),
       });
-      if (!motionOn()) return () => enter.kill();
+      if (!motionOn()) {
+        return () => {
+          approach.kill();
+          enter.kill();
+        };
+      }
 
       gsap.fromTo(
         section.current,
@@ -92,9 +107,10 @@ export default function Now({ github, spotify }: NowProps) {
       ref={section}
       data-section="now"
       aria-labelledby="now-title"
-      className="relative bg-night py-[104px] text-snow min-[721px]:py-[136px]"
+      className="relative bg-night py-[104px] text-snow [--gridline:color-mix(in_srgb,var(--color-violet)_22%,transparent)] min-[721px]:py-[136px]"
     >
       <div className="relative mx-auto max-w-[1320px] px-pad">
+        <ColumnsOverlay />
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeader
             id="now"
@@ -109,19 +125,43 @@ export default function Now({ github, spotify }: NowProps) {
         </div>
         <div
           ref={grid}
-          className="mt-12 grid grid-cols-4 gap-4 [perspective:1400px] min-[961px]:auto-rows-[88px] min-[961px]:grid-cols-12"
+          className="relative mt-12 grid grid-cols-4 gap-4 [perspective:1400px] min-[961px]:auto-rows-[88px] min-[961px]:grid-cols-12"
         >
-          <HeatmapTile contributions={github.contributions} active={active} />
-          <SpotifyTile spotify={spotify} />
-          <AreaTile
-            weekly={github.weeklyCommits}
-            delta={github.weeklyDelta}
-            active={active}
+          {/* Module rows: 88px modules separated by the 16px gap. */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 z-[3] hidden bg-[repeating-linear-gradient(to_bottom,transparent_0_88px,var(--gridline)_88px_104px)] opacity-0 transition-opacity duration-300 grid-on:opacity-100 min-[961px]:block"
           />
-          <LanguagesTile languages={github.languages} />
+          {/* Charts animate with Motion; this makes them respect reduced motion. */}
+          <MotionConfig reducedMotion="user">
+          {near ? (
+            <HeatmapTile contributions={github.contributions} active={active} />
+          ) : (
+            <Tile span="8x3">{null}</Tile>
+          )}
+          <SpotifyTile spotify={spotify} />
+          {near ? (
+            <AreaTile
+              weekly={github.weeklyCommits}
+              delta={github.weeklyDelta}
+              active={active}
+            />
+          ) : (
+            <Tile span="8x3">{null}</Tile>
+          )}
+          {near ? (
+            <LanguagesTile languages={github.languages} />
+          ) : (
+            <Tile span="4x3">{null}</Tile>
+          )}
           <ProfileTile profile={github.profile} active={active} />
-          <WeekdayTile commits={github.weekdayCommits} active={active} />
+          {near ? (
+            <WeekdayTile commits={github.weekdayCommits} active={active} />
+          ) : (
+            <Tile span="4x2">{null}</Tile>
+          )}
           <BuildingTile />
+          </MotionConfig>
         </div>
       </div>
     </section>
