@@ -39,6 +39,10 @@
       "sway": "Wind",
       "gap": "Spacing",
       "reset": "Reset camera"
+    },
+    "grid": {
+      "chip": "Grid",
+      "label": "Show the grid overlay of every section"
     }
   },
   "loader": {
@@ -128,7 +132,11 @@
       "project": "Project",
       "client": "Client project"
     },
-    "open": "Open the {title} case study"
+    "open": "Open the {title} case study",
+    "overlay": {
+      "primary": "Primary · 7 col × 2 row",
+      "secondary": "Secondary · 5 col"
+    }
   },
   "about": {
     "nav": "About",
@@ -167,7 +175,6 @@
     "grid": "Diagonal grid · 30° axis",
     "title": "Kept like <em>trophies.</em>",
     "ghost": "Trophies · Trophies · Trophies ·",
-    "open": "Open {title}",
     "kinds": {
       "award": "Award",
       "certificate": "Certificate",

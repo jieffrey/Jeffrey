@@ -115,8 +115,7 @@ export function getMockGithub(now: Date = new Date()): GithubData {
     live: false,
     profile: {
       name: "Kalsah",
-      // TODO(kalsah): your GitHub username (shown as @handle).
-      login: "[username]",
+      login: "jieffrey",
       avatarUrl: null,
       repos: 32,
       stars: 87,

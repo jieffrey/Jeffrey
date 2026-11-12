@@ -4,8 +4,10 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useUi } from "@/common/stores/ui";
 import { useActiveSection } from "@/hooks/use-active-section";
+import { useHashRestore } from "@/hooks/use-hash-restore";
 import { useScrollToSection } from "@/hooks/use-scroll-to-section";
 import CameraPanel from "./CameraPanel";
+import GridToggle from "./GridToggle";
 import HudNav from "./HudNav";
 import LanguageSwitch from "./LanguageSwitch";
 import Magnetic from "./Magnetic";
@@ -24,6 +26,7 @@ export default function Hud() {
   const scrollToSection = useScrollToSection();
   const lineMode = useUi((s) => s.lineMode);
   useActiveSection();
+  useHashRestore();
 
   const onHome = (e: MouseEvent<HTMLAnchorElement>) => {
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
@@ -38,7 +41,7 @@ export default function Hud() {
           href="/"
           onClick={onHome}
           aria-label={t("homeLabel")}
-          className="hud-chip pointer-events-auto font-medium"
+          className="hud-chip pointer-events-auto font-medium max-[719px]:h-9 max-[719px]:px-3 max-[719px]:text-[11px]"
         >
           {t("brand")}
         </Link>
@@ -50,6 +53,11 @@ export default function Hud() {
           {lineMode === "scene" && <CameraPanel />}
         </div>
         <div className="flex items-center gap-2">
+          {lineMode !== null && (
+            <Magnetic>
+              <GridToggle />
+            </Magnetic>
+          )}
           <Magnetic>
             <LanguageSwitch />
           </Magnetic>

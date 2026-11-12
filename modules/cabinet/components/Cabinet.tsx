@@ -85,7 +85,7 @@ export default function Cabinet() {
     <section id="cabinet" data-section="cabinet" aria-labelledby="cabinet-title">
       <div
         ref={pin}
-        className="relative flex flex-col justify-center overflow-hidden bg-paper bg-[repeating-linear-gradient(-30deg,color-mix(in_srgb,var(--color-ink)_6%,transparent)_0_1px,transparent_1px_64px)] py-[88px] text-ink min-[961px]:min-h-svh"
+        className="relative flex flex-col justify-center overflow-hidden bg-paper bg-[repeating-linear-gradient(-30deg,var(--diagonal)_0_1px,transparent_1px_64px)] [--diagonal:color-mix(in_srgb,var(--color-ink)_6%,transparent)] grid-on:[--diagonal:color-mix(in_srgb,var(--color-blue)_25%,transparent)] py-[88px] text-ink min-[961px]:min-h-svh"
       >
         <GhostText text={t("ghost")} className="top-[60px]" />
         <div className="relative z-[1] mx-auto w-full max-w-[1320px] px-pad">
@@ -106,7 +106,7 @@ export default function Cabinet() {
             >
               <div
                 aria-hidden
-                className="absolute top-0 left-0 hidden h-[1.5px] w-[2000px] origin-top-left rotate-[30deg] bg-ink opacity-25 min-[961px]:block"
+                className="absolute top-0 left-0 hidden h-[1.5px] w-[2000px] origin-top-left rotate-[30deg] bg-ink opacity-25 grid-on:bg-blue grid-on:opacity-100 min-[961px]:block"
               />
               {ACHIEVEMENTS.map((achievement, i) => {
                 const title = localize(achievement.title, locale);
@@ -115,7 +115,6 @@ export default function Cabinet() {
                     key={achievement.slug}
                     href={`/achievements/${achievement.slug}`}
                     data-cursor="open"
-                    aria-label={t("open", { title })}
                     className="group relative ml-[calc(var(--i)*var(--step))] flex w-60 flex-col gap-2.5 min-[961px]:absolute min-[961px]:top-[calc(var(--i)*var(--step)*var(--slope))] min-[961px]:left-[calc(var(--i)*var(--step))] min-[961px]:ml-0"
                     style={{ "--i": i } as CSSProperties}
                   >

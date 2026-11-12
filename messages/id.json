@@ -39,6 +39,10 @@
       "sway": "Angin",
       "gap": "Jarak",
       "reset": "Reset kamera"
+    },
+    "grid": {
+      "chip": "Grid",
+      "label": "Tampilkan overlay grid di setiap bagian"
     }
   },
   "loader": {
@@ -128,7 +132,11 @@
       "project": "Proyek",
       "client": "Proyek klien"
     },
-    "open": "Buka studi kasus {title}"
+    "open": "Buka studi kasus {title}",
+    "overlay": {
+      "primary": "Utama · 7 kolom × 2 baris",
+      "secondary": "Sekunder · 5 kolom"
+    }
   },
   "about": {
     "nav": "Tentang",
@@ -167,7 +175,6 @@
     "grid": "Grid diagonal · sumbu 30°",
     "title": "Disimpan seperti <em>piala.</em>",
     "ghost": "Piala · Piala · Piala · Piala ·",
-    "open": "Buka {title}",
     "kinds": {
       "award": "Penghargaan",
       "certificate": "Sertifikat",
