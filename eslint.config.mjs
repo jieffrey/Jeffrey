@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Old UI kept only as reference until its phase migrates it.
+    "legacy/**",
   ]),
 ]);
 
