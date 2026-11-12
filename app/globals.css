@@ -53,6 +53,10 @@
   --color-heat-3: #7c6cf6;
   --color-heat-4: #b9afff;
 
+  /* Chart tooltip surface. */
+  --color-tip: #222227;
+  --color-tip-edge: #34343b;
+
   /* Objects: clothespin wood and vinyl record. */
   --color-peg: #c9a97c;
   --color-peg-shade: #a98757;
@@ -72,9 +76,46 @@
 
 @theme inline {
   --font-display: var(--font-bricolage-ext), var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
-  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", monospace;
+  --font-serif: var(--font-instrument-ext), var(--font-instrument), ui-serif, Georgia, serif;
+  --font-mono: var(--font-jetbrains-ext), var(--font-jetbrains), ui-monospace, "SFMono-Regular", monospace;
   --font-sans: var(--font-bricolage-ext), var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  /* bklit chart utilities (fill-chart-*, text-chart-*). Values are below. */
+  --color-foreground: var(--foreground);
+  --color-chart-line-primary: var(--chart-line-primary);
+  --color-chart-line-secondary: var(--chart-line-secondary);
+  --color-chart-brush-border: var(--chart-brush-border);
+  --color-chart-tooltip-background: var(--chart-tooltip-background);
+  --color-chart-tooltip-foreground: var(--chart-tooltip-foreground);
+  --color-chart-tooltip-muted: var(--chart-tooltip-muted);
+  --color-chart-scale-02: var(--chart-scale-02);
+  --color-chart-scale-03: var(--chart-scale-03);
+  --color-chart-scale-04: var(--chart-scale-04);
+  --color-chart-scale-05: var(--chart-scale-05);
+  --color-chart-segment-line: var(--chart-segment-line);
+  --color-chart-segment-background: var(--chart-segment-background);
+  --color-chart-marker-badge-foreground: var(--chart-marker-badge-foreground);
+  --color-chart-marker-badge-background: var(--chart-marker-badge-background);
+  --color-chart-indicator-secondary-color: var(--chart-indicator-secondary-color);
+  --color-chart-indicator-color: var(--chart-indicator-color);
+  --color-chart-scale-pattern-color: var(--chart-scale-pattern-color);
+  --color-chart-scale-01: var(--chart-scale-01);
+  --color-chart-scale-mix: var(--chart-scale-mix);
+  --color-chart-label: var(--chart-label);
+  --color-chart-marker-foreground: var(--chart-marker-foreground);
+  --color-chart-marker-border: var(--chart-marker-border);
+  --color-chart-marker-background: var(--chart-marker-background);
+  --color-chart-grid: var(--chart-grid);
+  --color-chart-crosshair: var(--chart-crosshair);
+  --color-chart-foreground-muted: var(--chart-foreground-muted);
+  --color-chart-foreground: var(--chart-foreground);
+  --color-chart-background: var(--chart-background);
+  --color-chart-negative: var(--chart-negative);
+  --color-chart-positive: var(--chart-positive);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
 }
 
 /* Lights off: paper goes near-black, ink becomes paper, accents stay. */
@@ -87,6 +128,54 @@
   --color-hair: #33302b;
   --color-glass: #1f1e1b;
   color-scheme: dark;
+}
+
+/*
+ * bklit chart variables (components/charts), mapped onto our tokens. Charts
+ * only live in the Now section, which is dark in both themes, so there is a
+ * single set of values.
+ */
+:root {
+  --chart-1: var(--color-violet);
+  --chart-2: var(--color-orange);
+  --chart-3: var(--color-teal);
+  --chart-4: var(--color-yellow);
+  --chart-5: var(--color-pink);
+  --chart-positive: var(--color-lime);
+  --chart-negative: var(--color-orange);
+  --chart-background: var(--color-card);
+  --chart-foreground: var(--color-snow);
+  --chart-foreground-muted: var(--color-dim);
+  --chart-line-primary: var(--color-violet);
+  --chart-line-secondary: var(--color-violet-2);
+  --chart-crosshair: var(--color-dim);
+  --chart-grid: var(--color-edge);
+  --chart-brush-border: var(--color-edge);
+  --chart-tooltip-background: var(--color-tip);
+  --chart-tooltip-foreground: var(--color-snow);
+  --chart-tooltip-muted: var(--color-dim);
+  --chart-marker-background: var(--color-card);
+  --chart-marker-border: var(--color-edge);
+  --chart-marker-foreground: var(--color-snow);
+  --chart-label: var(--color-dim);
+  --chart-scale-mix: var(--color-heat-0);
+  --chart-scale-01: var(--color-heat-0);
+  --chart-scale-02: var(--color-heat-1);
+  --chart-scale-03: var(--color-heat-2);
+  --chart-scale-04: var(--color-heat-3);
+  --chart-scale-05: var(--color-heat-4);
+  --chart-scale-pattern-color: var(--color-night);
+  --chart-indicator-color: var(--color-snow);
+  --chart-indicator-secondary-color: var(--color-night);
+  --chart-marker-badge-background: var(--color-snow);
+  --chart-marker-badge-foreground: var(--color-night);
+  --chart-segment-background: color-mix(in srgb, var(--color-dim) 15%, transparent);
+  --chart-segment-line: color-mix(in srgb, var(--color-snow) 25%, transparent);
+  /* shadcn names the chart code reads directly. */
+  --foreground: var(--color-snow);
+  --background: var(--color-card);
+  --border: var(--color-edge);
+  --muted-foreground: var(--color-dim);
 }
 
 @layer base {

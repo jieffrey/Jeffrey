@@ -14,6 +14,8 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // Old UI kept only as reference until its phase migrates it.
     "legacy/**",
+    // bklit UI chart components installed from its shadcn registry.
+    "components/**",
   ]),
 ]);
 
