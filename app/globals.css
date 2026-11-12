@@ -51,10 +51,10 @@
 }
 
 @theme inline {
-  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage-ext), var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
   --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", monospace;
-  --font-sans: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-bricolage-ext), var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
 }
 
 /* Lights off: paper goes near-black, ink becomes paper, accents stay. */

@@ -54,7 +54,7 @@ The Now section is always dark in both themes and uses `night`, `card`,
 
 ## Type
 
-Loaded with `next/font/google` in `lib/fonts.ts`.
+Loaded in `lib/fonts.ts`. Bricolage Grotesque is self-hosted with `next/font/local` (`app/fonts/`, SIL OFL 1.1); the other two use `next/font/google`.
 
 | Role | Family | Tailwind | Use |
 |---|---|---|---|
