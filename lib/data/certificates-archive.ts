@@ -1,4 +1,4 @@
-import type { Certificate } from "../type";
+import type { Certificate } from "./certificates-archive.types";
 
 export const CERTIFICATES: Certificate[] = [
   {

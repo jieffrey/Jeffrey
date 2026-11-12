@@ -5,8 +5,7 @@
     "description": "Portofolio Jeffrey Kalsah Al Kautsar, fullstack developer asal Indonesia yang membangun produk web dan mobile dengan React, Next.js, dan React Native."
   },
   "common": {
-    "skipToContent": "Langsung ke konten",
-    "placeholder": "Bagian ini sedang dibangun ulang. Mampir lagi nanti, ya."
+    "skipToContent": "Langsung ke konten"
   },
   "hud": {
     "brand": "Jeffreystudios",
@@ -165,11 +164,29 @@
   },
   "cabinet": {
     "nav": "Lemari",
-    "grid": "Grid diagonal · sumbu 30°"
+    "grid": "Grid diagonal · sumbu 30°",
+    "title": "Disimpan seperti <em>piala.</em>",
+    "ghost": "Piala · Piala · Piala · Piala ·",
+    "open": "Buka {title}",
+    "kinds": {
+      "award": "Penghargaan",
+      "certificate": "Sertifikat",
+      "hackathon": "Hackathon",
+      "medal": "Medali",
+      "milestone": "Tonggak"
+    }
   },
   "contact": {
     "nav": "Kontak",
-    "grid": "Grid aksial · 1 sumbu tengah"
+    "grid": "Grid aksial · 1 sumbu tengah",
+    "title": "Ayo bikin <em>sesuatu.</em>",
+    "lead": "Terbuka untuk proyek freelance dan magang. Ceritakan apa yang sedang kamu buat.",
+    "email": "Kirim email",
+    "emailLabel": "Kirim email ke {email}",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "external": "{name} (terbuka di tab baru)",
+    "footer": "© {year} Jeffreystudios · Next.js · Motion · bklit"
   },
   "notFound": {
     "eyebrow": "404 — Lepas dari jemuran",
@@ -200,5 +217,20 @@
     "linksEmpty": "Tautan akan segera ditambahkan.",
     "next": "Proyek berikutnya",
     "metaTitle": "{title} — studi kasus"
+  },
+  "achievementDetail": {
+    "back": "Lemari",
+    "kind": "Jenis",
+    "issuer": "Diberikan oleh",
+    "date": "Tanggal",
+    "credential": "Kredensial",
+    "credentialLink": "Lihat kredensial",
+    "about": "Tentang pencapaian ini",
+    "built": "Yang saya bangun",
+    "proof": "Foto atau sertifikat",
+    "proofEmpty": "Foto atau sertifikatnya akan ditaruh di sini.",
+    "proofAlt": "{title}: foto atau sertifikat",
+    "next": "Berikutnya di lemari",
+    "metaTitle": "{title} — pencapaian"
   }
 }

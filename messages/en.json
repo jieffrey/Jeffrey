@@ -5,8 +5,7 @@
     "description": "Portfolio of Jeffrey Kalsah Al Kautsar, a fullstack developer from Indonesia building web and mobile products with React, Next.js and React Native."
   },
   "common": {
-    "skipToContent": "Skip to content",
-    "placeholder": "This section is being rebuilt. Check back soon."
+    "skipToContent": "Skip to content"
   },
   "hud": {
     "brand": "Jeffreystudios",
@@ -165,11 +164,29 @@
   },
   "cabinet": {
     "nav": "Cabinet",
-    "grid": "Diagonal grid · 30° axis"
+    "grid": "Diagonal grid · 30° axis",
+    "title": "Kept like <em>trophies.</em>",
+    "ghost": "Trophies · Trophies · Trophies ·",
+    "open": "Open {title}",
+    "kinds": {
+      "award": "Award",
+      "certificate": "Certificate",
+      "hackathon": "Hackathon",
+      "medal": "Medal",
+      "milestone": "Milestone"
+    }
   },
   "contact": {
     "nav": "Contact",
-    "grid": "Axial grid · 1 center axis"
+    "grid": "Axial grid · 1 center axis",
+    "title": "Let's build <em>something.</em>",
+    "lead": "Open for freelance work and internships. Tell me what you're making.",
+    "email": "Email me",
+    "emailLabel": "Send an email to {email}",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "external": "{name} (opens in a new tab)",
+    "footer": "© {year} Jeffreystudios · Next.js · Motion · bklit"
   },
   "notFound": {
     "eyebrow": "404 — Off the line",
@@ -200,5 +217,20 @@
     "linksEmpty": "Links will be added soon.",
     "next": "Next project",
     "metaTitle": "{title} — case study"
+  },
+  "achievementDetail": {
+    "back": "The Cabinet",
+    "kind": "Type",
+    "issuer": "Issued by",
+    "date": "Date",
+    "credential": "Credential",
+    "credentialLink": "View credential",
+    "about": "What it was",
+    "built": "What I built",
+    "proof": "Photo or certificate",
+    "proofEmpty": "A photo or the certificate goes here.",
+    "proofAlt": "{title}: photo or certificate",
+    "next": "Next in the cabinet",
+    "metaTitle": "{title} — achievement"
   }
 }
