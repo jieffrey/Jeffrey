@@ -216,13 +216,11 @@ export function filterHeatmapColumns(
   });
 }
 
-const heatmapTooltipMonthFmt = new Intl.DateTimeFormat("en-US", {
-  month: "long",
-});
-
-const heatmapTooltipWeekdayFmt = new Intl.DateTimeFormat("en-US", {
-  weekday: "long",
-});
+// Patched for jeffreystudios: tooltip dates follow <html lang>.
+const pageLocale = () =>
+  typeof document === "undefined"
+    ? "en-US"
+    : document.documentElement.lang || "en-US";
 
 function formatHeatmapOrdinalDay(day: number): string {
   if (day >= 11 && day <= 13) {
@@ -243,14 +241,18 @@ function formatHeatmapOrdinalDay(day: number): string {
 
 /** Tooltip header date — e.g. `January 20th 2026`. */
 export function formatHeatmapTooltipDate(date: Date): string {
-  const month = heatmapTooltipMonthFmt.format(date);
+  const locale = pageLocale();
+  if (!locale.startsWith("en")) {
+    return new Intl.DateTimeFormat(locale, { dateStyle: "long" }).format(date);
+  }
+  const month = new Intl.DateTimeFormat(locale, { month: "long" }).format(date);
   const day = formatHeatmapOrdinalDay(date.getDate());
   return `${month} ${day} ${date.getFullYear()}`;
 }
 
 /** Tooltip weekday line — e.g. `Monday`. */
 export function formatHeatmapTooltipWeekday(date: Date): string {
-  return heatmapTooltipWeekdayFmt.format(date);
+  return new Intl.DateTimeFormat(pageLocale(), { weekday: "long" }).format(date);
 }
 
 /** Tooltip contribution line — e.g. `3 contributions`. */
