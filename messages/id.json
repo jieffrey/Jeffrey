@@ -1,156 +1,67 @@
 {
-  "Navigation": {
-    "Home": "Beranda",
-    "About": "Tentang",
-    "Projects": "Proyek",
-    "Achievements": "Pencapaian",
-    "Dashboard": "Dasbor",
-    "Contact": "Kontak",
-    "Contents": "Konten",
-    "Chat Room": "Ruang Obrolan",
-    "Smart Talk": "Smart Talk"
+  "meta": {
+    "siteName": "Jeffrey Studios",
+    "title": "Jeffrey Studios — Kalsah, developer yang selalu penasaran",
+    "description": "Portofolio Jeffrey Kalsah Al Kautsar, fullstack developer asal Indonesia yang membangun produk web dan mobile dengan React, Next.js, dan React Native."
   },
-  "Footer": {
-    "copyright": "HAK CIPTA © 2026",
-    "name": "Jeffrey Studios",
-    "rights": "Semua hak dilindungi."
+  "common": {
+    "skipToContent": "Langsung ke konten",
+    "placeholder": "Bagian ini sedang dibangun ulang. Mampir lagi nanti, ya."
   },
-  "HomePage": {
-    "intro": "Halo, saya Jeffrey Kalsah Al Kautsar 👋",
-    "location": "Berdomisili Jawa Barat, Indonesia 🇮🇩",
-    "location_type": "On-site / Remote",
-    "status": "Terbuka untuk Pekerjaan",
-    "resume_1": "Seorang Fullstack Developer yang berfokus pada pengembangan aplikasi web dan mobile dengan pendekatan modern dan scalable. Saya berpengalaman menggunakan React, Next.js, React Native, dan Flutter untuk membangun produk digital yang responsif dan user-friendly, serta mengembangkan backend menggunakan Node.js, Express, dan Supabase.",
-    "resume_2": "Saya memiliki perhatian besar terhadap struktur arsitektur aplikasi, performa, dan maintainability. Saya juga memahami proses desain menggunakan Figma untuk memastikan keseimbangan antara fungsionalitas dan pengalaman pengguna. Berkomitmen untuk menghasilkan solusi digital yang tidak hanya berjalan dengan baik, tetapi juga memiliki nilai nyata bagi pengguna.",
-    "skills": {
-      "title": "Keahlian",
-      "sub_title": "Teknologi yang saya gunakan sehari-hari untuk membangun produk digital.",
-      "filter": {
-        "all": "Semua",
-        "main": "Utama",
-        "frontend": "Frontend",
-        "backend": "Backend",
-        "mobile": "Mobile",
-        "database": "Database",
-        "tools": "Tools"
-      }
+  "hud": {
+    "brand": "Jeffreystudios",
+    "homeLabel": "Jeffreystudios, kembali ke bagian atas beranda",
+    "navLabel": "Bagian halaman",
+    "language": {
+      "switchTo": "Ganti bahasa ke {language}",
+      "en": "Inggris",
+      "id": "Indonesia"
+    },
+    "theme": {
+      "toDark": "Matikan lampu (tema gelap)",
+      "toLight": "Nyalakan lampu (tema terang)",
+      "light": "Terang",
+      "dark": "Gelap"
+    },
+    "cursor": {
+      "open": "Buka"
     }
   },
-  "AboutPage": {
-    "title": "Tentang",
-    "subtitle": "Pengenalan singkat tentang siapa saya.",
-    "tabs": {
-      "story": "Pengenalan",
-      "career": "Karir",
-      "education": "Pendidikan"
-    },
-    "story": {
-      "title": "Pengenalan",
-      "subtitle": "Siapa saya dan apa yang saya lakukan.",
-      "paragraphs": [
-        "Halo, saya Jeffrey Kalsah Al Kautsar, seorang Fullstack Developer yang berdomisili di Indonesia 🇮🇩 dan berfokus pada pengembangan aplikasi web dan mobile yang modern dan scalable.",
-        "Saya berpengalaman menggunakan React, Next.js, React Native, dan Flutter untuk membangun produk digital yang responsif dan user-friendly, serta mengembangkan backend menggunakan Node.js, Express, dan Supabase.",
-        "Saya memiliki perhatian besar terhadap arsitektur aplikasi, performa, dan maintainability, serta terbiasa bekerja dengan database seperti PostgreSQL dan MySQL. Saya juga memahami proses desain menggunakan Figma untuk memastikan keseimbangan antara fungsionalitas dan pengalaman pengguna.",
-        "Saya berkomitmen untuk menghasilkan solusi digital yang tidak hanya berjalan dengan baik, tetapi juga memiliki nilai nyata bagi pengguna."
-      ]
-    },
-    "career": {
-      "title": "Karir",
-      "subtitle": "Pengalaman dan peran yang pernah saya jalani.",
-      "items": [
-        {
-          "role": "Instruktur Afterclass",
-          "company": "SMK Taruna Bhakti",
-          "type": "Mengajar",
-          "period": "2025",
-          "description": "Mengajarkan materi pemrograman kepada siswa kelas 10 dalam sesi afterclass. Materi yang diajarkan mencakup penggunaan GitHub untuk version control, konsep asynchronous & synchronous programming, callback function, serta setup dan penggunaan TypeScript dalam proyek JavaScript.",
-          "tags": [
-            "GitHub",
-            "TypeScript",
-            "Async/Await",
-            "Callback",
-            "Mengajar"
-          ]
-        },
-        {
-          "role": "Instruktur Afterclass",
-          "company": "SMK Taruna Bhakti",
-          "type": "Mengajar",
-          "period": "2025",
-          "description": "Sesi pertama mengajar afterclass untuk siswa kelas 10. Fokus pada pengenalan dasar GitHub, alur kerja version control, dan konsep-konsep fundamental JavaScript modern.",
-          "tags": [
-            "GitHub",
-            "JavaScript",
-            "Version Control",
-            "Mengajar"
-          ]
-        }
-      ]
-    },
-    "education": {
-      "title": "Pendidikan",
-      "subtitle": "Latar belakang pendidikan saya dari awal hingga sekarang.",
-      "items": [
-        {
-          "school": "SMK Taruna Bhakti",
-          "level": "Sekolah Menengah Kejuruan",
-          "location": "Depok, Jawa Barat",
-          "period": "2024 - Sekarang"
-        },
-        {
-          "school": "SMPIT Raflesia",
-          "level": "Sekolah Menengah Pertama",
-          "location": "Depok, Jawa Barat",
-          "period": "2021 - 2024"
-        },
-        {
-          "school": "SDN Tugu 10",
-          "level": "Sekolah Dasar",
-          "location": "Depok, Jawa Barat",
-          "period": "2015 - 2021"
-        },
-        {
-          "school": "RA Assunbulah",
-          "level": "Taman Kanak-Kanak Islam",
-          "location": "Cimanggis, Depok, Jawa Barat",
-          "period": "2014 - 2015"
-        }
-      ]
-    }
+  "loader": {
+    "label": "Memuat halaman"
   },
-  "AchievementsPage": {
-    "title": "Pencapaian",
-    "subtitle": "Sertifikat dan pencapaian pembelajaran yang pernah saya raih.",
-    "search_placeholder": "Cari pencapaian...",
-    "showing": "Menampilkan",
-    "certificates": "sertifikat",
-    "empty": "Tidak ada pencapaian yang ditemukan."
+  "line": {
+    "nav": "Line",
+    "grid": "Grid spasial · CSS 3D"
   },
-  "ProjectsPage": {
-    "title": "Proyek",
-    "subtitle": "Proyek mini yang pernah saya bangun dan deploy saat belajar.",
-    "search_placeholder": "Cari proyek...",
-    "showing": "Menampilkan",
-    "projects": "proyek",
-    "empty": "Proyek tidak ditemukan."
+  "now": {
+    "nav": "Kini",
+    "grid": "Grid modular · 12 kolom × modul 88px"
   },
-  "ContactPage": {
-    "title": "Kontak",
-    "subtitle": "Silakan hubungi saya melalui platform yang Anda pilih.",
-    "email_desc": "Lebih suka email? Kirim pesan langsung.",
-    "Or send me a message": "Atau kirim saya pesan",
-    "form_success": "Pesan berhasil dikirim.",
-    "form_success_sub": "Saya akan segera membalasnya.",
-    "form_send_another": "Kirim pesan lain",
-    "name": "Nama",
-    "form_email": "Email",
-    "form_message": "Pesan",
-    "form_name_placeholder": "Nama Anda",
-    "form_email_placeholder": "email@anda.com",
-    "form_message_placeholder": "Tulis pesan Anda di sini...",
-    "form_error": "Terjadi kesalahan. Silakan coba lagi.",
-    "form_sending": "Mengirim...",
-    "form_send": "Kirim pesan",
-    "footer_note": "Biasanya membalas dalam 24 jam."
+  "work": {
+    "nav": "Karya",
+    "grid": "Grid hierarkis · 12 kolom · 1 utama + 2 sekunder"
+  },
+  "about": {
+    "nav": "Tentang",
+    "grid": "Grid baseline + kolom · baseline 8pt · 12 kolom"
+  },
+  "stack": {
+    "nav": "Stack",
+    "grid": "Grid radial · 3 cincin · jari-jari 30°"
+  },
+  "cabinet": {
+    "nav": "Lemari",
+    "grid": "Grid diagonal · sumbu 30°"
+  },
+  "contact": {
+    "nav": "Kontak",
+    "grid": "Grid aksial · 1 sumbu tengah"
+  },
+  "notFound": {
+    "eyebrow": "404 — Lepas dari jemuran",
+    "title": "Foto yang ini jatuh dari jemuran.",
+    "body": "Halaman yang kamu cari tidak ada, atau sudah dipindahkan.",
+    "back": "Kembali ke beranda"
   }
 }
