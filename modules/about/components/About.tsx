@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { motionOn } from "@/lib/motion";
 import { splitWords } from "@/lib/split-text";
+import ColumnsOverlay from "@/common/components/section/ColumnsOverlay";
 import SectionHeader from "@/common/components/section/SectionHeader";
 
 const NOTES = ["now", "back", "front"] as const;
@@ -55,9 +56,10 @@ export default function About() {
     <section id="about" data-section="about" aria-labelledby="about-title">
       <div
         ref={pin}
-        className="relative flex min-h-svh flex-col justify-center bg-paper bg-[repeating-linear-gradient(to_bottom,color-mix(in_srgb,var(--color-ink)_5%,transparent)_0_1px,transparent_1px_8px)] py-[104px] text-ink min-[721px]:py-[136px]"
+        className="relative flex min-h-svh flex-col justify-center bg-paper bg-[repeating-linear-gradient(to_bottom,var(--baseline)_0_1px,transparent_1px_8px)] pt-[104px] pb-[176px] text-ink [--baseline:color-mix(in_srgb,var(--color-ink)_5%,transparent)] grid-on:[--baseline:color-mix(in_srgb,var(--color-pink)_75%,transparent)] min-[721px]:py-[136px]"
       >
         <div className="relative mx-auto w-full max-w-[1320px] px-pad">
+          <ColumnsOverlay />
           <SectionHeader id="about" title={t("title")} srOnlyTitle />
           <div className="mt-12 grid grid-cols-12 gap-4">
             <p className="col-span-12 text-[clamp(28px,3.6vw,48px)] leading-[1.1667] font-semibold tracking-[-0.02em] min-[961px]:col-span-9">

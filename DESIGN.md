@@ -90,6 +90,16 @@ Each section commits to one named grid and shows it in its eyebrow, e.g.
 | 06 | Cabinet | Diagonal | items along a 30° axis |
 | 07 | Contact | Axial | everything centered on one vertical axis |
 
+### Grid mode
+
+The `GRID` chip (state in `common/stores/grid.ts`, persisted in localStorage) sets
+`data-grid="on"` on `<html>`. Sections style their overlay with the `grid-on:`
+Tailwind variant: 12-column and 88px module overlays (Now), column overlay and
+PRIMARY / SECONDARY outlines (Work), column overlay and stronger baseline lines
+(About), solid blue rings and spokes (Stack), blue diagonals and axis (Cabinet),
+lime axis and outlines (Contact), blue rope and vanishing point (The Line).
+Overlay tint: `--gridline`.
+
 ## Motion
 
 - GSAP (`lib/gsap.ts`, always through `useGSAP`) for scroll choreography,

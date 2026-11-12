@@ -544,6 +544,28 @@
   opacity: 1;
 }
 
+/* ---------- grid mode: the spatial grid ---------- */
+:global(html[data-grid="on"][data-line="scene"]) .rope {
+  background: var(--color-blue);
+}
+
+/* Vanishing point of the scene (perspective-origin 58% 44%). */
+:global(html[data-grid="on"][data-line="scene"]) .scene::after {
+  content: "";
+  position: absolute;
+  top: 44%;
+  left: 58%;
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
+  border: 1.5px solid var(--color-blue);
+  border-radius: 50%;
+  background:
+    linear-gradient(var(--color-blue), var(--color-blue)) center / 1.5px 100% no-repeat,
+    linear-gradient(var(--color-blue), var(--color-blue)) center / 100% 1.5px no-repeat;
+  pointer-events: none;
+}
+
 /* ---------- entrance (after the loader) ---------- */
 @media (prefers-reduced-motion: no-preference) {
   :global(html[data-motion="on"]:not([data-ready])) .drop,

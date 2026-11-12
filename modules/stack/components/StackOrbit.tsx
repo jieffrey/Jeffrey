@@ -143,7 +143,7 @@ export default function StackOrbit() {
             <div
               data-spokes
               aria-hidden
-              className="absolute inset-0 rounded-full bg-[repeating-conic-gradient(from_0deg,color-mix(in_srgb,var(--color-ink)_9%,transparent)_0deg_0.4deg,transparent_0.4deg_30deg)]"
+              className="absolute inset-0 rounded-full bg-[repeating-conic-gradient(from_0deg,var(--spoke)_0deg_0.4deg,transparent_0.4deg_30deg)] [--spoke:color-mix(in_srgb,var(--color-ink)_9%,transparent)] grid-on:[--spoke:color-mix(in_srgb,var(--color-blue)_40%,transparent)]"
             />
             {STACK_RINGS.map((ring, i) => (
               <div key={ring.id} aria-hidden>
@@ -153,7 +153,7 @@ export default function StackOrbit() {
                 >
                   <div
                     data-ring
-                    className="size-full rounded-full border-[1.5px] border-dashed border-ink/25"
+                    className="size-full rounded-full border-[1.5px] border-dashed border-ink/25 grid-on:border-solid grid-on:border-blue"
                   />
                 </div>
                 <span
