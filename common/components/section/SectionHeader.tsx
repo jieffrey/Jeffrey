@@ -14,6 +14,8 @@ interface SectionHeaderProps {
   title: string;
   /** Hide the heading visually (About shows only the eyebrow). */
   srOnlyTitle?: boolean;
+  /** Skip the built-in letter flip; the section animates [data-char] itself. */
+  customHeadingMotion?: boolean;
   className?: string;
   eyebrowClassName?: string;
   headingClassName?: string;
@@ -28,6 +30,7 @@ export default function SectionHeader({
   id,
   title,
   srOnlyTitle,
+  customHeadingMotion,
   className,
   eyebrowClassName,
   headingClassName,
@@ -50,7 +53,7 @@ export default function SectionHeader({
           scrollTrigger: { trigger: eyebrow, start: "top 92%" },
         });
       }
-      if (heading && !srOnlyTitle) {
+      if (heading && !srOnlyTitle && !customHeadingMotion) {
         gsap.from(heading.querySelectorAll("[data-char]"), {
           yPercent: 110,
           rotateX: -90,
@@ -63,7 +66,11 @@ export default function SectionHeader({
         });
       }
     },
-    { scope: root, dependencies: [title, srOnlyTitle], revertOnUpdate: true },
+    {
+      scope: root,
+      dependencies: [title, srOnlyTitle, customHeadingMotion],
+      revertOnUpdate: true,
+    },
   );
 
   return (
