@@ -5,6 +5,7 @@ import "lenis/dist/lenis.css";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { useUi } from "@/common/stores/ui";
 import { usePrefersReducedMotion } from "@/hooks/use-media-query";
+import VelocitySkew from "./VelocitySkew";
 
 /**
  * Root Lenis instance driven by the GSAP ticker and kept in sync with
@@ -62,6 +63,7 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
 
   return (
     <ReactLenis root options={{ autoRaf: false, lerp: 0.09 }}>
+      <VelocitySkew />
       {children}
     </ReactLenis>
   );
