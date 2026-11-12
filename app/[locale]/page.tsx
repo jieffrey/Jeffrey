@@ -3,13 +3,13 @@ import type { Locale } from "next-intl";
 import Section from "@/common/components/section/Section";
 import TheLine from "@/modules/line/components/TheLine";
 import Now from "@/modules/now/components/Now";
+import Work from "@/modules/work/components/Work";
 import { getGithub } from "@/lib/data/github";
 import { getSpotify } from "@/lib/data/spotify";
 import type { SectionId } from "@/lib/sections";
 
 /** Sections still waiting for their phase, with their placeholder surface. */
 const PLACEHOLDERS: { id: Exclude<SectionId, "line">; surface: string }[] = [
-  { id: "work", surface: "bg-paper text-ink" },
   { id: "about", surface: "bg-paper-2 text-ink" },
   { id: "stack", surface: "bg-paper text-ink" },
   { id: "cabinet", surface: "bg-paper-2 text-ink" },
@@ -30,6 +30,7 @@ export default async function HomePage({
     <>
       <TheLine />
       <Now github={github} spotify={spotify} />
+      <Work />
       {PLACEHOLDERS.map(({ id, surface }) => (
         <Section key={id} id={id} className={surface}>
           <div className="my-auto max-w-3xl">
