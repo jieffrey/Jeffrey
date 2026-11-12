@@ -6,16 +6,11 @@ import { cn } from "@/lib/utils";
 interface MagneticProps {
   children: ReactNode;
   className?: string;
-  strength?: number;
 }
 
 /** Wraps one interactive element and makes it magnetic to the cursor. */
-export default function Magnetic({
-  children,
-  className,
-  strength,
-}: MagneticProps) {
-  const ref = useMagnetic<HTMLSpanElement>(strength);
+export default function Magnetic({ children, className }: MagneticProps) {
+  const ref = useMagnetic<HTMLSpanElement>();
   return (
     <span ref={ref} className={cn("inline-flex will-change-transform", className)}>
       {children}

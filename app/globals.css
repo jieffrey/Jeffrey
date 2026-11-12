@@ -6,19 +6,28 @@
 /*
  * Design tokens for "The Line". See DESIGN.md.
  * Components must use these through Tailwind utilities (bg-paper, text-ink,
- * font-mono, ...) and never hardcode hex values.
+ * font-mono, ...) or var(--color-*) in CSS modules. Never hardcode hex values.
  */
-@theme {
-  /* Surfaces and text. These four swap in the dark ("lights off") theme. */
+/* static: every token is emitted, so CSS modules can use var(--color-*). */
+@theme static {
+  /* Surfaces and text. These swap in the dark ("lights off") theme. */
   --color-paper: #f3efe6;
   --color-paper-2: #ece6d9;
   --color-ink: #161513;
   --color-muted: #5c574e;
   --color-rope: #8c8270;
+  --color-hair: #d9d2c3;
+  /* Translucent HUD surface (chips, nav, camera panel). */
+  --color-glass: #ffffff;
 
   /* Same values as paper / ink, but they never swap with the theme. */
   --color-paper-static: #f3efe6;
   --color-ink-static: #161513;
+  /* Secondary text on ink-static surfaces (loader, contact). */
+  --color-ash: #b8b2a6;
+  --color-muted-static: #5c574e;
+  /* Photo-print frame and white stickers. Constant in both themes. */
+  --color-print: #ffffff;
 
   /* Accents. Identical in both themes. */
   --color-lime: #c8f03c;
@@ -33,6 +42,7 @@
   --color-card: #17171a;
   --color-edge: #26262b;
   --color-dim: #9b9ba3;
+  --color-snow: #f2f2f3;
   --color-violet: #7c6cf6;
   --color-violet-2: #b9afff;
 
@@ -43,8 +53,18 @@
   --color-heat-3: #7c6cf6;
   --color-heat-4: #b9afff;
 
+  /* Objects: clothespin wood and vinyl record. */
+  --color-peg: #c9a97c;
+  --color-peg-shade: #a98757;
+  --color-vinyl: #050506;
+  --color-vinyl-2: #121215;
+
+  /* Page gutter, same as the prototype's --pad. */
+  --spacing-pad: clamp(16px, 4vw, 56px);
+
   --tracking-display: -0.045em;
   --tracking-hud: 0.08em;
+  --tracking-chip: 0.06em;
 
   --ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-expo-in-out: cubic-bezier(0.87, 0, 0.13, 1);
@@ -64,6 +84,8 @@
   --color-ink: #f3efe6;
   --color-muted: #a8a294;
   --color-rope: #6e6656;
+  --color-hair: #33302b;
+  --color-glass: #1f1e1b;
   color-scheme: dark;
 }
 
@@ -86,13 +108,7 @@
   }
 
   :focus-visible {
-    @apply outline-2 outline-offset-4 outline-blue;
-  }
-
-  /* The custom cursor replaces the native one on mouse devices only. */
-  html[data-cursor="on"],
-  html[data-cursor="on"] * {
-    cursor: none;
+    @apply outline-2 outline-offset-[3px] outline-blue;
   }
 }
 
@@ -108,7 +124,7 @@
 html[data-loader="on"] .loader {
   display: flex;
   clip-path: inset(0 0 0% 0);
-  animation: loader-failsafe 0s linear 8s forwards;
+  animation: loader-failsafe 0s linear 6s forwards;
 }
 
 @keyframes loader-failsafe {
@@ -118,11 +134,14 @@ html[data-loader="on"] .loader {
 }
 
 @utility hud-chip {
-  @apply inline-flex h-9 items-center gap-2 rounded-full border border-ink/15 bg-paper/85 px-3.5 font-mono text-[11px] leading-none font-medium tracking-hud whitespace-nowrap text-ink uppercase backdrop-blur-md;
+  @apply inline-flex h-10 items-center gap-2 rounded-full border border-ink/8 bg-glass/78 px-4 font-mono text-xs leading-none tracking-chip whitespace-nowrap text-ink uppercase backdrop-blur-[10px];
 }
 
 @utility eyebrow {
-  @apply font-mono text-[11px] leading-4 font-medium tracking-hud uppercase;
+  @apply flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs leading-4 tracking-hud text-muted uppercase;
+  & b {
+    @apply font-medium text-ink;
+  }
 }
 
 @utility no-scrollbar {

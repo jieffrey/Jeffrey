@@ -5,9 +5,10 @@ import { useFinePointer, usePrefersReducedMotion } from "./use-media-query";
 
 /**
  * Pulls the element toward the cursor while hovered and springs it back with
- * an elastic ease on leave. No-op on touch devices and under reduced motion.
+ * an elastic ease on leave. Values match the prototype (x 0.3, y 0.45).
+ * No-op on touch devices and under reduced motion.
  */
-export function useMagnetic<T extends HTMLElement>(strength = 0.35) {
+export function useMagnetic<T extends HTMLElement>(strengthX = 0.3, strengthY = 0.45) {
   const ref = useRef<T>(null);
   const reducedMotion = usePrefersReducedMotion();
   const finePointer = useFinePointer();
@@ -20,9 +21,9 @@ export function useMagnetic<T extends HTMLElement>(strength = 0.35) {
       const onMove = (e: PointerEvent) => {
         const rect = el.getBoundingClientRect();
         gsap.to(el, {
-          x: (e.clientX - (rect.left + rect.width / 2)) * strength,
-          y: (e.clientY - (rect.top + rect.height / 2)) * strength,
-          duration: 0.35,
+          x: (e.clientX - rect.left - rect.width / 2) * strengthX,
+          y: (e.clientY - rect.top - rect.height / 2) * strengthY,
+          duration: 0.4,
           ease: "power3.out",
           overwrite: true,
         });
@@ -32,7 +33,7 @@ export function useMagnetic<T extends HTMLElement>(strength = 0.35) {
           x: 0,
           y: 0,
           duration: 0.9,
-          ease: "elastic.out(1, 0.35)",
+          ease: "elastic.out(1, 0.4)",
           overwrite: true,
         });
       };
@@ -45,7 +46,7 @@ export function useMagnetic<T extends HTMLElement>(strength = 0.35) {
       };
     },
     {
-      dependencies: [reducedMotion, finePointer, strength],
+      dependencies: [reducedMotion, finePointer, strengthX, strengthY],
       revertOnUpdate: true,
     },
   );

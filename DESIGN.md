@@ -28,6 +28,13 @@ components.
 | dim | `#9B9BA3` | `text-dim` | dashboard secondary text |
 | violet | `#7C6CF6` | `text-violet` | chart color |
 | violet-2 | `#B9AFFF` | `text-violet-2` | chart color, light |
+| snow | `#F2F2F3` | `text-snow` | text on night |
+| hair | `#D9D2C3` | `border-hair` | hairlines |
+| glass | `#FFFFFF` | `bg-glass/78` | translucent HUD surface (chips, nav, camera panel) |
+| print | `#FFFFFF` | `bg-print` | photo-print frame, white stickers (never swaps) |
+| ash | `#B8B2A6` | `text-ash` | secondary text on ink-static (loader, contact) |
+| peg / peg-shade | `#C9A97C` / `#A98757` | `bg-peg` | clothespin |
+| vinyl / vinyl-2 | `#050506` / `#121215` | `bg-vinyl` | vinyl record |
 
 Heatmap scale, low to high: `heat-0 #24242A`, `heat-1 #3A3470`,
 `heat-2 #5A4FC0`, `heat-3 #7C6CF6`, `heat-4 #B9AFFF`.
@@ -44,8 +51,10 @@ next-themes): the surface and text tokens swap, accents stay.
 | ink | `#161513` | `#F3EFE6` |
 | muted | `#5C574E` | `#A8A294` |
 | rope | `#8C8270` | `#6E6656` |
+| hair | `#D9D2C3` | `#33302B` |
+| glass | `#FFFFFF` | `#1F1E1B` |
 
-Two extra tokens never swap: `paper-static` and `ink-static`. Use them where a
+Three extra tokens never swap: `paper-static`, `ink-static` and `muted-static`. Use them where a
 surface must stay the same in both themes (the loader, text on lime, text
 inside the always-dark Now section).
 
@@ -62,7 +71,7 @@ Loaded in `lib/fonts.ts`. Bricolage Grotesque is self-hosted with `next/font/loc
 | Accent | Instrument Serif italic | `font-serif italic` | one emphasized word per heading only |
 | Mono | JetBrains Mono 400 / 500 | `font-mono` | eyebrows, HUD chips, captions, numbers |
 
-Utilities: `eyebrow` (mono 11px, uppercase, 0.08em) and `hud-chip` (the pill
+Utilities: `eyebrow` (mono 12px, uppercase, 0.08em, bold part in ink) and `hud-chip` (the pill
 used by every HUD control).
 
 ## Grid systems
@@ -95,11 +104,25 @@ Each section commits to one named grid and shows it in its eyebrow, e.g.
 - `prefers-reduced-motion`: no loader, no Lenis, no magnetic pull. All content
   is visible immediately.
 
+## The Line: scene and stack
+
+The Line has two layouts on one DOM (`modules/line/line.module.css`):
+
+- **stack** (default): flat vertical list of prints. Used with no JS, under
+  `prefers-reduced-motion`, and as the low-performance fallback below 720px
+  (three consecutive seconds under 30 FPS).
+- **scene**: the CSS 3D clothesline, enabled when the boot script in
+  `lib/loader.ts` sets `data-line="scene"` on `<html>`.
+
+Geometry, physics and timings are ported from the prototype and live in
+`hooks/use-line-scene.ts`. Camera values are in `common/stores/camera.ts`.
+
 ## Layers
 
 | z-index | Layer |
 |---|---|
 | 110 | skip link |
 | 100 | loader |
-| 90 | custom cursor |
+| 70 | custom cursor |
+| 60 | camera panel |
 | 50 | HUD and progress bar |

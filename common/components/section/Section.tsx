@@ -23,12 +23,15 @@ export default function Section({ id, className, children }: SectionProps) {
       data-section={id}
       aria-labelledby={`${id}-eyebrow`}
       className={cn(
-        "relative flex min-h-svh flex-col px-4 pt-24 pb-32 sm:px-8 lg:px-12",
+        "relative flex min-h-svh flex-col px-pad pt-24 pb-32",
         className,
       )}
     >
-      <p id={`${id}-eyebrow`} className="eyebrow opacity-70">
-        {number} — {t(`${id}.nav`)} · {t(`${id}.grid`)}
+      <p id={`${id}-eyebrow`} className="eyebrow">
+        <b>
+          {number} — {t(`${id}.nav`)}
+        </b>
+        <span>{t(`${id}.grid`)}</span>
       </p>
       {children}
     </section>

@@ -25,14 +25,50 @@
     },
     "cursor": {
       "open": "Buka"
+    },
+    "counter": {
+      "section": "{number} — {name}",
+      "line": "{number} — {name} {current}/{total}"
+    },
+    "camera": {
+      "open": "Kamera",
+      "title": "Pengaturan kamera",
+      "fps": "{value} FPS",
+      "persp": "Lensa",
+      "tilt": "Kemiringan",
+      "angle": "Putaran foto",
+      "sway": "Angin",
+      "gap": "Jarak",
+      "reset": "Reset kamera"
     }
   },
   "loader": {
-    "label": "Memuat halaman"
+    "label": "Memuat halaman",
+    "tagline": "Menjemur foto-foto"
   },
   "line": {
     "nav": "Line",
-    "grid": "Grid spasial · CSS 3D"
+    "grid": "Grid spasial · CSS 3D",
+    "label": "The Line",
+    "keyboardHint": "Saat sebuah foto terfokus, gunakan tombol panah untuk berpindah antar foto.",
+    "name": "Kalsah",
+    "tagline": "developer yang selalu penasaran",
+    "intro": "Karya web dan mobile, dari API sampai piksel terakhir. Delapan hal di satu tali. Scroll untuk menyusurinya, klik foto mana pun untuk masuk.",
+    "marquee": "Kalsah · Web & Mobile · Jeffreystudios · ",
+    "keepScrolling": "Terus scroll",
+    "print": {
+      "goTo": "Buka {title}, foto {current} dari {total}"
+    },
+    "faces": {
+      "thatsMe": "ini saya",
+      "hi": "hai!",
+      "admit": "Tiket\nMasuk",
+      "seat": "Baris F\nKursi 12",
+      "nowLabel": "// Kini",
+      "track": "[Lagu] · [Artis]",
+      "contactLead": "Ayo bikin",
+      "contactAccent": "sesuatu."
+    }
   },
   "now": {
     "nav": "Kini",

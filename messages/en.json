@@ -25,14 +25,50 @@
     },
     "cursor": {
       "open": "Open"
+    },
+    "counter": {
+      "section": "{number} — {name}",
+      "line": "{number} — {name} {current}/{total}"
+    },
+    "camera": {
+      "open": "Camera",
+      "title": "Camera settings",
+      "fps": "{value} FPS",
+      "persp": "Lens",
+      "tilt": "Tilt",
+      "angle": "Print turn",
+      "sway": "Wind",
+      "gap": "Spacing",
+      "reset": "Reset camera"
     }
   },
   "loader": {
-    "label": "Loading the page"
+    "label": "Loading the page",
+    "tagline": "Hanging the prints"
   },
   "line": {
     "nav": "Line",
-    "grid": "Spatial grid · CSS 3D"
+    "grid": "Spatial grid · CSS 3D",
+    "label": "The Line",
+    "keyboardHint": "With a print focused, use the arrow keys to move between prints.",
+    "name": "Kalsah",
+    "tagline": "a curious developer",
+    "intro": "Web and mobile work, from the API to the last pixel. Eight things on one line. Scroll to walk it, click any print to jump in.",
+    "marquee": "Kalsah · Web & Mobile · Jeffreystudios · ",
+    "keepScrolling": "Keep scrolling",
+    "print": {
+      "goTo": "Go to {title}, print {current} of {total}"
+    },
+    "faces": {
+      "thatsMe": "that's me",
+      "hi": "hi!",
+      "admit": "Admit\nOne",
+      "seat": "Row F\nSeat 12",
+      "nowLabel": "// Now",
+      "track": "[Track] · [Artist]",
+      "contactLead": "Let's build",
+      "contactAccent": "something."
+    }
   },
   "now": {
     "nav": "Now",

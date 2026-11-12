@@ -6,6 +6,7 @@ import { useUi } from "@/common/stores/ui";
 import { useScrollToSection } from "@/hooks/use-scroll-to-section";
 import { SECTIONS, type SectionId } from "@/lib/sections";
 import { cn } from "@/lib/utils";
+import Magnetic from "./Magnetic";
 
 /**
  * Bottom-center pill nav. On the home page it scrolls with Lenis; on other
@@ -24,26 +25,26 @@ export default function HudNav() {
   return (
     <nav
       aria-label={t("hud.navLabel")}
-      className="no-scrollbar pointer-events-auto max-w-full overflow-x-auto rounded-full border border-ink/15 bg-paper/85 p-1 backdrop-blur-md"
+      className="no-scrollbar pointer-events-auto max-w-full overflow-x-auto rounded-full border border-ink/8 bg-glass/78 p-[5px] backdrop-blur-[10px]"
     >
       <ul className="flex items-center gap-0.5">
         {SECTIONS.map(({ id }) => {
           const active = id === activeSection;
           return (
             <li key={id}>
-              <Link
-                href={`/#${id}`}
-                onClick={(e) => onClick(e, id)}
-                aria-current={active ? "location" : undefined}
-                className={cn(
-                  "flex h-8 items-center rounded-full px-3.5 font-mono text-[11px] leading-none font-medium tracking-hud whitespace-nowrap uppercase transition-colors duration-300",
-                  active
-                    ? "bg-ink text-paper"
-                    : "text-muted hover:bg-ink/10 hover:text-ink",
-                )}
-              >
-                {t(`${id}.nav`)}
-              </Link>
+              <Magnetic>
+                <Link
+                  href={`/#${id}`}
+                  onClick={(e) => onClick(e, id)}
+                  aria-current={active ? "location" : undefined}
+                  className={cn(
+                    "flex h-9 items-center rounded-full px-[13px] font-mono text-xs leading-none tracking-chip whitespace-nowrap uppercase",
+                    active ? "bg-ink text-paper" : "text-ink",
+                  )}
+                >
+                  {t(`${id}.nav`)}
+                </Link>
+              </Magnetic>
             </li>
           );
         })}

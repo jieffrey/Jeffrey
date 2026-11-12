@@ -1,4 +1,4 @@
-import type { Project } from "../type";
+import type { Project } from "./projects-archive.types";
 
 // Source of truth for the Projects page and each project's detail page.
 // The first entry below is filled out completely as a reference for the
